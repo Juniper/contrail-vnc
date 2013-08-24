@@ -1,0 +1,8 @@
+<manifest>
+<remote name="github" fetch=".."/>
+
+<project name="Juniper/contrail-controller" remote="github" path="controller">
+<project name="Juniper/contrail-vrouter" remote="github" path="vrouter">
+<project name="Juniper/contrail-third-party" remote="github" path="third_party">
+
+</manifest>
