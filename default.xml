@@ -1,6 +1,8 @@
 <manifest>
 <remote name="github" fetch=".."/>
 
+<default revision="refs/heads/master" remote="github"/>
+
 <project name="Juniper/contrail-controller" remote="github" path="controller"/>
 <project name="Juniper/contrail-vrouter" remote="github" path="vrouter"/>
 <project name="Juniper/contrail-third-party" remote="github" path="third_party"/>
