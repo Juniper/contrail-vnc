@@ -6,5 +6,7 @@
 <project name="contrail-controller" remote="github" path="controller"/>
 <project name="contrail-vrouter" remote="github" path="vrouter"/>
 <project name="contrail-third-party" remote="github" path="third_party"/>
+<project name="contrail-generateDS" remote="github" path="tools/generateds"/>
+<project name="contrail-sandesh" remote="github" path="tools/sandesh"/>
 
 </manifest>
