@@ -3,7 +3,9 @@
 
 <default revision="refs/heads/master" remote="github"/>
 
-<project name="contrail-controller" remote="github" path="controller"/>
+<project name="contrail-controller" remote="github" path="controller">
+  <copyfile src="controller/SConstruct" dest="SConstruct"/>
+</project>
 <project name="contrail-vrouter" remote="github" path="vrouter"/>
 <project name="contrail-third-party" remote="github" path="third_party"/>
 <project name="contrail-generateDS" remote="github" path="tools/generateds"/>
