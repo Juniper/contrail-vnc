@@ -11,6 +11,5 @@
 <project name="contrail-third-party" remote="github" path="third_party"/>
 <project name="contrail-generateDS" remote="github" path="tools/generateds"/>
 <project name="contrail-sandesh" remote="github" path="tools/sandesh"/>
-<project name="contrail-packaging" remote="github" path="tools/packaging"/>
 
 </manifest>
