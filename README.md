@@ -14,12 +14,12 @@ Before building the software you will need to download other open source softwar
 Contrail uses SCons (http://scons.org) as its build tool. Please ensure that you have scons >= 2.1.0 installed in your system and execute the command "scons" at the top-level sandbox directory.
 
 The build process requires several tools including:
-    - gcc c++ >= 4.4.7
-    - flex
-    - bison
-    - xxd (included as part of the vim-common package in redhat based distributions).
-    - libstdc++
-    - python development support
-    - python lxml, setuptools, sphinx packages
-    - openssl development support
+ - gcc c++ >= 4.4.7
+ - flex
+ - bison
+ - xxd (included as part of the vim-common package in redhat based distributions).
+ - libstdc++
+ - python development support
+ - python lxml, setuptools, sphinx packages
+ - openssl development support
 
