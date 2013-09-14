@@ -1,4 +1,15 @@
-Contrail source code instructions
+This software is licensed under the Apache License, Version 2.0 (the "License");
+you may not use this software except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2
+.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+### Contrail source code instructions
 
 The source code for the contrail network virtualization system uses several code repositories, currently hosted in GitHub. The source code for the configuration server, control-plane, analytics and compute-node agent is located in https://github.com/Juniper/contrail-controller. The source code for the dataplane component is located in https://github.com/Juniper/contrail-vrouter. Several other repositories that contain build tools and code generators are also used.
 
