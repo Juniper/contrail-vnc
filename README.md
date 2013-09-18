@@ -14,7 +14,11 @@ The source code for the contrail network virtualization system uses several code
 
 In order to create a sandbox that can be used to build the complete system we use the google multiple repository tool (http://code.google.com/p/git-repo).
 
-In order to create a development sandbox you can use the following steps:
+Before you can create a sandbox with repo you will need a github account, and you will need to set up ssh access to github.
+   - Make sure you have ssh set up correctly - https://help.github.com/articles/error-permission-denied-publickey
+   - Make sure you have your ssh public key added to your github account - https://github.com/settings/ssh
+
+Then create your sandbox with the following steps:
    - mkdir <dirname>; cd <dirname>
    - repo init -u git@github.com:Juniper/contrail-vnc
    - repo sync
