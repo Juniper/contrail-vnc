@@ -26,8 +26,17 @@
 
     <div class="container">
       <p>
-	In order to create a sandbox that can be used to build the complete system we use the <a href="http://code.google.com/p/git-repo">google multiple repository tool</a>.</p>
+      In order to create a sandbox that can be used to build the
+      complete system we use the <a
+      href="http://code.google.com/p/git-repo">google multiple
+      repository tool</a>. This requires <code>git &gt;= 1.7.2</code> to be installed in
+      the build system.
+      </p>
 
+      <p>
+      Before you can create a sandbox with repo you will need a github account, and you will need to set up ssh access to github.</p>
+      </p>
+      
       <div class="well">
 	<p>
 	  To create a development sandbox you can use the following steps:
@@ -55,15 +64,42 @@
 	  <li> gcc c++ >= 4.4.7 </li>
 	  <li> flex </li>
 	  <li> bison </li>
-	  <li> xxd (included as part of the vim<li>common package in redhat based distributions). </li>
+	  <li> xxd (included as part of the vim-common package in redhat based distributions). </li>
 	  <li> libstdc++ </li>
 	  <li> python development support </li>
 	  <li> python lxml, setuptools, sphinx packages </li>
 	  <li> openssl development support </li>
+	  <li> autoconf</li>
 	</ul>
       </p>
+	    <p>Please report buid issues in the <a
+    href=http://lists.opencontrail.org/mailman/listinfo/dev_lists.opencontrail.org">
+    developers mailing list</a>.</p>
+
     </div>
 
+    
+    <div class="container">
+    <p>On RHEL/CentOS/Scientific 6.4 the build dependencies can be
+    installed by the
+    following command:</p>
+      <div class="well">
+      yum install -y scons git python-lxml wget gcc path make unzip
+    flex bison gcc-c++ openssl-devel autoconf automake vim
+    python-devel python-setuptools
+	</div>
+    </div>
+
+    <div class="container">
+      <p>Common problems:
+      <ul>
+	<li><p>build/lib/libthriftasio.a is not generated.<p>
+	<p>This library is added to thrift via a patch. It requires
+      autoconf to be installed in the system in order for
+      <code>configure</code> to regenerate itself.</p></li>
+      </ul>
+      </p>
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://code.jquery.com/jquery.js"></script>
 
