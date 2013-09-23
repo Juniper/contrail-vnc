@@ -1,0 +1,80 @@
+vnc_cfg_api_server Package
+==========================
+
+:mod:`vnc_cfg_api_server` Package
+---------------------------------
+
+.. automodule:: vnc_cfg_api_server.__init__
+    :members:
+    :show-inheritance:
+
+:mod:`bottle` Module
+--------------------
+
+.. automodule:: vnc_cfg_api_server.bottle
+    :members:
+    :show-inheritance:
+
+:mod:`provision_defaults` Module
+--------------------------------
+
+.. automodule:: vnc_cfg_api_server.provision_defaults
+    :members:
+    :show-inheritance:
+
+:mod:`vnc_addr_mgmt` Module
+---------------------------
+
+.. automodule:: vnc_cfg_api_server.vnc_addr_mgmt
+    :members:
+    :show-inheritance:
+
+:mod:`vnc_auth` Module
+----------------------
+
+.. automodule:: vnc_cfg_api_server.vnc_auth
+    :members:
+    :show-inheritance:
+
+:mod:`vnc_auth_keystone` Module
+-------------------------------
+
+.. automodule:: vnc_cfg_api_server.vnc_auth_keystone
+    :members:
+    :show-inheritance:
+
+:mod:`vnc_cfg_api_server` Module
+--------------------------------
+
+.. automodule:: vnc_cfg_api_server.vnc_cfg_api_server
+    :members:
+    :show-inheritance:
+
+:mod:`vnc_cfg_ifmap` Module
+---------------------------
+
+.. automodule:: vnc_cfg_api_server.vnc_cfg_ifmap
+    :members:
+    :show-inheritance:
+
+:mod:`vnc_cfg_types` Module
+---------------------------
+
+.. automodule:: vnc_cfg_api_server.vnc_cfg_types
+    :members:
+    :show-inheritance:
+
+:mod:`vnc_perms` Module
+-----------------------
+
+.. automodule:: vnc_cfg_api_server.vnc_perms
+    :members:
+    :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+    vnc_cfg_api_server.gen
+

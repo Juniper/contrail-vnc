@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>REST API Tutorial &mdash; vnc_api beta documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="vnc_api beta documentation" href="index.html" />
+    <link rel="next" title="Library API Tutorial" href="tutorial_with_library.html" />
+    <link rel="prev" title="Juniper Contrail Configuration API server documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tutorial_with_library.html" title="Library API Tutorial"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Juniper Contrail Configuration API server documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">vnc_api beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="rest-api-tutorial">
+<h1>REST API Tutorial<a class="headerlink" href="#rest-api-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial will detail the steps necessary to create couple of virtual-networks
+and associate a policy on them such that only http traffic can pass.</p>
+<div class="section" id="create-virtual-network-and-network-policy-objects">
+<h2>Create virtual-network and network-policy objects<a class="headerlink" href="#create-virtual-network-and-network-policy-objects" title="Permalink to this headline">¶</a></h2>
+<p>To create virtual-networks <em>vn-red</em> and <em>vn-blue</em> and network-policy <em>policy-red-blue</em>:</p>
+<p>Request for <em>vn-blue</em> create</p>
+<div class="highlight-python"><pre>curl -X POST -H "Content-Type: application/json; charset=UTF-8" -d '{"virtual-network": {"parent_type": "project", "fq_name": ["default-domain", "admin", "vn-blue"], "network_ipam_refs": [{"attr": {"ipam_subnets": [{"subnet": {"ip_prefix": "10.1.1.0", "ip_prefix_len": 24}}]}, "to": ["default-domain", "default-project", "default-network-ipam"]}]}}' http://10.84.14.2:8082/virtual-networks</pre>
+</div>
+<dl class="docutils">
+<dt>Response ::</dt>
+<dd>{&#8220;virtual-network&#8221;: {&#8220;fq_name&#8221;: [&#8220;default-domain&#8221;, &#8220;admin&#8221;, &#8220;vn-blue&#8221;], &#8220;parent_uuid&#8221;: &#8220;df7649a6-3e2c-4982-b0c3-4b5038eef587&#8221;, &#8220;parent_href&#8221;: &#8220;<a class="reference external" href="http://10.84.14.2:8082/project/df7649a6-3e2c-4982-b0c3-4b5038eef587">http://10.84.14.2:8082/project/df7649a6-3e2c-4982-b0c3-4b5038eef587</a>&#8221;, &#8220;uuid&#8221;: &#8220;8c84ff8a-30ac-4136-99d9-f0d9662f3eee&#8221;, &#8220;href&#8221;: &#8220;<a class="reference external" href="http://10.84.14.2:8082/virtual-network/8c84ff8a-30ac-4136-99d9-f0d9662f3eee">http://10.84.14.2:8082/virtual-network/8c84ff8a-30ac-4136-99d9-f0d9662f3eee</a>&#8221;, &#8220;name&#8221;: &#8220;vn-blue&#8221;}}</dd>
+</dl>
+<p>Request for <em>vn-red</em> create</p>
+<div class="highlight-python"><pre>curl -X POST -H "Content-Type: application/json; charset=UTF-8" -d '{"virtual-network": {"parent_type": "project", "fq_name": ["default-domain", "admin", "vn-red"], "network_ipam_refs": [{"attr": {"ipam_subnets": [{"subnet": {"ip_prefix": "20.1.1.0", "ip_prefix_len": 24}}]}, "to": ["default-domain", "default-project", "default-network-ipam"]}]}}' http://10.84.14.2:8082/virtual-networks</pre>
+</div>
+<p>Response</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;virtual-network&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;fq_name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;default-domain&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span> <span class="s">&quot;vn-red&quot;</span><span class="p">],</span> <span class="s">&quot;parent_uuid&quot;</span><span class="p">:</span> <span class="s">&quot;df7649a6-3e2c-4982-b0c3-4b5038eef587&quot;</span><span class="p">,</span> <span class="s">&quot;parent_href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/project/df7649a6-3e2c-4982-b0c3-4b5038eef587&quot;</span><span class="p">,</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;47a91732-629b-4cbe-9aa5-45ba4d7b0e99&quot;</span><span class="p">,</span> <span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/virtual-network/47a91732-629b-4cbe-9aa5-45ba4d7b0e99&quot;</span><span class="p">,</span> <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;vn-red&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>Request for <em>policy-red-blue</em> create</p>
+<div class="highlight-python"><pre>curl -X POST -H "Content-Type: application/json; charset=UTF-8" -d '{"network-policy": {"parent_type": "project", "fq_name": ["default-domain", "admin", "policy-red-blue"], "network_policy_entries": {"policy_rule": [{"direction": "&lt;&gt;", "protocol": "tcp", "dst_addresses": [{"virtual_network": "default-domain:admin:vn-blue"}], "dst_ports": [{"start_port": 80, "end_port": 80}], "simple_action": "pass", "src_addresses": [{"virtual_network": "default-domain:admin:vn-red"}], "src_ports": [{"end_port": -1, "start_port": -1}]}] }}}' http://10.84.14.2:8082/network-policys</pre>
+</div>
+<p>Response</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;network-policy&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;fq_name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;default-domain&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span> <span class="s">&quot;policy-red-blue&quot;</span><span class="p">],</span> <span class="s">&quot;parent_uuid&quot;</span><span class="p">:</span> <span class="s">&quot;df7649a6-3e2c-4982-b0c3-4b5038eef587&quot;</span><span class="p">,</span> <span class="s">&quot;parent_href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/project/df7649a6-3e2c-4982-b0c3-4b5038eef587&quot;</span><span class="p">,</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;f215a3ec-5cbd-4310-91f4-7bbca52b27bd&quot;</span><span class="p">,</span> <span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/network-policy/f215a3ec-5cbd-4310-91f4-7bbca52b27bd&quot;</span><span class="p">,</span> <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;policy-red-blue&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-virtual-networks-to-use-the-policy">
+<h2>Update virtual-networks to use the policy<a class="headerlink" href="#update-virtual-networks-to-use-the-policy" title="Permalink to this headline">¶</a></h2>
+<p>To associate <em>policy-red-blue</em> to <em>vn-red</em> and <em>vn-blue</em> virtual-networks:</p>
+<p>Request for <em>vn-blue</em> update</p>
+<div class="highlight-python"><pre>curl -X PUT -H "Content-Type: application/json; charset=UTF-8" -d '{"virtual-network": {"fq_name": ["default-domain", "admin", "vn-blue"],"network_policy_refs": [{"to": ["default-domain", "admin", "policy-red-blue"], "attr":{"sequence":{"major":0, "minor": 0}}}]}}' http://10.84.14.2:8082/virtual-network/8c84ff8a-30ac-4136-99d9-f0d9662f3eee</pre>
+</div>
+<p>Response</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;virtual-network&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/virtual-network/8c84ff8a-30ac-4136-99d9-f0d9662f3eee&quot;</span><span class="p">,</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;8c84ff8a-30ac-4136-99d9-f0d9662f3eee&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>Request for <em>vn-red</em> update</p>
+<div class="highlight-python"><pre>curl -X PUT -H "Content-Type: application/json; charset=UTF-8" -d '{"virtual-network": {"fq_name": ["default-doma"vn-red"],"network_policy_refs": [{"to": ["default-domain", "admin", "policy-red-blue"], "attr":{"sequence":{"major":0, "minor": 0}}}]}}' http://10.84.14.2:8082/virtual-network/47a91732-629b-4cbe-9aa5-45ba4d7b0e99</pre>
+</div>
+<p>Response</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;virtual-network&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/virtual-network/47a91732-629b-4cbe-9aa5-45ba4d7b0e99&quot;</span><span class="p">,</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;47a91732-629b-4cbe-9aa5-45ba4d7b0e99&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-the-objects-to-verify">
+<h2>Read the objects to verify<a class="headerlink" href="#read-the-objects-to-verify" title="Permalink to this headline">¶</a></h2>
+<p>Request for <em>vn-blue</em> read</p>
+<div class="highlight-python"><pre>curl -X GET -H "Content-Type: application/json; charset=UTF-8" http://10.84.14.2:8082/virtual-network/8c84ff8a-30ac-4136-99d9-f0d9662f3eee</pre>
+</div>
+<p>Response</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;virtual-network&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;virtual_network_properties&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;network_id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&quot;vxlan_network_identifier&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s">&quot;extend_to_external_routers&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">},</span> <span class="s">&quot;fq_name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;default-domain&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span> <span class="s">&quot;vn-blue&quot;</span><span class="p">],</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;8c84ff8a-30ac-4136-99d9-f0d9662f3eee&quot;</span><span class="p">,</span> <span class="s">&quot;access_control_lists&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s">&quot;to&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;default-domain&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span> <span class="s">&quot;vn-blue&quot;</span><span class="p">,</span> <span class="s">&quot;vn-blue&quot;</span><span class="p">],</span> <span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/access-control-list/24b9c337-7be8-4883-a9a0-60197edf64e4&quot;</span><span class="p">,</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;24b9c337-7be8-4883-a9a0-60197edf64e4&quot;</span><span class="p">}],</span> <span class="s">&quot;network_policy_refs&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s">&quot;to&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;default-domain&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span> <span class="s">&quot;policy-red-blue&quot;</span><span class="p">],</span> <span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/network-policy/f215a3ec-5cbd-4310-91f4-7bbca52b27bd&quot;</span><span class="p">,</span> <span class="s">&quot;attr&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;sequence&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;major&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;minor&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}},</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;f215a3ec-5cbd-4310-91f4-7bbca52b27bd&quot;</span><span class="p">}],</span> <span class="s">&quot;parent_uuid&quot;</span><span class="p">:</span> <span class="s">&quot;df7649a6-3e2c-4982-b0c3-4b5038eef587&quot;</span><span class="p">,</span> <span class="s">&quot;parent_href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/project/df7649a6-3e2c-4982-b0c3-4b5038eef587&quot;</span><span class="p">,</span> <span class="s">&quot;parent_type&quot;</span><span class="p">:</span> <span class="s">&quot;project&quot;</span><span class="p">,</span> <span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/virtual-network/8c84ff8a-30ac-4136-99d9-f0d9662f3eee&quot;</span><span class="p">,</span> <span class="s">&quot;id_perms&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;enable&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span> <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s">&quot;created&quot;</span><span class="p">:</span> <span class="s">&quot;2013-09-13T00:26:05.290644&quot;</span><span class="p">,</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;uuid_mslong&quot;</span><span class="p">:</span> <span class="mi">10125498831222882614</span><span class="p">,</span> <span class="s">&quot;uuid_lslong&quot;</span><span class="p">:</span> <span class="mi">11086156774262128366</span><span class="p">},</span> <span class="s">&quot;last_modified&quot;</span><span class="p">:</span> <span class="s">&quot;2013-09-13T00:47:41.219833&quot;</span><span class="p">,</span> <span class="s">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;cloud-admin&quot;</span><span class="p">,</span> <span class="s">&quot;owner_access&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s">&quot;other_access&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s">&quot;group&quot;</span><span class="p">:</span> <span class="s">&quot;cloud-admin-group&quot;</span><span class="p">,</span> <span class="s">&quot;group_access&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}},</span> <span class="s">&quot;routing_instances&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s">&quot;to&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;default-domain&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span> <span class="s">&quot;vn-blue&quot;</span><span class="p">,</span> <span class="s">&quot;vn-blue&quot;</span><span class="p">],</span> <span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/routing-instance/732567fd-8607-4045-b6c0-ff4109d3e0fb&quot;</span><span class="p">,</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;732567fd-8607-4045-b6c0-ff4109d3e0fb&quot;</span><span class="p">}],</span> <span class="s">&quot;network_ipam_refs&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s">&quot;to&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;default-domain&quot;</span><span class="p">,</span> <span class="s">&quot;default-project&quot;</span><span class="p">,</span> <span class="s">&quot;default-network-ipam&quot;</span><span class="p">],</span> <span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/network-ipam/a01b486e-2c3e-47df-811c-440e59417ed8&quot;</span><span class="p">,</span> <span class="s">&quot;attr&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;ipam_subnets&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s">&quot;subnet&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;ip_prefix&quot;</span><span class="p">:</span> <span class="s">&quot;10.1.1.0&quot;</span><span class="p">,</span> <span class="s">&quot;ip_prefix_len&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">},</span> <span class="s">&quot;default_gateway&quot;</span><span class="p">:</span> <span class="s">&quot;10.1.1.254&quot;</span><span class="p">}]},</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;a01b486e-2c3e-47df-811c-440e59417ed8&quot;</span><span class="p">}],</span> <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;vn-blue&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-the-virtual-networks">
+<h2>List the virtual-networks<a class="headerlink" href="#list-the-virtual-networks" title="Permalink to this headline">¶</a></h2>
+<p>To list the virtual networks:</p>
+<p>Request</p>
+<div class="highlight-python"><pre>curl -X GET -H "Content-Type: application/json; charset=UTF-8" http://10.84.14.2:8082/virtual-networks</pre>
+</div>
+<p>Response</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;virtual-networks&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/virtual-network/8c84ff8a-30ac-4136-99d9-f0d9662f3eee&quot;</span><span class="p">,</span> <span class="s">&quot;fq_name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;default-domain&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span> <span class="s">&quot;vn-blue&quot;</span><span class="p">],</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;8c84ff8a-30ac-4136-99d9-f0d9662f3eee&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/virtual-network/47a91732-629b-4cbe-9aa5-45ba4d7b0e99&quot;</span><span class="p">,</span> <span class="s">&quot;fq_name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;default-domain&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span> <span class="s">&quot;vn-red&quot;</span><span class="p">],</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;47a91732-629b-4cbe-9aa5-45ba4d7b0e99&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/virtual-network/f423b6c8-deb6-4325-9035-15a8c8bb0a0d&quot;</span><span class="p">,</span> <span class="s">&quot;fq_name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;default-domain&quot;</span><span class="p">,</span> <span class="s">&quot;default-project&quot;</span><span class="p">,</span> <span class="s">&quot;__link_local__&quot;</span><span class="p">],</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;f423b6c8-deb6-4325-9035-15a8c8bb0a0d&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/virtual-network/d44a51b0-f2d8-4644-aee0-fe856f970683&quot;</span><span class="p">,</span> <span class="s">&quot;fq_name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;default-domain&quot;</span><span class="p">,</span> <span class="s">&quot;default-project&quot;</span><span class="p">,</span> <span class="s">&quot;default-virtual-network&quot;</span><span class="p">],</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;d44a51b0-f2d8-4644-aee0-fe856f970683&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s">&quot;href&quot;</span><span class="p">:</span> <span class="s">&quot;http://10.84.14.2:8082/virtual-network/aad9e80a-8638-449f-a484-5d1bfd58065c&quot;</span><span class="p">,</span> <span class="s">&quot;fq_name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;default-domain&quot;</span><span class="p">,</span> <span class="s">&quot;default-project&quot;</span><span class="p">,</span> <span class="s">&quot;ip-fabric&quot;</span><span class="p">],</span> <span class="s">&quot;uuid&quot;</span><span class="p">:</span> <span class="s">&quot;aad9e80a-8638-449f-a484-5d1bfd58065c&quot;</span><span class="p">}]}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-the-objects">
+<h2>Delete the objects<a class="headerlink" href="#delete-the-objects" title="Permalink to this headline">¶</a></h2>
+<p>To delete the virtual-networks and network-policy objects created:</p>
+<p>Request for <em>vn-red</em> delete</p>
+<div class="highlight-python"><pre>curl -X DELETE -H "Content-Type: application/json; charset=UTF-8" http://10.84.14.2:8082/virtual-network/47a91732-629b-4cbe-9aa5-45ba4d7b0e99</pre>
+</div>
+<p>Response <em>None</em></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">REST API Tutorial</a><ul>
+<li><a class="reference internal" href="#create-virtual-network-and-network-policy-objects">Create virtual-network and network-policy objects</a></li>
+<li><a class="reference internal" href="#update-virtual-networks-to-use-the-policy">Update virtual-networks to use the policy</a></li>
+<li><a class="reference internal" href="#read-the-objects-to-verify">Read the objects to verify</a></li>
+<li><a class="reference internal" href="#list-the-virtual-networks">List the virtual-networks</a></li>
+<li><a class="reference internal" href="#delete-the-objects">Delete the objects</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Juniper Contrail Configuration API server documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial_with_library.html"
+                        title="next chapter">Library API Tutorial</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tutorial_with_rest.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tutorial_with_library.html" title="Library API Tutorial"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Juniper Contrail Configuration API server documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">vnc_api beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Juniper Networks Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

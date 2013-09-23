@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>vnc_cfg_api_server &mdash; vnc_api beta documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="vnc_api beta documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">vnc_api beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="vnc-cfg-api-server">
+<h1>vnc_cfg_api_server<a class="headerlink" href="#vnc-cfg-api-server" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vnc_cfg_api_server.html">vnc_cfg_api_server Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.html#id1"><tt class="docutils literal"><span class="pre">vnc_cfg_api_server</span></tt> Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.html#module-vnc_cfg_api_server.bottle"><tt class="docutils literal"><span class="pre">bottle</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.html#provision-defaults-module"><tt class="docutils literal"><span class="pre">provision_defaults</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.html#vnc-addr-mgmt-module"><tt class="docutils literal"><span class="pre">vnc_addr_mgmt</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.html#module-vnc_cfg_api_server.vnc_auth"><tt class="docutils literal"><span class="pre">vnc_auth</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.html#vnc-auth-keystone-module"><tt class="docutils literal"><span class="pre">vnc_auth_keystone</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.html#vnc-cfg-api-server-module"><tt class="docutils literal"><span class="pre">vnc_cfg_api_server</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.html#vnc-cfg-ifmap-module"><tt class="docutils literal"><span class="pre">vnc_cfg_ifmap</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.html#vnc-cfg-types-module"><tt class="docutils literal"><span class="pre">vnc_cfg_types</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.html#vnc-perms-module"><tt class="docutils literal"><span class="pre">vnc_perms</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vnc_cfg_api_server.gen.html">gen Package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#cfixture-module"><tt class="docutils literal"><span class="pre">cfixture</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.connection_drv_gen"><tt class="docutils literal"><span class="pre">connection_drv_gen</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.generatedssuper"><tt class="docutils literal"><span class="pre">generatedssuper</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.resource_client"><tt class="docutils literal"><span class="pre">resource_client</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.resource_common"><tt class="docutils literal"><span class="pre">resource_common</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.resource_server"><tt class="docutils literal"><span class="pre">resource_server</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#resource-test-module"><tt class="docutils literal"><span class="pre">resource_test</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.resource_xsd"><tt class="docutils literal"><span class="pre">resource_xsd</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#vnc-api-client-gen-module"><tt class="docutils literal"><span class="pre">vnc_api_client_gen</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#vnc-api-schema-module"><tt class="docutils literal"><span class="pre">vnc_api_schema</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#vnc-api-server-gen-module"><tt class="docutils literal"><span class="pre">vnc_api_server_gen</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#vnc-api-test-gen-module"><tt class="docutils literal"><span class="pre">vnc_api_test_gen</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#vnc-cassandra-client-gen-module"><tt class="docutils literal"><span class="pre">vnc_cassandra_client_gen</span></tt> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vnc_cfg_api_server.gen.html#vnc-ifmap-client-gen-module"><tt class="docutils literal"><span class="pre">vnc_ifmap_client_gen</span></tt> Module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/modules.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">vnc_api beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Juniper Networks Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

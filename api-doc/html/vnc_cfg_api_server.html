@@ -1,0 +1,1862 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>vnc_cfg_api_server Package &mdash; vnc_api beta documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="vnc_api beta documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">vnc_api beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="vnc-cfg-api-server-package">
+<h1>vnc_cfg_api_server Package<a class="headerlink" href="#vnc-cfg-api-server-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><tt class="xref py py-mod docutils literal"><span class="pre">vnc_cfg_api_server</span></tt> Package<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-vnc_cfg_api_server.__init__"></span><dl class="docutils">
+<dt>The main modules in this package are:</dt>
+<dd><ul class="first last simple">
+<li>vnc_cfg_api_server</li>
+<li>gen.resource_common</li>
+<li>gen.resource_xsd</li>
+<li>vnc_cfg_ifmap</li>
+<li>vnc_addr_mgmt</li>
+<li>vnc_cfg_types</li>
+<li>vnc_cpu_info</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="module-vnc_cfg_api_server.bottle">
+<span id="bottle-module"></span><h2><tt class="xref py py-mod docutils literal"><span class="pre">bottle</span></tt> Module<a class="headerlink" href="#module-vnc_cfg_api_server.bottle" title="Permalink to this headline">¶</a></h2>
+<p>Bottle is a fast and simple micro-framework for small web applications. It
+offers request dispatching (Routes) with url parameter support, templates,
+a built-in HTTP Server and adapters for many third party WSGI/HTTP-server and
+template engines - all in a single file and with no dependencies other than the
+Python Standard Library.</p>
+<p>Homepage and documentation: <a class="reference external" href="http://bottlepy.org/">http://bottlepy.org/</a></p>
+<p>Copyright (c) 2012, Marcel Hellkamp.
+License: MIT (see LICENSE for details)</p>
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.AppEngineServer">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">AppEngineServer</tt><big>(</big><em>host='127.0.0.1'</em>, <em>port=8080</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.AppEngineServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.ServerAdapter</span></tt></p>
+<p>Adapter for Google App Engine.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.AppStack">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">AppStack</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.AppStack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">list</span></tt></p>
+<p>A stack-like list. Calling it returns the head of the stack.</p>
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.AppStack.push">
+<tt class="descname">push</tt><big>(</big><em>value=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.AppStack.push" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new <a class="reference internal" href="#vnc_cfg_api_server.bottle.Bottle" title="vnc_cfg_api_server.bottle.Bottle"><tt class="xref py py-class docutils literal"><span class="pre">Bottle</span></tt></a> instance to the stack</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.AutoServer">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">AutoServer</tt><big>(</big><em>host='127.0.0.1'</em>, <em>port=8080</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.AutoServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.ServerAdapter</span></tt></p>
+<p>Untested.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">BaseRequest</tt><big>(</big><em>environ=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A wrapper for WSGI environment dictionaries that adds a lot of
+convenient access methods and properties. Most of them are read-only.</p>
+<p>Adding new attributes to a request actually adds them to the environ
+dictionary (as &#8216;bottle.request.ext.&lt;name&gt;&#8217;). This is the recommended
+way to store and access request-specific data.</p>
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.COOKIES">
+<tt class="descname">COOKIES</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.COOKIES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.cookies" title="vnc_cfg_api_server.bottle.BaseRequest.cookies"><tt class="xref py py-attr docutils literal"><span class="pre">cookies</span></tt></a> (deprecated).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.GET">
+<tt class="descname">GET</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.GET" title="Permalink to this definition">¶</a></dt>
+<dd><p>An alias for <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.query" title="vnc_cfg_api_server.bottle.BaseRequest.query"><tt class="xref py py-attr docutils literal"><span class="pre">query</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.MAX_PARAMS">
+<tt class="descname">MAX_PARAMS</tt><em class="property"> = 100</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.MAX_PARAMS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum number pr GET or POST parameters per request</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.MEMFILE_MAX">
+<tt class="descname">MEMFILE_MAX</tt><em class="property"> = 102400</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.MEMFILE_MAX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum size of memory buffer for <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.body" title="vnc_cfg_api_server.bottle.BaseRequest.body"><tt class="xref py py-attr docutils literal"><span class="pre">body</span></tt></a> in bytes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.POST">
+<tt class="descname">POST</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.POST" title="Permalink to this definition">¶</a></dt>
+<dd><p>The values of <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.forms" title="vnc_cfg_api_server.bottle.BaseRequest.forms"><tt class="xref py py-attr docutils literal"><span class="pre">forms</span></tt></a> and <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.files" title="vnc_cfg_api_server.bottle.BaseRequest.files"><tt class="xref py py-attr docutils literal"><span class="pre">files</span></tt></a> combined into a single
+<a class="reference internal" href="#vnc_cfg_api_server.bottle.FormsDict" title="vnc_cfg_api_server.bottle.FormsDict"><tt class="xref py py-class docutils literal"><span class="pre">FormsDict</span></tt></a>. Values are either strings (form values) or
+instances of <tt class="xref py py-class docutils literal"><span class="pre">cgi.FieldStorage</span></tt> (file uploads).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.app">
+<tt class="descname">app</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bottle application handling this request.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.auth">
+<tt class="descname">auth</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.auth" title="Permalink to this definition">¶</a></dt>
+<dd><p>HTTP authentication data as a (user, password) tuple. This
+implementation currently supports basic (not digest) authentication
+only. If the authentication happened at a higher level (e.g. in the
+front web-server or a middleware), the password field is None, but
+the user field is looked up from the <tt class="docutils literal"><span class="pre">REMOTE_USER</span></tt> environ
+variable. On any errors, None is returned.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.body">
+<tt class="descname">body</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.body" title="Permalink to this definition">¶</a></dt>
+<dd><p>The HTTP request body as a seek-able file-like object. Depending on
+<a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.MEMFILE_MAX" title="vnc_cfg_api_server.bottle.BaseRequest.MEMFILE_MAX"><tt class="xref py py-attr docutils literal"><span class="pre">MEMFILE_MAX</span></tt></a>, this is either a temporary file or a
+<a class="reference external" href="http://docs.python.org/library/io.html#io.BytesIO" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">io.BytesIO</span></tt></a> instance. Accessing this property for the first
+time reads and replaces the <tt class="docutils literal"><span class="pre">wsgi.input</span></tt> environ variable.
+Subsequent accesses just do a <cite>seek(0)</cite> on the file object.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.content_length">
+<tt class="descname">content_length</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.content_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>The request body length as an integer. The client is responsible to
+set this header. Otherwise, the real length of the body is unknown
+and -1 is returned. In this case, <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.body" title="vnc_cfg_api_server.bottle.BaseRequest.body"><tt class="xref py py-attr docutils literal"><span class="pre">body</span></tt></a> will be empty.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.content_type">
+<tt class="descname">content_type</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.content_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Content-Type header as a lowercase-string (default: empty).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.cookies">
+<tt class="descname">cookies</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.cookies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cookies parsed into a <a class="reference internal" href="#vnc_cfg_api_server.bottle.FormsDict" title="vnc_cfg_api_server.bottle.FormsDict"><tt class="xref py py-class docutils literal"><span class="pre">FormsDict</span></tt></a>. Signed cookies are NOT
+decoded. Use <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.get_cookie" title="vnc_cfg_api_server.bottle.BaseRequest.get_cookie"><tt class="xref py py-meth docutils literal"><span class="pre">get_cookie()</span></tt></a> if you expect signed cookies.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.copy">
+<tt class="descname">copy</tt><big>(</big><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new <a class="reference internal" href="#vnc_cfg_api_server.bottle.Request" title="vnc_cfg_api_server.bottle.Request"><tt class="xref py py-class docutils literal"><span class="pre">Request</span></tt></a> with a shallow <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.environ" title="vnc_cfg_api_server.bottle.BaseRequest.environ"><tt class="xref py py-attr docutils literal"><span class="pre">environ</span></tt></a> copy.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.environ">
+<tt class="descname">environ</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.environ" title="Permalink to this definition">¶</a></dt>
+<dd><p>The wrapped WSGI environ dictionary. This is the only real attribute.
+All other attributes actually are read-only properties.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.files">
+<tt class="descname">files</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.files" title="Permalink to this definition">¶</a></dt>
+<dd><p>File uploads parsed from an <cite>url-encoded</cite> or <cite>multipart/form-data</cite>
+encoded POST or PUT request body. The values are instances of
+<tt class="xref py py-class docutils literal"><span class="pre">cgi.FieldStorage</span></tt>. The most important attributes are:</p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The filename, if specified; otherwise None; this is the client
+side filename, <em>not</em> the file name on which it is stored (that&#8217;s
+a temporary file you don&#8217;t deal with)</dd>
+<dt>file</dt>
+<dd>The file(-like) object from which you can read the data.</dd>
+<dt>value</dt>
+<dd>The value as a <em>string</em>; for file uploads, this transparently
+reads the file every time you request the value. Do not do this
+on big files.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.forms">
+<tt class="descname">forms</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.forms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form values parsed from an <cite>url-encoded</cite> or <cite>multipart/form-data</cite>
+encoded POST or PUT request body. The result is retuned as a
+<a class="reference internal" href="#vnc_cfg_api_server.bottle.FormsDict" title="vnc_cfg_api_server.bottle.FormsDict"><tt class="xref py py-class docutils literal"><span class="pre">FormsDict</span></tt></a>. All keys and values are strings. File uploads
+are stored separately in <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.files" title="vnc_cfg_api_server.bottle.BaseRequest.files"><tt class="xref py py-attr docutils literal"><span class="pre">files</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.fullpath">
+<tt class="descname">fullpath</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.fullpath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request path including <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.script_name" title="vnc_cfg_api_server.bottle.BaseRequest.script_name"><tt class="xref py py-attr docutils literal"><span class="pre">script_name</span></tt></a> (if present).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.get_cookie">
+<tt class="descname">get_cookie</tt><big>(</big><em>key</em>, <em>default=None</em>, <em>secret=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.get_cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the content of a cookie. To read a <cite>Signed Cookie</cite>, the
+<cite>secret</cite> must match the one used to create the cookie (see
+<a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseResponse.set_cookie" title="vnc_cfg_api_server.bottle.BaseResponse.set_cookie"><tt class="xref py py-meth docutils literal"><span class="pre">BaseResponse.set_cookie()</span></tt></a>). If anything goes wrong (missing
+cookie or wrong signature), return a default value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.get_header">
+<tt class="descname">get_header</tt><big>(</big><em>name</em>, <em>default=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.get_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the value of a request header, or a given default value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.headers">
+<tt class="descname">headers</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#vnc_cfg_api_server.bottle.WSGIHeaderDict" title="vnc_cfg_api_server.bottle.WSGIHeaderDict"><tt class="xref py py-class docutils literal"><span class="pre">WSGIHeaderDict</span></tt></a> that provides case-insensitive access to
+HTTP request headers.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.is_ajax">
+<tt class="descname">is_ajax</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.is_ajax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.is_xhr" title="vnc_cfg_api_server.bottle.BaseRequest.is_xhr"><tt class="xref py py-attr docutils literal"><span class="pre">is_xhr</span></tt></a>. &#8220;Ajax&#8221; is not the right term.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.is_xhr">
+<tt class="descname">is_xhr</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.is_xhr" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the request was triggered by a XMLHttpRequest. This only
+works with JavaScript libraries that support the <cite>X-Requested-With</cite>
+header (most of the popular libraries do).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.json">
+<tt class="descname">json</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.json" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the <tt class="docutils literal"><span class="pre">Content-Type</span></tt> header is <tt class="docutils literal"><span class="pre">application/json</span></tt>, this
+property holds the parsed content of the request body. Only requests
+smaller than <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.MEMFILE_MAX" title="vnc_cfg_api_server.bottle.BaseRequest.MEMFILE_MAX"><tt class="xref py py-attr docutils literal"><span class="pre">MEMFILE_MAX</span></tt></a> are processed to avoid memory
+exhaustion.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.method">
+<tt class="descname">method</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <tt class="docutils literal"><span class="pre">REQUEST_METHOD</span></tt> value as an uppercase string.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.params">
+<tt class="descname">params</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.params" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#vnc_cfg_api_server.bottle.FormsDict" title="vnc_cfg_api_server.bottle.FormsDict"><tt class="xref py py-class docutils literal"><span class="pre">FormsDict</span></tt></a> with the combined values of <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.query" title="vnc_cfg_api_server.bottle.BaseRequest.query"><tt class="xref py py-attr docutils literal"><span class="pre">query</span></tt></a> and
+<a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.forms" title="vnc_cfg_api_server.bottle.BaseRequest.forms"><tt class="xref py py-attr docutils literal"><span class="pre">forms</span></tt></a>. File uploads are stored in <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.files" title="vnc_cfg_api_server.bottle.BaseRequest.files"><tt class="xref py py-attr docutils literal"><span class="pre">files</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.path">
+<tt class="descname">path</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>The value of <tt class="docutils literal"><span class="pre">PATH_INFO</span></tt> with exactly one prefixed slash (to fix
+broken clients and avoid the &#8220;empty path&#8221; edge case).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.path_shift">
+<tt class="descname">path_shift</tt><big>(</big><em>shift=1</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.path_shift" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Shift path segments from <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.path" title="vnc_cfg_api_server.bottle.BaseRequest.path"><tt class="xref py py-attr docutils literal"><span class="pre">path</span></tt></a> to <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.script_name" title="vnc_cfg_api_server.bottle.BaseRequest.script_name"><tt class="xref py py-attr docutils literal"><span class="pre">script_name</span></tt></a> and</dt>
+<dd>vice versa.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>shift</strong> &#8211; The number of path segments to shift. May be negative
+to change the shift direction. (default: 1)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.query">
+<tt class="descname">query</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.query_string" title="vnc_cfg_api_server.bottle.BaseRequest.query_string"><tt class="xref py py-attr docutils literal"><span class="pre">query_string</span></tt></a> parsed into a <a class="reference internal" href="#vnc_cfg_api_server.bottle.FormsDict" title="vnc_cfg_api_server.bottle.FormsDict"><tt class="xref py py-class docutils literal"><span class="pre">FormsDict</span></tt></a>. These
+values are sometimes called &#8220;URL arguments&#8221; or &#8220;GET parameters&#8221;, but
+not to be confused with &#8220;URL wildcards&#8221; as they are provided by the
+<a class="reference internal" href="#vnc_cfg_api_server.bottle.Router" title="vnc_cfg_api_server.bottle.Router"><tt class="xref py py-class docutils literal"><span class="pre">Router</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.query_string">
+<tt class="descname">query_string</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.query_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>The raw <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest.query" title="vnc_cfg_api_server.bottle.BaseRequest.query"><tt class="xref py py-attr docutils literal"><span class="pre">query</span></tt></a> part of the URL (everything in between <tt class="docutils literal"><span class="pre">?</span></tt>
+and <tt class="docutils literal"><span class="pre">#</span></tt>) as a string.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.remote_addr">
+<tt class="descname">remote_addr</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.remote_addr" title="Permalink to this definition">¶</a></dt>
+<dd><p>The client IP as a string. Note that this information can be forged
+by malicious clients.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.remote_route">
+<tt class="descname">remote_route</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.remote_route" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of all IPs that were involved in this request, starting with
+the client IP and followed by zero or more proxies. This does only
+work if all proxies support the <tt class="docutils literal"><span class="pre">`X-Forwarded-For</span></tt> header. Note
+that this information can be forged by malicious clients.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.script_name">
+<tt class="descname">script_name</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.script_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The initial portion of the URL&#8217;s <cite>path</cite> that was removed by a higher
+level (server or routing middleware) before the application was
+called. This script path is returned with leading and tailing
+slashes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.url">
+<tt class="descname">url</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>The full request URI including hostname and scheme. If your app
+lives behind a reverse proxy or load balancer and you get confusing
+results, make sure that the <tt class="docutils literal"><span class="pre">X-Forwarded-Host</span></tt> header is set
+correctly.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseRequest.urlparts">
+<tt class="descname">urlparts</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseRequest.urlparts" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#vnc_cfg_api_server.bottle.url" title="vnc_cfg_api_server.bottle.url"><tt class="xref py py-attr docutils literal"><span class="pre">url</span></tt></a> string as an <a class="reference external" href="http://docs.python.org/library/urlparse.html#urlparse.SplitResult" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">urlparse.SplitResult</span></tt></a> tuple.
+The tuple contains (scheme, host, path, query_string and fragment),
+but the fragment is always empty because it is not visible to the
+server.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">BaseResponse</tt><big>(</big><em>body=''</em>, <em>status=None</em>, <em>**headers</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Storage class for a response body as well as headers and cookies.</p>
+<p>This class does support dict-like case-insensitive item-access to
+headers, but is NOT a dict. Most notably, iterating over a response
+yields parts of the body and not the headers.</p>
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.COOKIES">
+<tt class="descname">COOKIES</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.COOKIES" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dict-like SimpleCookie instance. This should not be used directly.
+See <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseResponse.set_cookie" title="vnc_cfg_api_server.bottle.BaseResponse.set_cookie"><tt class="xref py py-meth docutils literal"><span class="pre">set_cookie()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.add_header">
+<tt class="descname">add_header</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.add_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an additional response header, not removing duplicates.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.charset">
+<tt class="descname">charset</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.charset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the charset specified in the content-type header (default: utf8).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.content_length">
+<tt class="descname">content_length</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.content_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current value of the &#8216;Content-Length&#8217; header.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.content_type">
+<tt class="descname">content_type</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.content_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current value of the &#8216;Content-Type&#8217; header.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.copy">
+<tt class="descname">copy</tt><big>(</big><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a copy of self.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.delete_cookie">
+<tt class="descname">delete_cookie</tt><big>(</big><em>key</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.delete_cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a cookie. Be sure to use the same <cite>domain</cite> and <cite>path</cite>
+settings as used to create the cookie.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.get_header">
+<tt class="descname">get_header</tt><big>(</big><em>name</em>, <em>default=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.get_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the value of a previously defined header. If there is no
+header with that name, return a default value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.headerlist">
+<tt class="descname">headerlist</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.headerlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>WSGI conform list of (header, value) tuples.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.headers">
+<tt class="descname">headers</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>An instance of <a class="reference internal" href="#vnc_cfg_api_server.bottle.HeaderDict" title="vnc_cfg_api_server.bottle.HeaderDict"><tt class="xref py py-class docutils literal"><span class="pre">HeaderDict</span></tt></a>, a case-insensitive dict-like
+view on the response headers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.iter_headers">
+<tt class="descname">iter_headers</tt><big>(</big><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.iter_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield (header, value) tuples, skipping headers that are not
+allowed with the current response status code.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.set_cookie">
+<tt class="descname">set_cookie</tt><big>(</big><em>name</em>, <em>value</em>, <em>secret=None</em>, <em>**options</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.set_cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new cookie or replace an old one. If the <cite>secret</cite> parameter is
+set, create a <cite>Signed Cookie</cite> (described below).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; the name of the cookie.</li>
+<li><strong>value</strong> &#8211; the value of the cookie.</li>
+<li><strong>secret</strong> &#8211; a signature key required for signed cookies.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, this method accepts all RFC 2109 attributes that are
+supported by <tt class="xref py py-class docutils literal"><span class="pre">cookie.Morsel</span></tt>, including:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>max_age</strong> &#8211; maximum age in seconds. (default: None)</li>
+<li><strong>expires</strong> &#8211; a datetime object or UNIX timestamp. (default: None)</li>
+<li><strong>domain</strong> &#8211; the domain that is allowed to read the cookie.
+(default: current domain)</li>
+<li><strong>path</strong> &#8211; limits the cookie to a given path (default: current path)</li>
+<li><strong>secure</strong> &#8211; limit the cookie to HTTPS connections (default: off).</li>
+<li><strong>httponly</strong> &#8211; prevents client-side javascript to read this cookie
+(default: off, requires Python 2.6 or newer).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If neither <cite>expires</cite> nor <cite>max_age</cite> is set (default), the cookie will
+expire at the end of the browser session (as soon as the browser
+window is closed).</p>
+<p>Signed cookies may store any pickle-able object and are
+cryptographically signed to prevent manipulation. Keep in mind that
+cookies are limited to 4kb in most browsers.</p>
+<p>Warning: Signed cookies are not encrypted (the client can still see
+the content) and not copy-protected (the client can restore an old
+cookie). The main intention is to make pickling and unpickling
+save, not to store secret information at client side.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.set_header">
+<tt class="descname">set_header</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.set_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new response header, replacing any previously defined
+headers with the same name.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.status">
+<tt class="descname">status</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>A writeable property to change the HTTP response status. It accepts
+either a numeric code (100-999) or a string with a custom reason
+phrase (e.g. &#8220;404 Brain not found&#8221;). Both <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseResponse.status_line" title="vnc_cfg_api_server.bottle.BaseResponse.status_line"><tt class="xref py py-data docutils literal"><span class="pre">status_line</span></tt></a> and
+<a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseResponse.status_code" title="vnc_cfg_api_server.bottle.BaseResponse.status_code"><tt class="xref py py-data docutils literal"><span class="pre">status_code</span></tt></a> are updated accordingly. The return value is
+always a status string.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.status_code">
+<tt class="descname">status_code</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.status_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>The HTTP status code as an integer (e.g. 404).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.BaseResponse.status_line">
+<tt class="descname">status_line</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseResponse.status_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>The HTTP status line as a string (e.g. <tt class="docutils literal"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></tt>).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.BaseTemplate">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">BaseTemplate</tt><big>(</big><em>source=None</em>, <em>name=None</em>, <em>lookup=</em><span class="optional">[</span><span class="optional">]</span>, <em>encoding='utf8'</em>, <em>**settings</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Base class and minimal API for template adapters</p>
+<dl class="classmethod">
+<dt id="vnc_cfg_api_server.bottle.BaseTemplate.global_config">
+<em class="property">classmethod </em><tt class="descname">global_config</tt><big>(</big><em>key</em>, <em>*args</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseTemplate.global_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>This reads or sets the global settings stored in class.settings.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseTemplate.prepare">
+<tt class="descname">prepare</tt><big>(</big><em>**options</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseTemplate.prepare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run preparations (parsing, caching, ...).
+It should be possible to call this again to refresh a template or to
+update settings.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.BaseTemplate.render">
+<tt class="descname">render</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseTemplate.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render the template with the specified local variables and return
+a single byte or unicode string. If it is a byte string, the encoding
+must match self.encoding. This method must be thread-safe!
+Local variables may be provided in dictionaries (<a href="#id2"><span class="problematic" id="id3">*</span></a>args)
+or directly, as keywords (<a href="#id4"><span class="problematic" id="id5">**</span></a>kwargs).</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="vnc_cfg_api_server.bottle.BaseTemplate.search">
+<em class="property">classmethod </em><tt class="descname">search</tt><big>(</big><em>name</em>, <em>lookup=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BaseTemplate.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search name in all directories specified in lookup.
+First without, then with common extensions. Return first hit.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.BjoernServer">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">BjoernServer</tt><big>(</big><em>host='127.0.0.1'</em>, <em>port=8080</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.BjoernServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.ServerAdapter</span></tt></p>
+<p>Fast server written in C: <a class="reference external" href="https://github.com/jonashaag/bjoern">https://github.com/jonashaag/bjoern</a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.Bottle">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">Bottle</tt><big>(</big><em>catchall=True</em>, <em>autojson=True</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Each Bottle object represents a single, distinct web application and
+consists of routes, callbacks, plugins, resources and configuration.
+Instances are callable WSGI applications.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>catchall</strong> &#8211; If true (default), handle all exceptions. Turn off to
+let debugging middleware handle exceptions.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.add_route">
+<tt class="descname">add_route</tt><big>(</big><em>route</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.add_route" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a route object, but do not change the <a class="reference internal" href="#vnc_cfg_api_server.bottle.Route.app" title="vnc_cfg_api_server.bottle.Route.app"><tt class="xref py py-data docutils literal"><span class="pre">Route.app</span></tt></a>
+attribute.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Bottle.catchall">
+<tt class="descname">catchall</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.catchall" title="Permalink to this definition">¶</a></dt>
+<dd><p>If true, most exceptions are caught and returned as <tt class="xref py py-exc docutils literal"><span class="pre">HTTPError</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.close">
+<tt class="descname">close</tt><big>(</big><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the application and all installed plugins.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Bottle.config">
+<tt class="descname">config</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#vnc_cfg_api_server.bottle.ConfigDict" title="vnc_cfg_api_server.bottle.ConfigDict"><tt class="xref py py-class docutils literal"><span class="pre">ConfigDict</span></tt></a> for app specific configuration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.delete">
+<tt class="descname">delete</tt><big>(</big><em>path=None</em>, <em>method='DELETE'</em>, <em>**options</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equals <a class="reference internal" href="#vnc_cfg_api_server.bottle.route" title="vnc_cfg_api_server.bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">route()</span></tt></a> with a <tt class="docutils literal"><span class="pre">DELETE</span></tt> method parameter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.error">
+<tt class="descname">error</tt><big>(</big><em>code=500</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator: Register an output handler for a HTTP error code</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.get">
+<tt class="descname">get</tt><big>(</big><em>path=None</em>, <em>method='GET'</em>, <em>**options</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equals <a class="reference internal" href="#vnc_cfg_api_server.bottle.route" title="vnc_cfg_api_server.bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">route()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.get_url">
+<tt class="descname">get_url</tt><big>(</big><em>routename</em>, <em>**kargs</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.get_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string that matches a named route</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.handle">
+<tt class="descname">handle</tt><big>(</big><em>path</em>, <em>method='GET'</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>(deprecated) Execute the first matching route callback and return
+the result. <tt class="xref py py-exc docutils literal"><span class="pre">HTTPResponse</span></tt> exceptions are caught and returned.
+If <a class="reference internal" href="#vnc_cfg_api_server.bottle.Bottle.catchall" title="vnc_cfg_api_server.bottle.Bottle.catchall"><tt class="xref py py-attr docutils literal"><span class="pre">Bottle.catchall</span></tt></a> is true, other exceptions are caught as
+well and returned as <tt class="xref py py-exc docutils literal"><span class="pre">HTTPError</span></tt> instances (500).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.hook">
+<tt class="descname">hook</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.hook" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a decorator that attaches a callback to a hook. Three hooks
+are currently implemented:</p>
+<ul class="simple">
+<li>before_request: Executed once before each request</li>
+<li>after_request: Executed once after each request</li>
+<li>app_reset: Called whenever <a class="reference internal" href="#vnc_cfg_api_server.bottle.Bottle.reset" title="vnc_cfg_api_server.bottle.Bottle.reset"><tt class="xref py py-meth docutils literal"><span class="pre">reset()</span></tt></a> is called.</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.install">
+<tt class="descname">install</tt><big>(</big><em>plugin</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.install" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a plugin to the list of plugins and prepare it for being
+applied to all routes of this application. A plugin may be a simple
+decorator or an object that implements the <tt class="xref py py-class docutils literal"><span class="pre">Plugin</span></tt> API.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.match">
+<tt class="descname">match</tt><big>(</big><em>environ</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a matching route and return a (<a class="reference internal" href="#vnc_cfg_api_server.bottle.Route" title="vnc_cfg_api_server.bottle.Route"><tt class="xref py py-class docutils literal"><span class="pre">Route</span></tt></a> , urlargs)
+tuple. The second value is a dictionary with parameters extracted
+from the URL. Raise <tt class="xref py py-exc docutils literal"><span class="pre">HTTPError</span></tt> (404/405) on a non-match.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.merge">
+<tt class="descname">merge</tt><big>(</big><em>routes</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge the routes of another <a class="reference internal" href="#vnc_cfg_api_server.bottle.Bottle" title="vnc_cfg_api_server.bottle.Bottle"><tt class="xref py py-class docutils literal"><span class="pre">Bottle</span></tt></a> application or a list of
+<a class="reference internal" href="#vnc_cfg_api_server.bottle.Route" title="vnc_cfg_api_server.bottle.Route"><tt class="xref py py-class docutils literal"><span class="pre">Route</span></tt></a> objects into this application. The routes keep their
+&#8216;owner&#8217;, meaning that the <a class="reference internal" href="#vnc_cfg_api_server.bottle.Route.app" title="vnc_cfg_api_server.bottle.Route.app"><tt class="xref py py-data docutils literal"><span class="pre">Route.app</span></tt></a> attribute is not
+changed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.mount">
+<tt class="descname">mount</tt><big>(</big><em>prefix</em>, <em>app</em>, <em>**options</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.mount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mount an application (<a class="reference internal" href="#vnc_cfg_api_server.bottle.Bottle" title="vnc_cfg_api_server.bottle.Bottle"><tt class="xref py py-class docutils literal"><span class="pre">Bottle</span></tt></a> or plain WSGI) to a specific
+URL prefix. Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">root_app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s">&#39;/admin/&#39;</span><span class="p">,</span> <span class="n">admin_app</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>prefix</strong> &#8211; path prefix or <cite>mount-point</cite>. If it ends in a slash,
+that slash is mandatory.</li>
+<li><strong>app</strong> &#8211; an instance of <a class="reference internal" href="#vnc_cfg_api_server.bottle.Bottle" title="vnc_cfg_api_server.bottle.Bottle"><tt class="xref py py-class docutils literal"><span class="pre">Bottle</span></tt></a> or a WSGI application.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>All other parameters are passed to the underlying <a class="reference internal" href="#vnc_cfg_api_server.bottle.route" title="vnc_cfg_api_server.bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">route()</span></tt></a> call.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.post">
+<tt class="descname">post</tt><big>(</big><em>path=None</em>, <em>method='POST'</em>, <em>**options</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equals <a class="reference internal" href="#vnc_cfg_api_server.bottle.route" title="vnc_cfg_api_server.bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">route()</span></tt></a> with a <tt class="docutils literal"><span class="pre">POST</span></tt> method parameter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.put">
+<tt class="descname">put</tt><big>(</big><em>path=None</em>, <em>method='PUT'</em>, <em>**options</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.put" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equals <a class="reference internal" href="#vnc_cfg_api_server.bottle.route" title="vnc_cfg_api_server.bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">route()</span></tt></a> with a <tt class="docutils literal"><span class="pre">PUT</span></tt> method parameter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.reset">
+<tt class="descname">reset</tt><big>(</big><em>route=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset all routes (force plugins to be re-applied) and clear all
+caches. If an ID or route object is given, only that specific route
+is affected.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Bottle.resources">
+<tt class="descname">resources</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.resources" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#vnc_cfg_api_server.bottle.ResourceManager" title="vnc_cfg_api_server.bottle.ResourceManager"><tt class="xref py py-class docutils literal"><span class="pre">ResourceManager</span></tt></a> for application files</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.route">
+<tt class="descname">route</tt><big>(</big><em>path=None</em>, <em>method='GET'</em>, <em>callback=None</em>, <em>name=None</em>, <em>apply=None</em>, <em>skip=None</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.route" title="Permalink to this definition">¶</a></dt>
+<dd><p>A decorator to bind a function to a request URL. Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/hello/:name&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">&#39;Hello </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">name</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">:name</span></tt> part is a wildcard. See <a class="reference internal" href="#vnc_cfg_api_server.bottle.Router" title="vnc_cfg_api_server.bottle.Router"><tt class="xref py py-class docutils literal"><span class="pre">Router</span></tt></a> for syntax
+details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> &#8211; Request path or a list of paths to listen to. If no
+path is specified, it is automatically generated from the
+signature of the function.</li>
+<li><strong>method</strong> &#8211; HTTP method (<cite>GET</cite>, <cite>POST</cite>, <cite>PUT</cite>, ...) or a list of
+methods to listen to. (default: <cite>GET</cite>)</li>
+<li><strong>callback</strong> &#8211; An optional shortcut to avoid the decorator
+syntax. <tt class="docutils literal"><span class="pre">route(...,</span> <span class="pre">callback=func)</span></tt> equals <tt class="docutils literal"><span class="pre">route(...)(func)</span></tt></li>
+<li><strong>name</strong> &#8211; The name for this route. (default: None)</li>
+<li><strong>apply</strong> &#8211; A decorator or plugin or a list of plugins. These are
+applied to the route callback in addition to installed plugins.</li>
+<li><strong>skip</strong> &#8211; A list of plugins, plugin classes or names. Matching
+plugins are not installed to this route. <tt class="docutils literal"><span class="pre">True</span></tt> skips all.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Any additional keyword arguments are stored as route-specific
+configuration and passed to plugins (see <tt class="xref py py-meth docutils literal"><span class="pre">Plugin.apply()</span></tt>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.run">
+<tt class="descname">run</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls <a class="reference internal" href="#vnc_cfg_api_server.bottle.run" title="vnc_cfg_api_server.bottle.run"><tt class="xref py py-func docutils literal"><span class="pre">run()</span></tt></a> with the same parameters.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.uninstall">
+<tt class="descname">uninstall</tt><big>(</big><em>plugin</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.uninstall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uninstall plugins. Pass an instance to remove a specific plugin, a type
+object to remove all plugins that match that type, a string to remove
+all plugins with a matching <tt class="docutils literal"><span class="pre">name</span></tt> attribute or <tt class="docutils literal"><span class="pre">True</span></tt> to remove all
+plugins. Return the list of removed plugins.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Bottle.wsgi">
+<tt class="descname">wsgi</tt><big>(</big><em>environ</em>, <em>start_response</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Bottle.wsgi" title="Permalink to this definition">¶</a></dt>
+<dd><p>The bottle WSGI-interface.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="vnc_cfg_api_server.bottle.BottleException">
+<em class="property">exception </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">BottleException</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.BottleException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></p>
+<p>A base class for exceptions used by bottle.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.ConfigDict">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">ConfigDict</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.ConfigDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
+<p>A dict-subclass with some extras: You can access keys like attributes.
+Uppercase attributes create new ConfigDicts and act as name-spaces.
+Other missing attributes return None. Calling a ConfigDict updates its
+values and returns itself.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">Namespace</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span><span class="o">.</span><span class="n">OtherNamespace</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span>
+<span class="go">{&#39;Namespace&#39;: {&#39;value&#39;: 5}, &#39;OtherNamespace&#39;: {&#39;a&#39;: 1, &#39;b&#39;: 2}}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.DictProperty">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">DictProperty</tt><big>(</big><em>attr</em>, <em>key=None</em>, <em>read_only=False</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.DictProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Property that maps to a key in a local dict-like attribute.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.DieselServer">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">DieselServer</tt><big>(</big><em>host='127.0.0.1'</em>, <em>port=8080</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.DieselServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.ServerAdapter</span></tt></p>
+<p>Untested.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="vnc_cfg_api_server.bottle.ERROR_PAGE_TEMPLATE">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">ERROR_PAGE_TEMPLATE</tt><em class="property"> = '\n%try:\n    %from vnc_cfg_api_server.bottle import DEBUG, HTTP_CODES, request, touni\n    &lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;\n    &lt;html&gt;\n        &lt;head&gt;\n            &lt;title&gt;Error: {{e.status}}&lt;/title&gt;\n            &lt;style type=&quot;text/css&quot;&gt;\n              html {background-color: #eee; font-family: sans;}\n              body {background-color: #fff; border: 1px solid #ddd;\n                    padding: 15px; margin: 15px;}\n              pre {background-color: #eee; border: 1px solid #ddd; padding: 5px;}\n            &lt;/style&gt;\n        &lt;/head&gt;\n        &lt;body&gt;\n            &lt;h1&gt;Error: {{e.status}}&lt;/h1&gt;\n            &lt;p&gt;Sorry, the requested URL &lt;tt&gt;{{repr(request.url)}}&lt;/tt&gt;\n               caused an error:&lt;/p&gt;\n            &lt;pre&gt;{{e.body}}&lt;/pre&gt;\n            %if DEBUG and e.exception:\n              &lt;h2&gt;Exception:&lt;/h2&gt;\n              &lt;pre&gt;{{repr(e.exception)}}&lt;/pre&gt;\n            %end\n            %if DEBUG and e.traceback:\n              &lt;h2&gt;Traceback:&lt;/h2&gt;\n              &lt;pre&gt;{{e.traceback}}&lt;/pre&gt;\n            %end\n        &lt;/body&gt;\n    &lt;/html&gt;\n%except ImportError:\n    &lt;b&gt;ImportError:&lt;/b&gt; Could not generate the error page. Please add bottle to\n    the import path.\n%end\n'</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.ERROR_PAGE_TEMPLATE" title="Permalink to this definition">¶</a></dt>
+<dd><p>The default template used for error pages. Override with &#64;error()</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.EventletServer">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">EventletServer</tt><big>(</big><em>host='127.0.0.1'</em>, <em>port=8080</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.EventletServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.ServerAdapter</span></tt></p>
+<p>Untested</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.FapwsServer">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">FapwsServer</tt><big>(</big><em>host='127.0.0.1'</em>, <em>port=8080</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.FapwsServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.ServerAdapter</span></tt></p>
+<p>Extremely fast webserver using libev. See <a class="reference external" href="http://www.fapws.org/">http://www.fapws.org/</a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.FileCheckerThread">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">FileCheckerThread</tt><big>(</big><em>lockfile</em>, <em>interval</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.FileCheckerThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/threading.html#threading.Thread" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">threading.Thread</span></tt></a></p>
+<p>Interrupt main-thread as soon as a changed module file is detected,
+the lockfile gets deleted or gets to old.</p>
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.FileCheckerThread.status">
+<tt class="descname">status</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.FileCheckerThread.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is one of &#8216;reload&#8217;, &#8216;error&#8217; or &#8216;exit&#8217;</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.FormsDict">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">FormsDict</tt><big>(</big><em>*a</em>, <em>**k</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.FormsDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vnc_cfg_api_server.bottle.MultiDict" title="vnc_cfg_api_server.bottle.MultiDict"><tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.MultiDict</span></tt></a></p>
+<p>This <a class="reference internal" href="#vnc_cfg_api_server.bottle.MultiDict" title="vnc_cfg_api_server.bottle.MultiDict"><tt class="xref py py-class docutils literal"><span class="pre">MultiDict</span></tt></a> subclass is used to store request form data.
+Additionally to the normal dict-like item access methods (which return
+unmodified data as native strings), this container also supports
+attribute-like access to its values. Attributes are automatically de-
+or recoded to match <a class="reference internal" href="#vnc_cfg_api_server.bottle.FormsDict.input_encoding" title="vnc_cfg_api_server.bottle.FormsDict.input_encoding"><tt class="xref py py-attr docutils literal"><span class="pre">input_encoding</span></tt></a> (default: &#8216;utf8&#8217;). Missing
+attributes default to an empty string.</p>
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.FormsDict.decode">
+<tt class="descname">decode</tt><big>(</big><em>encoding=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.FormsDict.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a copy with all keys and values de- or recoded to match
+<a class="reference internal" href="#vnc_cfg_api_server.bottle.FormsDict.input_encoding" title="vnc_cfg_api_server.bottle.FormsDict.input_encoding"><tt class="xref py py-attr docutils literal"><span class="pre">input_encoding</span></tt></a>. Some libraries (e.g. WTForms) want a
+unicode dictionary.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.FormsDict.input_encoding">
+<tt class="descname">input_encoding</tt><em class="property"> = 'utf8'</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.FormsDict.input_encoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encoding used for attribute values.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.FormsDict.recode_unicode">
+<tt class="descname">recode_unicode</tt><em class="property"> = True</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.FormsDict.recode_unicode" title="Permalink to this definition">¶</a></dt>
+<dd><p>If true (default), unicode strings are first encoded with <cite>latin1</cite>
+and then decoded to match <a class="reference internal" href="#vnc_cfg_api_server.bottle.FormsDict.input_encoding" title="vnc_cfg_api_server.bottle.FormsDict.input_encoding"><tt class="xref py py-attr docutils literal"><span class="pre">input_encoding</span></tt></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.GeventServer">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">GeventServer</tt><big>(</big><em>host='127.0.0.1'</em>, <em>port=8080</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.GeventServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.ServerAdapter</span></tt></p>
+<p>Untested. Options:</p>
+<ul class="simple">
+<li><cite>fast</cite> (default: False) uses libevent&#8217;s http server, but has some
+issues: No streaming, no pipelining, no SSL.</li>
+</ul>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.GunicornServer">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">GunicornServer</tt><big>(</big><em>host='127.0.0.1'</em>, <em>port=8080</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.GunicornServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.ServerAdapter</span></tt></p>
+<p>Untested. See <a class="reference external" href="http://gunicorn.org/configure.html">http://gunicorn.org/configure.html</a> for options.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="vnc_cfg_api_server.bottle.HTTP_CODES">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">HTTP_CODES</tt><em class="property"> = {300: 'Multiple Choices', 301: 'Moved Permanently', 302: 'Found', 303: 'See Other', 304: 'Not Modified', 305: 'Use Proxy', 306: '(Unused)', 307: 'Temporary Redirect', 100: 'Continue', 101: 'Switching Protocols', 400: 'Bad Request', 401: 'Unauthorized', 402: 'Payment Required', 403: 'Forbidden', 404: 'Not Found', 405: 'Method Not Allowed', 406: 'Not Acceptable', 407: 'Proxy Authentication Required', 408: 'Request Timeout', 409: 'Conflict', 410: 'Gone', 411: 'Length Required', 412: 'Precondition Failed', 413: 'Request Entity Too Large', 414: 'Request-URI Too Long', 415: 'Unsupported Media Type', 416: 'Requested Range Not Satisfiable', 417: 'Expectation Failed', 418: &quot;I'm a teapot&quot;, 428: 'Precondition Required', 429: 'Too Many Requests', 431: 'Request Header Fields Too Large', 200: 'OK', 201: 'Created', 202: 'Accepted', 203: 'Non-Authoritative Information', 204: 'No Content', 205: 'Reset Content', 206: 'Partial Content', 500: 'Internal Server Error', 501: 'Not Implemented', 502: 'Bad Gateway', 503: 'Service Unavailable', 504: 'Gateway Timeout', 505: 'HTTP Version Not Supported', 511: 'Network Authentication Required'}</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.HTTP_CODES" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dict to map HTTP status codes (e.g. 404) to phrases (e.g. &#8216;Not Found&#8217;)</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.HeaderDict">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">HeaderDict</tt><big>(</big><em>*a</em>, <em>**ka</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.HeaderDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vnc_cfg_api_server.bottle.MultiDict" title="vnc_cfg_api_server.bottle.MultiDict"><tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.MultiDict</span></tt></a></p>
+<p>A case-insensitive version of <a class="reference internal" href="#vnc_cfg_api_server.bottle.MultiDict" title="vnc_cfg_api_server.bottle.MultiDict"><tt class="xref py py-class docutils literal"><span class="pre">MultiDict</span></tt></a> that defaults to
+replace the old value instead of appending it.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.LocalRequest">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">LocalRequest</tt><big>(</big><em>environ=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.LocalRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest" title="vnc_cfg_api_server.bottle.BaseRequest"><tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.BaseRequest</span></tt></a></p>
+<p>A thread-local subclass of <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest" title="vnc_cfg_api_server.bottle.BaseRequest"><tt class="xref py py-class docutils literal"><span class="pre">BaseRequest</span></tt></a> with a different
+set of attribues for each thread. There is usually only one global
+instance of this class (<a class="reference internal" href="#vnc_cfg_api_server.bottle.request" title="vnc_cfg_api_server.bottle.request"><tt class="xref py py-data docutils literal"><span class="pre">request</span></tt></a>). If accessed during a
+request/response cycle, this instance always refers to the <em>current</em>
+request (even on a multithreaded server).</p>
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.LocalRequest.bind">
+<tt class="descname">bind</tt><big>(</big><em>environ=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.LocalRequest.bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap a WSGI environ dictionary.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.LocalRequest.environ">
+<tt class="descname">environ</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.LocalRequest.environ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thread-local property stored in <tt class="xref py py-data docutils literal"><span class="pre">_lctx.request_environ</span></tt></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.LocalResponse">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">LocalResponse</tt><big>(</big><em>body=''</em>, <em>status=None</em>, <em>**headers</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.LocalResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseResponse" title="vnc_cfg_api_server.bottle.BaseResponse"><tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.BaseResponse</span></tt></a></p>
+<p>A thread-local subclass of <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseResponse" title="vnc_cfg_api_server.bottle.BaseResponse"><tt class="xref py py-class docutils literal"><span class="pre">BaseResponse</span></tt></a> with a different
+set of attribues for each thread. There is usually only one global
+instance of this class (<a class="reference internal" href="#vnc_cfg_api_server.bottle.response" title="vnc_cfg_api_server.bottle.response"><tt class="xref py py-data docutils literal"><span class="pre">response</span></tt></a>). Its attributes are used
+to build the HTTP response at the end of the request/response cycle.</p>
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.LocalResponse.body">
+<tt class="descname">body</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.LocalResponse.body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thread-local property stored in <tt class="xref py py-data docutils literal"><span class="pre">_lctx.response_body</span></tt></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.MultiDict">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">MultiDict</tt><big>(</big><em>*a</em>, <em>**k</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.MultiDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">_abcoll.MutableMapping</span></tt></p>
+<p>This dict stores multiple values per key, but behaves exactly like a
+normal dict in that it returns only the newest value for any given key.
+There are special methods available to access the full list of values.</p>
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.MultiDict.append">
+<tt class="descname">append</tt><big>(</big><em>key</em>, <em>value</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.MultiDict.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new value to the list of values for this key.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.MultiDict.get">
+<tt class="descname">get</tt><big>(</big><em>key</em>, <em>default=None</em>, <em>index=-1</em>, <em>type=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.MultiDict.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the most recent value for a key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>default</strong> &#8211; The default value to be returned if the key is not
+present or the type conversion fails.</li>
+<li><strong>index</strong> &#8211; An index for the list of available values.</li>
+<li><strong>type</strong> &#8211; If defined, this callable is used to cast the value
+into a specific type. Exception are suppressed and result in
+the default value to be returned.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.MultiDict.getall">
+<tt class="descname">getall</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.MultiDict.getall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a (possibly empty) list of values for a key.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.MultiDict.getlist">
+<tt class="descname">getlist</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.MultiDict.getlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a (possibly empty) list of values for a key.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.MultiDict.getone">
+<tt class="descname">getone</tt><big>(</big><em>key</em>, <em>default=None</em>, <em>index=-1</em>, <em>type=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.MultiDict.getone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aliases for WTForms to mimic other multi-dict APIs (Django)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.MultiDict.replace">
+<tt class="descname">replace</tt><big>(</big><em>key</em>, <em>value</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.MultiDict.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace the list of values with a single value.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Request">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">Request</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.Request" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseRequest" title="vnc_cfg_api_server.bottle.BaseRequest"><tt class="xref py py-class docutils literal"><span class="pre">BaseRequest</span></tt></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.ResourceManager">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">ResourceManager</tt><big>(</big><em>base='./'</em>, <em>opener=&lt;built-in function open&gt;</em>, <em>cachemode='all'</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.ResourceManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>This class manages a list of search paths and helps to find and open
+application-bound resources (files).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>base</strong> &#8211; default value for <a class="reference internal" href="#vnc_cfg_api_server.bottle.ResourceManager.add_path" title="vnc_cfg_api_server.bottle.ResourceManager.add_path"><tt class="xref py py-meth docutils literal"><span class="pre">add_path()</span></tt></a> calls.</li>
+<li><strong>opener</strong> &#8211; callable used to open resources.</li>
+<li><strong>cachemode</strong> &#8211; controls which lookups are cached. One of &#8216;all&#8217;,
+&#8216;found&#8217; or &#8216;none&#8217;.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.ResourceManager.add_path">
+<tt class="descname">add_path</tt><big>(</big><em>path</em>, <em>base=None</em>, <em>index=None</em>, <em>create=False</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.ResourceManager.add_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new path to the list of search paths. Return False if the
+path does not exist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> &#8211; The new search path. Relative paths are turned into
+an absolute and normalized form. If the path looks like a file
+(not ending in <cite>/</cite>), the filename is stripped off.</li>
+<li><strong>base</strong> &#8211; Path used to absolutize relative search paths.
+Defaults to <tt class="xref py py-attr docutils literal"><span class="pre">base</span></tt> which defaults to <tt class="docutils literal"><span class="pre">os.getcwd()</span></tt>.</li>
+<li><strong>index</strong> &#8211; Position within the list of search paths. Defaults
+to last index (appends to the list).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <cite>base</cite> parameter makes it easy to reference files installed
+along with a python module or package:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">res</span><span class="o">.</span><span class="n">add_path</span><span class="p">(</span><span class="s">&#39;./resources/&#39;</span><span class="p">,</span> <span class="n">__file__</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.ResourceManager.cache">
+<tt class="descname">cache</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.ResourceManager.cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>A cache for resolved paths. <tt class="docutils literal"><span class="pre">res.cache.clear()</span></tt> clears the cache.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.ResourceManager.lookup">
+<tt class="descname">lookup</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.ResourceManager.lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a resource and return an absolute file path, or <cite>None</cite>.</p>
+<p>The <a class="reference internal" href="#vnc_cfg_api_server.bottle.ResourceManager.path" title="vnc_cfg_api_server.bottle.ResourceManager.path"><tt class="xref py py-attr docutils literal"><span class="pre">path</span></tt></a> list is searched in order. The first match is
+returend. Symlinks are followed. The result is cached to speed up
+future lookups.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.ResourceManager.open">
+<tt class="descname">open</tt><big>(</big><em>name</em>, <em>mode='r'</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.ResourceManager.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a resource and return a file object, or raise IOError.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.ResourceManager.path">
+<tt class="descname">path</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.ResourceManager.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of search paths. See <a class="reference internal" href="#vnc_cfg_api_server.bottle.ResourceManager.add_path" title="vnc_cfg_api_server.bottle.ResourceManager.add_path"><tt class="xref py py-meth docutils literal"><span class="pre">add_path()</span></tt></a> for details.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Response">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">Response</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.Response" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseResponse" title="vnc_cfg_api_server.bottle.BaseResponse"><tt class="xref py py-class docutils literal"><span class="pre">BaseResponse</span></tt></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.RocketServer">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">RocketServer</tt><big>(</big><em>host='127.0.0.1'</em>, <em>port=8080</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.RocketServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.ServerAdapter</span></tt></p>
+<p>Untested.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.Route">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">Route</tt><big>(</big><em>app</em>, <em>rule</em>, <em>method</em>, <em>callback</em>, <em>name=None</em>, <em>plugins=None</em>, <em>skiplist=None</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Route" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>This class wraps a route callback along with route specific metadata and
+configuration and applies Plugins on demand. It is also responsible for
+turing an URL path rule into a regular expression usable by the Router.</p>
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Route.all_plugins">
+<tt class="descname">all_plugins</tt><big>(</big><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Route.all_plugins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield all Plugins affecting this route.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Route.app">
+<tt class="descname">app</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Route.app" title="Permalink to this definition">¶</a></dt>
+<dd><p>The application this route is installed to.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Route.callback">
+<tt class="descname">callback</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Route.callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>The original callback with no plugins applied. Useful for introspection.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Route.config">
+<tt class="descname">config</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Route.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Additional keyword arguments passed to the <a class="reference internal" href="#vnc_cfg_api_server.bottle.Bottle.route" title="vnc_cfg_api_server.bottle.Bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">Bottle.route()</span></tt></a>
+decorator are stored in this dictionary. Used for route-specific
+plugin configuration and meta-data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Route.method">
+<tt class="descname">method</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Route.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>The HTTP method as a string (e.g. <tt class="docutils literal"><span class="pre">GET</span></tt>).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Route.name">
+<tt class="descname">name</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Route.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the route (if specified) or <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Route.plugins">
+<tt class="descname">plugins</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Route.plugins" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of route-specific plugins (see <a class="reference internal" href="#vnc_cfg_api_server.bottle.Bottle.route" title="vnc_cfg_api_server.bottle.Bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">Bottle.route()</span></tt></a>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Route.prepare">
+<tt class="descname">prepare</tt><big>(</big><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Route.prepare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do all on-demand work immediately (useful for debugging).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Route.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Route.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forget any cached values. The next time <tt class="xref py py-attr docutils literal"><span class="pre">call</span></tt> is accessed,
+all plugins are re-applied.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Route.rule">
+<tt class="descname">rule</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Route.rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path-rule string (e.g. <tt class="docutils literal"><span class="pre">/wiki/:page</span></tt>).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Route.skiplist">
+<tt class="descname">skiplist</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Route.skiplist" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of plugins to not apply to this route (see <a class="reference internal" href="#vnc_cfg_api_server.bottle.Bottle.route" title="vnc_cfg_api_server.bottle.Bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">Bottle.route()</span></tt></a>).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="vnc_cfg_api_server.bottle.RouteBuildError">
+<em class="property">exception </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">RouteBuildError</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.RouteBuildError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vnc_cfg_api_server.bottle.RouteError" title="vnc_cfg_api_server.bottle.RouteError"><tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.RouteError</span></tt></a></p>
+<p>The route could not been built</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="vnc_cfg_api_server.bottle.RouteError">
+<em class="property">exception </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">RouteError</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.RouteError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vnc_cfg_api_server.bottle.BottleException" title="vnc_cfg_api_server.bottle.BottleException"><tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.BottleException</span></tt></a></p>
+<p>This is a base class for all routing related exceptions</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="vnc_cfg_api_server.bottle.RouteReset">
+<em class="property">exception </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">RouteReset</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.RouteReset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vnc_cfg_api_server.bottle.BottleException" title="vnc_cfg_api_server.bottle.BottleException"><tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.BottleException</span></tt></a></p>
+<p>If raised by a plugin or request handler, the route is reset and all
+plugins are re-applied.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="vnc_cfg_api_server.bottle.RouteSyntaxError">
+<em class="property">exception </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">RouteSyntaxError</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.RouteSyntaxError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vnc_cfg_api_server.bottle.RouteError" title="vnc_cfg_api_server.bottle.RouteError"><tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.RouteError</span></tt></a></p>
+<p>The route parser found something not supported by this router</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.Router">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">Router</tt><big>(</big><em>strict=False</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Router" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A Router is an ordered collection of route-&gt;target pairs. It is used to
+efficiently match WSGI requests against a number of routes and return
+the first target that satisfies the request. The target may be anything,
+usually a string, ID or callable object. A route consists of a path-rule
+and a HTTP method.</p>
+<p>The path-rule is either a static path (e.g. <cite>/contact</cite>) or a dynamic
+path that contains wildcards (e.g. <cite>/wiki/&lt;page&gt;</cite>). The wildcard syntax
+and details on the matching order are described in docs:<cite>routing</cite>.</p>
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Router.add">
+<tt class="descname">add</tt><big>(</big><em>rule</em>, <em>method</em>, <em>target</em>, <em>name=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Router.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new route or replace the target for an existing route.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Router.add_filter">
+<tt class="descname">add_filter</tt><big>(</big><em>name</em>, <em>func</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Router.add_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a filter. The provided function is called with the configuration
+string as parameter and must return a (regexp, to_python, to_url) tuple.
+The first element is a string, the last two are callables or None.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Router.build">
+<tt class="descname">build</tt><big>(</big><em>_name</em>, <em>*anons</em>, <em>**query</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Router.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build an URL by filling the wildcards in a rule.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Router.match">
+<tt class="descname">match</tt><big>(</big><em>environ</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Router.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a (target, url_agrs) tuple or raise HTTPError(400/404/405).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.Router.parse_rule">
+<tt class="descname">parse_rule</tt><big>(</big><em>rule</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.Router.parse_rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a rule into a (name, filter, conf) token stream. If mode is
+None, name contains a static rule part.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Router.rule_syntax">
+<tt class="descname">rule_syntax</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x945cda0&gt;</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Router.rule_syntax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sorry for the mess. It works. Trust me.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.Router.strict_order">
+<tt class="descname">strict_order</tt><em class="property"> = None</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.Router.strict_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>If true, static routes are no longer checked first.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.SimpleTALTemplate">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">SimpleTALTemplate</tt><big>(</big><em>source=None</em>, <em>name=None</em>, <em>lookup=</em><span class="optional">[</span><span class="optional">]</span>, <em>encoding='utf8'</em>, <em>**settings</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.SimpleTALTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vnc_cfg_api_server.bottle.BaseTemplate" title="vnc_cfg_api_server.bottle.BaseTemplate"><tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.BaseTemplate</span></tt></a></p>
+<p>Deprecated, do not use.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.TemplatePlugin">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">TemplatePlugin</tt><a class="headerlink" href="#vnc_cfg_api_server.bottle.TemplatePlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>This plugin applies the <a class="reference internal" href="#vnc_cfg_api_server.bottle.view" title="vnc_cfg_api_server.bottle.view"><tt class="xref py py-func docutils literal"><span class="pre">view()</span></tt></a> decorator to all routes with a
+<cite>template</cite> config parameter. If the parameter is a tuple, the second
+element must be a dict with additional options (e.g. <cite>template_engine</cite>)
+or default variables for the template.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.TornadoServer">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">TornadoServer</tt><big>(</big><em>host='127.0.0.1'</em>, <em>port=8080</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.TornadoServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.ServerAdapter</span></tt></p>
+<p>The super hyped asynchronous server by facebook. Untested.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.TwistedServer">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">TwistedServer</tt><big>(</big><em>host='127.0.0.1'</em>, <em>port=8080</em>, <em>**config</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.TwistedServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">vnc_cfg_api_server.bottle.ServerAdapter</span></tt></p>
+<p>Untested.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.WSGIHeaderDict">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">WSGIHeaderDict</tt><big>(</big><em>environ</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.WSGIHeaderDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">_abcoll.MutableMapping</span></tt></p>
+<p>This dict-like class wraps a WSGI environ dict and provides convenient
+access to HTTP_* fields. Keys and values are native strings
+(2.x bytes or 3.x unicode) and keys are case-insensitive. If the WSGI
+environment contains non-native string values, these are de- or encoded
+using a lossless &#8216;latin1&#8217; character set.</p>
+<p>The API will remain stable even on changes to the relevant PEPs.
+Currently PEP 333, 444 and 3333 are supported. (PEP 444 is the only one
+that uses non-native strings.)</p>
+<dl class="attribute">
+<dt id="vnc_cfg_api_server.bottle.WSGIHeaderDict.cgikeys">
+<tt class="descname">cgikeys</tt><em class="property"> = ('CONTENT_TYPE', 'CONTENT_LENGTH')</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.WSGIHeaderDict.cgikeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of keys that do not have a <tt class="docutils literal"><span class="pre">HTTP_</span></tt> prefix.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vnc_cfg_api_server.bottle.WSGIHeaderDict.raw">
+<tt class="descname">raw</tt><big>(</big><em>key</em>, <em>default=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.WSGIHeaderDict.raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the header value as is (may be bytes or unicode).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.abort">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">abort</tt><big>(</big><em>code=500</em>, <em>text='Unknown Error: Application stopped.'</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.abort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aborts execution and causes a HTTP error.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.auth_basic">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">auth_basic</tt><big>(</big><em>check</em>, <em>realm='private'</em>, <em>text='Access denied'</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.auth_basic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback decorator to require HTTP auth (basic).
+TODO: Add route(check_auth=...) parameter.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.cached_property">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">cached_property</tt><big>(</big><em>func</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.cached_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A property that is only computed once per instance and then replaces
+itself with an ordinary attribute. Deleting the attribute resets the
+property.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.cookie_decode">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">cookie_decode</tt><big>(</big><em>data</em>, <em>key</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.cookie_decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify and decode an encoded string. Return an object or None.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.cookie_encode">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">cookie_encode</tt><big>(</big><em>data</em>, <em>key</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.cookie_encode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encode and sign a pickle-able object. Return a (byte) string</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.cookie_is_encoded">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">cookie_is_encoded</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.cookie_is_encoded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the argument looks like a encoded cookie.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.debug">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">debug</tt><big>(</big><em>mode=True</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the debug level.
+There is only one debug level supported at the moment.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.delete">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">delete</tt><big>(</big><em>*a</em>, <em>**ka</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equals <a class="reference internal" href="#vnc_cfg_api_server.bottle.route" title="vnc_cfg_api_server.bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">route()</span></tt></a> with a <tt class="docutils literal"><span class="pre">DELETE</span></tt> method parameter.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.error">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">error</tt><big>(</big><em>*a</em>, <em>**ka</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator: Register an output handler for a HTTP error code</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="vnc_cfg_api_server.bottle.ext">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">ext</tt><em class="property"> = &lt;module 'vnc_cfg_api_server.bottle.ext' from '/build/jenkins/workspace/Centos64_Openstack/ctrlplane/build/debug/cfgm/api-server/vnc_cfg_api_server/bottle.py'&gt;</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.ext" title="Permalink to this definition">¶</a></dt>
+<dd><p>A virtual package that redirects import statements.
+Example: <tt class="docutils literal"><span class="pre">import</span> <span class="pre">bottle.ext.sqlite</span></tt> actually imports <cite>bottle_sqlite</cite>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.get">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">get</tt><big>(</big><em>*a</em>, <em>**ka</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equals <a class="reference internal" href="#vnc_cfg_api_server.bottle.route" title="vnc_cfg_api_server.bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">route()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.hook">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">hook</tt><big>(</big><em>*a</em>, <em>**ka</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.hook" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a decorator that attaches a callback to a hook. Three hooks
+are currently implemented:</p>
+<ul class="simple">
+<li>before_request: Executed once before each request</li>
+<li>after_request: Executed once after each request</li>
+<li>app_reset: Called whenever <tt class="xref py py-meth docutils literal"><span class="pre">reset()</span></tt> is called.</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.html_escape">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">html_escape</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.html_escape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Escape HTML special characters <tt class="docutils literal"><span class="pre">&amp;&lt;&gt;</span></tt> and quotes <tt class="docutils literal"><span class="pre">'&quot;</span></tt>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.html_quote">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">html_quote</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.html_quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Escape and quote a string to be used as an HTTP attribute.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.install">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">install</tt><big>(</big><em>*a</em>, <em>**ka</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.install" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a plugin to the list of plugins and prepare it for being
+applied to all routes of this application. A plugin may be a simple
+decorator or an object that implements the <tt class="xref py py-class docutils literal"><span class="pre">Plugin</span></tt> API.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vnc_cfg_api_server.bottle.lazy_attribute">
+<em class="property">class </em><tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">lazy_attribute</tt><big>(</big><em>func</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.lazy_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A property that caches itself to the class object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.load">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">load</tt><big>(</big><em>target</em>, <em>**namespace</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import a module or fetch an object from a module.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">package.module</span></tt> returns <cite>module</cite> as a module object.</li>
+<li><tt class="docutils literal"><span class="pre">pack.mod:name</span></tt> returns the module variable <cite>name</cite> from <cite>pack.mod</cite>.</li>
+<li><tt class="docutils literal"><span class="pre">pack.mod:func()</span></tt> calls <cite>pack.mod.func()</cite> and returns the result.</li>
+</ul>
+<p>The last form accepts not only function calls, but any type of
+expression. Keyword arguments passed to this function are available as
+local variables. Example: <tt class="docutils literal"><span class="pre">import_string('re:compile(x)',</span> <span class="pre">x='[a-z]')</span></tt></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.load_app">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">load_app</tt><big>(</big><em>target</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.load_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a bottle application from a module and make sure that the import
+does not affect the current default application, but returns a separate
+application object. See <a class="reference internal" href="#vnc_cfg_api_server.bottle.load" title="vnc_cfg_api_server.bottle.load"><tt class="xref py py-func docutils literal"><span class="pre">load()</span></tt></a> for the target parameter.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="vnc_cfg_api_server.bottle.local">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">local</tt><em class="property"> = &lt;thread._local object at 0x99383c0&gt;</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.local" title="Permalink to this definition">¶</a></dt>
+<dd><p>A thread-safe namespace. Not used by Bottle.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.make_default_app_wrapper">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">make_default_app_wrapper</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.make_default_app_wrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a callable that relays calls to the current default app.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.mount">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">mount</tt><big>(</big><em>*a</em>, <em>**ka</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.mount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mount an application (<a class="reference internal" href="#vnc_cfg_api_server.bottle.Bottle" title="vnc_cfg_api_server.bottle.Bottle"><tt class="xref py py-class docutils literal"><span class="pre">Bottle</span></tt></a> or plain WSGI) to a specific
+URL prefix. Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">root_app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s">&#39;/admin/&#39;</span><span class="p">,</span> <span class="n">admin_app</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>prefix</strong> &#8211; path prefix or <cite>mount-point</cite>. If it ends in a slash,
+that slash is mandatory.</li>
+<li><strong>app</strong> &#8211; an instance of <a class="reference internal" href="#vnc_cfg_api_server.bottle.Bottle" title="vnc_cfg_api_server.bottle.Bottle"><tt class="xref py py-class docutils literal"><span class="pre">Bottle</span></tt></a> or a WSGI application.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>All other parameters are passed to the underlying <a class="reference internal" href="#vnc_cfg_api_server.bottle.route" title="vnc_cfg_api_server.bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">route()</span></tt></a> call.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.parse_auth">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">parse_auth</tt><big>(</big><em>header</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.parse_auth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse rfc2617 HTTP authentication header string (basic) and return (user,pass) tuple or None</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.parse_date">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">parse_date</tt><big>(</big><em>ims</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.parse_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse rfc1123, rfc850 and asctime timestamps and return UTC epoch.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.parse_range_header">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">parse_range_header</tt><big>(</big><em>header</em>, <em>maxlen=0</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.parse_range_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield (start, end) ranges parsed from a HTTP Range header. Skip
+unsatisfiable ranges. The end index is non-inclusive.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.path_shift">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">path_shift</tt><big>(</big><em>script_name</em>, <em>path_info</em>, <em>shift=1</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.path_shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shift path fragments from PATH_INFO to SCRIPT_NAME and vice versa.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The modified paths.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>script_name</strong> &#8211; The SCRIPT_NAME path.</li>
+<li><strong>script_name</strong> &#8211; The PATH_INFO path.</li>
+<li><strong>shift</strong> &#8211; The number of path fragments to shift. May be negative to
+change the shift direction. (default: 1)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.post">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">post</tt><big>(</big><em>*a</em>, <em>**ka</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equals <a class="reference internal" href="#vnc_cfg_api_server.bottle.route" title="vnc_cfg_api_server.bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">route()</span></tt></a> with a <tt class="docutils literal"><span class="pre">POST</span></tt> method parameter.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.put">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">put</tt><big>(</big><em>*a</em>, <em>**ka</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.put" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equals <a class="reference internal" href="#vnc_cfg_api_server.bottle.route" title="vnc_cfg_api_server.bottle.route"><tt class="xref py py-meth docutils literal"><span class="pre">route()</span></tt></a> with a <tt class="docutils literal"><span class="pre">PUT</span></tt> method parameter.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.redirect">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">redirect</tt><big>(</big><em>url</em>, <em>code=None</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.redirect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aborts execution and causes a 303 or 302 redirect, depending on
+the HTTP protocol version.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="vnc_cfg_api_server.bottle.request">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">request</tt><em class="property"> = &lt;LocalRequest: GET http://127.0.0.1/&gt;</em><a class="headerlink" href="#vnc_cfg_api_server.bottle.request" title="Permalink to this definition">¶</a></dt>
+<dd><p>A thread-safe instance of <a class="reference internal" href="#vnc_cfg_api_server.bottle.LocalRequest" title="vnc_cfg_api_server.bottle.LocalRequest"><tt class="xref py py-class docutils literal"><span class="pre">LocalRequest</span></tt></a>. If accessed from within a
+request callback, this instance always refers to the <em>current</em> request
+(even on a multithreaded server).</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="vnc_cfg_api_server.bottle.response">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">response</tt><em class="property"> = Content-Type: text/html; charset=UTF-8 </em><a class="headerlink" href="#vnc_cfg_api_server.bottle.response" title="Permalink to this definition">¶</a></dt>
+<dd><p>A thread-safe instance of <a class="reference internal" href="#vnc_cfg_api_server.bottle.LocalResponse" title="vnc_cfg_api_server.bottle.LocalResponse"><tt class="xref py py-class docutils literal"><span class="pre">LocalResponse</span></tt></a>. It is used to change the
+HTTP response for the <em>current</em> request.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.route">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">route</tt><big>(</big><em>*a</em>, <em>**ka</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.route" title="Permalink to this definition">¶</a></dt>
+<dd><p>A decorator to bind a function to a request URL. Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/hello/:name&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">&#39;Hello </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">name</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">:name</span></tt> part is a wildcard. See <a class="reference internal" href="#vnc_cfg_api_server.bottle.Router" title="vnc_cfg_api_server.bottle.Router"><tt class="xref py py-class docutils literal"><span class="pre">Router</span></tt></a> for syntax
+details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> &#8211; Request path or a list of paths to listen to. If no
+path is specified, it is automatically generated from the
+signature of the function.</li>
+<li><strong>method</strong> &#8211; HTTP method (<cite>GET</cite>, <cite>POST</cite>, <cite>PUT</cite>, ...) or a list of
+methods to listen to. (default: <cite>GET</cite>)</li>
+<li><strong>callback</strong> &#8211; An optional shortcut to avoid the decorator
+syntax. <tt class="docutils literal"><span class="pre">route(...,</span> <span class="pre">callback=func)</span></tt> equals <tt class="docutils literal"><span class="pre">route(...)(func)</span></tt></li>
+<li><strong>name</strong> &#8211; The name for this route. (default: None)</li>
+<li><strong>apply</strong> &#8211; A decorator or plugin or a list of plugins. These are
+applied to the route callback in addition to installed plugins.</li>
+<li><strong>skip</strong> &#8211; A list of plugins, plugin classes or names. Matching
+plugins are not installed to this route. <tt class="docutils literal"><span class="pre">True</span></tt> skips all.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Any additional keyword arguments are stored as route-specific
+configuration and passed to plugins (see <tt class="xref py py-meth docutils literal"><span class="pre">Plugin.apply()</span></tt>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.run">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">run</tt><big>(</big><em>app=None</em>, <em>server='wsgiref'</em>, <em>host='127.0.0.1'</em>, <em>port=8080</em>, <em>interval=1</em>, <em>reloader=False</em>, <em>quiet=False</em>, <em>plugins=None</em>, <em>debug=False</em>, <em>**kargs</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start a server instance. This method blocks until the server terminates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>app</strong> &#8211; WSGI application or target string supported by
+<a class="reference internal" href="#vnc_cfg_api_server.bottle.load_app" title="vnc_cfg_api_server.bottle.load_app"><tt class="xref py py-func docutils literal"><span class="pre">load_app()</span></tt></a>. (default: <tt class="xref py py-func docutils literal"><span class="pre">default_app()</span></tt>)</li>
+<li><strong>server</strong> &#8211; Server adapter to use. See <tt class="xref py py-data docutils literal"><span class="pre">server_names</span></tt> keys
+for valid names or pass a <tt class="xref py py-class docutils literal"><span class="pre">ServerAdapter</span></tt> subclass.
+(default: <cite>wsgiref</cite>)</li>
+<li><strong>host</strong> &#8211; Server address to bind to. Pass <tt class="docutils literal"><span class="pre">0.0.0.0</span></tt> to listens on
+all interfaces including the external one. (default: 127.0.0.1)</li>
+<li><strong>port</strong> &#8211; Server port to bind to. Values below 1024 require root
+privileges. (default: 8080)</li>
+<li><strong>reloader</strong> &#8211; Start auto-reloading server? (default: False)</li>
+<li><strong>interval</strong> &#8211; Auto-reloader interval in seconds (default: 1)</li>
+<li><strong>quiet</strong> &#8211; Suppress output to stdout and stderr? (default: False)</li>
+<li><strong>options</strong> &#8211; Options passed to the server adapter.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.static_file">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">static_file</tt><big>(</big><em>filename</em>, <em>root</em>, <em>mimetype='auto'</em>, <em>download=False</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.static_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a file in a safe way and return <tt class="xref py py-exc docutils literal"><span class="pre">HTTPResponse</span></tt> with status
+code 200, 305, 401 or 404. Set Content-Type, Content-Encoding,
+Content-Length and Last-Modified header. Obey If-Modified-Since header
+and HEAD requests.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.template">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">template</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a rendered template as a string iterator.
+You can use a name, a filename or a template string as first parameter.
+Template rendering arguments can be passed as dictionaries
+or directly (as keyword arguments).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.uninstall">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">uninstall</tt><big>(</big><em>*a</em>, <em>**ka</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.uninstall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uninstall plugins. Pass an instance to remove a specific plugin, a type
+object to remove all plugins that match that type, a string to remove
+all plugins with a matching <tt class="docutils literal"><span class="pre">name</span></tt> attribute or <tt class="docutils literal"><span class="pre">True</span></tt> to remove all
+plugins. Return the list of removed plugins.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.url">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">url</tt><big>(</big><em>*a</em>, <em>**ka</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string that matches a named route</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.validate">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">validate</tt><big>(</big><em>**vkargs</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates and manipulates keyword arguments by user defined callables.
+Handles ValueError and missing arguments by raising HTTPError(403).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.view">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">view</tt><big>(</big><em>tpl_name</em>, <em>**defaults</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator: renders a template for a handler.
+The handler can control its behavior like that:</p>
+<blockquote>
+<div><ul class="simple">
+<li>return a dict of template vars to fill out the template</li>
+<li>return something other than a dict and the view decorator will not
+process the template, but return the handler result as is.
+This includes returning a HTTPResponse(dict) to get,
+for instance, JSON with autojson or other castfilters.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="vnc_cfg_api_server.bottle.yieldroutes">
+<tt class="descclassname">vnc_cfg_api_server.bottle.</tt><tt class="descname">yieldroutes</tt><big>(</big><em>func</em><big>)</big><a class="headerlink" href="#vnc_cfg_api_server.bottle.yieldroutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a generator for routes that match the signature (name, args)
+of the func parameter. This may yield more than one route if the function
+takes optional keyword arguments. The output is best described by example:</p>
+<div class="highlight-python"><pre>a()         -&gt; '/a'
+b(x, y)     -&gt; '/b/:x/:y'
+c(x, y=5)   -&gt; '/c/:x' and '/c/:x/:y'
+d(x=5, y=6) -&gt; '/d' and '/d/:x' and '/d/:x/:y'</pre>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="provision-defaults-module">
+<h2><tt class="xref py py-mod docutils literal"><span class="pre">provision_defaults</span></tt> Module<a class="headerlink" href="#provision-defaults-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="vnc-addr-mgmt-module">
+<h2><tt class="xref py py-mod docutils literal"><span class="pre">vnc_addr_mgmt</span></tt> Module<a class="headerlink" href="#vnc-addr-mgmt-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-vnc_cfg_api_server.vnc_auth">
+<span id="vnc-auth-module"></span><h2><tt class="xref py py-mod docutils literal"><span class="pre">vnc_auth</span></tt> Module<a class="headerlink" href="#module-vnc_cfg_api_server.vnc_auth" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="vnc-auth-keystone-module">
+<h2><tt class="xref py py-mod docutils literal"><span class="pre">vnc_auth_keystone</span></tt> Module<a class="headerlink" href="#vnc-auth-keystone-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="vnc-cfg-api-server-module">
+<h2><tt class="xref py py-mod docutils literal"><span class="pre">vnc_cfg_api_server</span></tt> Module<a class="headerlink" href="#vnc-cfg-api-server-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="vnc-cfg-ifmap-module">
+<h2><tt class="xref py py-mod docutils literal"><span class="pre">vnc_cfg_ifmap</span></tt> Module<a class="headerlink" href="#vnc-cfg-ifmap-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="vnc-cfg-types-module">
+<h2><tt class="xref py py-mod docutils literal"><span class="pre">vnc_cfg_types</span></tt> Module<a class="headerlink" href="#vnc-cfg-types-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="vnc-perms-module">
+<h2><tt class="xref py py-mod docutils literal"><span class="pre">vnc_perms</span></tt> Module<a class="headerlink" href="#vnc-perms-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vnc_cfg_api_server.gen.html">gen Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#cfixture-module"><tt class="docutils literal"><span class="pre">cfixture</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.connection_drv_gen"><tt class="docutils literal"><span class="pre">connection_drv_gen</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.generatedssuper"><tt class="docutils literal"><span class="pre">generatedssuper</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.resource_client"><tt class="docutils literal"><span class="pre">resource_client</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.resource_common"><tt class="docutils literal"><span class="pre">resource_common</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.resource_server"><tt class="docutils literal"><span class="pre">resource_server</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#resource-test-module"><tt class="docutils literal"><span class="pre">resource_test</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.resource_xsd"><tt class="docutils literal"><span class="pre">resource_xsd</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#vnc-api-client-gen-module"><tt class="docutils literal"><span class="pre">vnc_api_client_gen</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#vnc-api-schema-module"><tt class="docutils literal"><span class="pre">vnc_api_schema</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#vnc-api-server-gen-module"><tt class="docutils literal"><span class="pre">vnc_api_server_gen</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#vnc-api-test-gen-module"><tt class="docutils literal"><span class="pre">vnc_api_test_gen</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#vnc-cassandra-client-gen-module"><tt class="docutils literal"><span class="pre">vnc_cassandra_client_gen</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vnc_cfg_api_server.gen.html#vnc-ifmap-client-gen-module"><tt class="docutils literal"><span class="pre">vnc_ifmap_client_gen</span></tt> Module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">vnc_cfg_api_server Package</a><ul>
+<li><a class="reference internal" href="#id1"><tt class="docutils literal"><span class="pre">vnc_cfg_api_server</span></tt> Package</a></li>
+<li><a class="reference internal" href="#module-vnc_cfg_api_server.bottle"><tt class="docutils literal"><span class="pre">bottle</span></tt> Module</a></li>
+<li><a class="reference internal" href="#provision-defaults-module"><tt class="docutils literal"><span class="pre">provision_defaults</span></tt> Module</a></li>
+<li><a class="reference internal" href="#vnc-addr-mgmt-module"><tt class="docutils literal"><span class="pre">vnc_addr_mgmt</span></tt> Module</a></li>
+<li><a class="reference internal" href="#module-vnc_cfg_api_server.vnc_auth"><tt class="docutils literal"><span class="pre">vnc_auth</span></tt> Module</a></li>
+<li><a class="reference internal" href="#vnc-auth-keystone-module"><tt class="docutils literal"><span class="pre">vnc_auth_keystone</span></tt> Module</a></li>
+<li><a class="reference internal" href="#vnc-cfg-api-server-module"><tt class="docutils literal"><span class="pre">vnc_cfg_api_server</span></tt> Module</a></li>
+<li><a class="reference internal" href="#vnc-cfg-ifmap-module"><tt class="docutils literal"><span class="pre">vnc_cfg_ifmap</span></tt> Module</a></li>
+<li><a class="reference internal" href="#vnc-cfg-types-module"><tt class="docutils literal"><span class="pre">vnc_cfg_types</span></tt> Module</a></li>
+<li><a class="reference internal" href="#vnc-perms-module"><tt class="docutils literal"><span class="pre">vnc_perms</span></tt> Module</a></li>
+<li><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/vnc_cfg_api_server.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">vnc_api beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Juniper Networks Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

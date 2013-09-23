@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Juniper Contrail Configuration API server documentation &mdash; vnc_api beta documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="vnc_api beta documentation" href="#" />
+    <link rel="next" title="REST API Tutorial" href="tutorial_with_rest.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tutorial_with_rest.html" title="REST API Tutorial"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">vnc_api beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="juniper-contrail-configuration-api-server-documentation">
+<h1>Juniper Contrail Configuration API server documentation<a class="headerlink" href="#juniper-contrail-configuration-api-server-documentation" title="Permalink to this headline">¶</a></h1>
+<p>The Juniper Contrail configuration API server allows for manipulation of configuration
+elements exposed by the VNS. Interaction with this server is possible through either a REST interface
+or by a python library (which internally uses the same REST API).</p>
+<dl class="docutils">
+<dt>This document provides</dt>
+<dd><ul class="first last simple">
+<li>Tutorials for using the REST and library interface,</li>
+<li>Generalizes the examples to work on different configuration elements</li>
+<li>Provides tips to use the system effectively</li>
+<li>Reference of the package, module and classes involved.</li>
+</ul>
+</dd>
+</dl>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_with_rest.html">REST API Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_with_rest.html#create-virtual-network-and-network-policy-objects">Create virtual-network and network-policy objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_with_rest.html#update-virtual-networks-to-use-the-policy">Update virtual-networks to use the policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_with_rest.html#read-the-objects-to-verify">Read the objects to verify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_with_rest.html#list-the-virtual-networks">List the virtual-networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_with_rest.html#delete-the-objects">Delete the objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_with_library.html">Library API Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_with_library.html#initialize-the-library">Initialize the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_with_library.html#create-virtual-network-and-network-policy-objects">Create virtual-network and network-policy objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_with_library.html#update-virtual-networks-to-use-the-policy">Update virtual-networks to use the policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_with_library.html#reading-the-objects-to-verify">Reading the objects to verify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_with_library.html#list-the-virtual-networks">List the virtual-networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_with_library.html#deleting-the-objects">Deleting the objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest_details.html">REST API Details</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest_details.html#discovering-api-server-resources">Discovering API server resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_details.html#creating-a-resource">Creating a resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_details.html#reading-a-resource">Reading a resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_details.html#update-a-resource">Update a resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_details.html#listing-resources">Listing Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="library_details.html">Library API Details</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="library_details.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library_details.html#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest_reference.html">Rest API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest_reference.html#module-vnc_cfg_api_server.__init__"><tt class="docutils literal"><span class="pre">vnc_cfg_api_server</span></tt> Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_reference.html#vnc-cfg-api-server-module"><tt class="docutils literal"><span class="pre">vnc_cfg_api_server</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_reference.html#module-vnc_cfg_api_server.gen.resource_common"><tt class="docutils literal"><span class="pre">resource_common</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_reference.html#module-vnc_cfg_api_server.gen.resource_xsd"><tt class="docutils literal"><span class="pre">resource_xsd</span></tt> Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="library_reference.html">Library API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="library_reference.html#vnc-api-client-gen-module"><tt class="docutils literal"><span class="pre">vnc_api_client_gen</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library_reference.html#module-vnc_cfg_api_server.gen.resource_common"><tt class="docutils literal"><span class="pre">resource_common</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library_reference.html#module-vnc_cfg_api_server.gen.resource_xsd"><tt class="docutils literal"><span class="pre">resource_xsd</span></tt> Module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Juniper Contrail Configuration API server documentation</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial_with_rest.html"
+                        title="next chapter">REST API Tutorial</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tutorial_with_rest.html" title="REST API Tutorial"
+             >next</a> |</li>
+        <li><a href="#">vnc_api beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Juniper Networks Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

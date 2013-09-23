@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Library API Details &mdash; vnc_api beta documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="vnc_api beta documentation" href="index.html" />
+    <link rel="next" title="Rest API Reference" href="rest_reference.html" />
+    <link rel="prev" title="REST API Details" href="rest_details.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rest_reference.html" title="Rest API Reference"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="rest_details.html" title="REST API Details"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">vnc_api beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="library-api-details">
+<h1>Library API Details<a class="headerlink" href="#library-api-details" title="Permalink to this headline">¶</a></h1>
+<p>The configuration API library provides a means of accessing and manipulating configuration
+elements of the system through an object representation.  The library API can be classified into two categories:</p>
+<blockquote>
+<div><ul class="simple">
+<li>those that manipulate an object locally (client-side)</li>
+<li>those that reflect/get an object&#8217;s content onto/from the configuration API server.</li>
+</ul>
+</div></blockquote>
+<p>The configuration element types (also referred to as object types) have a hierarchical relationship
+described in <tt class="xref doc docutils literal"><span class="pre">vnc_cfg.xsd</span></tt> schema. The class definitions of all object types are available at
+<a class="reference internal" href="vnc_cfg_api_server.gen.html#module-vnc_cfg_api_server.gen.resource_common" title="vnc_cfg_api_server.gen.resource_common"><tt class="xref py py-mod docutils literal"><span class="pre">vnc_cfg_api_server.gen.resource_common</span></tt></a> module.</p>
+<dl class="docutils">
+<dt>All objects have:</dt>
+<dd><ul class="first last">
+<li><p class="first">a fully-qualified name which is an array of strings representing ancestor names from root</p>
+</li>
+<li><p class="first">an id-perms property which provide unix file-like permissions for the owner, group and others</p>
+</li>
+<li><p class="first">zero or more properties which represent information relevant only to the object</p>
+</li>
+<li><p class="first">zero or more references to other objects</p>
+</li>
+<li><p class="first">zero or more back references from other objects (computed automatically by the server)</p>
+</li>
+<li><dl class="first docutils">
+<dt>methods</dt>
+<dd><ul class="first">
+<li><p class="first">to construct an instance</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">example_obj</span> <span class="o">=</span> <span class="n">ExampleType</span><span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">property_name</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">property_value</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">accessors for properties</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">example_obj</span><span class="o">.</span><span class="n">get_</span><span class="o">&lt;</span><span class="n">property_name</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">example_obj</span><span class="o">.</span><span class="n">set_</span><span class="o">&lt;</span><span class="n">property_name</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">property</span><span class="o">-</span><span class="n">value</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">accessors for referenced objectes</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">example_obj</span><span class="o">.</span><span class="n">get_</span><span class="o">&lt;</span><span class="n">reference_type</span><span class="o">&gt;</span><span class="n">_refs</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">example_obj</span><span class="o">.</span><span class="n">add_</span><span class="o">&lt;</span><span class="n">reference_type</span><span class="o">&gt;</span><span class="p">(</span><span class="n">reference_obj</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">getters for back-references (i.e. objects referring to this)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">example_obj</span><span class="o">.</span><span class="n">get_</span><span class="o">&lt;</span><span class="n">reference_type</span><span class="o">&gt;</span><span class="n">_back_refs</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">getters for children objects</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">example_obj</span><span class="o">.</span><span class="n">get_</span><span class="o">&lt;</span><span class="n">child_type</span><span class="o">&gt;</span><span class="n">s</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p class="last">These methods do not communicate with the API server</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p>The main library class VncApi insert-ref-here has methods for every
+object type to:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">create an object</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">example_type_create</span><span class="p">(</span><span class="n">example_obj</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">read an object</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">example_obj</span> <span class="o">=</span> <span class="n">vnc_lib</span><span class="o">.</span><span class="n">example_type_read</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">example</span><span class="o">-</span><span class="n">uuid</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">example_obj</span> <span class="o">=</span> <span class="n">vnc_lib</span><span class="o">.</span><span class="n">example_type_read</span><span class="p">(</span><span class="n">fq_name</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;example-root&#39;</span><span class="p">,</span> <span class="o">...</span> <span class="p">,</span><span class="s">&#39;example-parent&#39;</span><span class="p">,</span> <span class="s">&#39;example-name&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">update an object</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">example_type_update</span><span class="p">(</span><span class="n">example_obj</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">delete an object</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">example_type_delete</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">example</span><span class="o">-</span><span class="n">uuid</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">example_type_delete</span><span class="p">(</span><span class="n">fq_name</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;example-root&#39;</span><span class="p">,</span> <span class="o">...</span> <span class="p">,</span><span class="s">&#39;example-parent&#39;</span><span class="p">,</span> <span class="s">&#39;example-name&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">list objects</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">example_types_list</span><span class="p">(</span><span class="o">&lt;</span><span class="n">example_parent_type</span><span class="o">&gt;</span><span class="n">_id</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">parent</span><span class="o">-</span><span class="n">uuid</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">example_types_list</span><span class="p">(</span><span class="o">&lt;</span><span class="n">example_parent_type</span><span class="o">&gt;</span><span class="n">_fq_name</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;example-root&#39;</span><span class="p">,</span> <span class="o">...</span> <span class="p">,</span><span class="s">&#39;example-parent&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>These CRUD methods communicate with the API server.</p>
+</div></blockquote>
+<p>The API server for most objects acts purely as a data store. However properties for some object types
+are allocated by the API server itself. These include</p>
+<blockquote>
+<div><ul class="simple">
+<li>default gateway in case of subnet (if not specified by user)</li>
+<li>ip address for instance-ip objects (if not specified by user)</li>
+</ul>
+</div></blockquote>
+<div class="section" id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Errors from API server (http status codes and response content) are translated
+to exception objects and raised. The different types of exceptions are defined at
+cfgm_common.exceptions module</p>
+</div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<p>Online documentation of the vnc_api module can be found by:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">vnc_api</span><span class="p">)</span>
+<span class="go">Help on module vnc_api.vnc_api in vnc_api:</span>
+<span class="go">NAME</span>
+<span class="go">    vnc_api.vnc_api</span>
+<span class="go">FILE</span>
+<span class="go">    /usr/lib/python2.7/site-packages/vnc_api/vnc_api.py</span>
+<span class="go">DESCRIPTION</span>
+<span class="go">    This is the main module in VNS Config API library. It handles connection to API server,</span>
+<span class="go">    exposes configuration elements as objects and allows for manipulating objects locally</span>
+<span class="go">    and updating API server</span>
+<span class="go">CLASSES</span>
+<span class="go">    vnc_api.gen.vnc_api_client_gen.VncApiClientGen(__builtin__.object)</span>
+<span class="go">        VncApi</span>
+<span class="go">    class VncApi(vnc_api.gen.vnc_api_client_gen.VncApiClientGen)</span>
+<span class="go">     |  Method resolution order:</span>
+<span class="go">     |      VncApi</span>
+<span class="go">     |      vnc_api.gen.vnc_api_client_gen.VncApiClientGen</span>
+<span class="go">     |      __builtin__.object</span>
+<span class="go">     |</span>
+<span class="go">     |  Methods defined here:</span>
+<span class="go">     |</span>
+<span class="go">     |  __init__(self, username=None, password=None, tenant_name=None, api_server_host=None, api_server_port=None, api_server_url=None)</span>
+<span class="go">     |</span>
+</pre></div>
+</div>
+<p>Online documentation of object methods etc. with standard <tt class="docutils literal"><span class="pre">dir</span></tt> and <tt class="docutils literal"><span class="pre">help</span></tt> python commands</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">vn_blue_obj</span><span class="p">)</span>
+<span class="go">[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__doc__&#39;, &#39;__format__&#39;, &#39;__getattribute__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__module__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;_type&#39;, &#39;add_network_ipam&#39;, &#39;add_network_policy&#39;, &#39;del_network_ipam&#39;, &#39;del_network_policy&#39;, &#39;dump&#39;, &#39;factory&#39;, &#39;fq_name&#39;, &#39;from_fq_name&#39;, &#39;get_access_control_lists&#39;, &#39;get_floating_ip_pools&#39;, &#39;get_fq_name&#39;, &#39;get_fq_name_str&#39;, &#39;get_id_perms&#39;, &#39;get_instance_ip_back_refs&#39;, &#39;get_network_ipam_refs&#39;, &#39;get_network_policy_refs&#39;, &#39;get_parent_fq_name&#39;, &#39;get_parent_fq_name_str&#39;, &#39;get_project_back_refs&#39;, &#39;get_route_target_list&#39;, &#39;get_routing_instances&#39;, &#39;get_type&#39;, &#39;get_virtual_machine_interface_back_refs&#39;, &#39;name&#39;, &#39;network_ipam_refs&#39;, &#39;network_policy_refs&#39;, &#39;parent_name&#39;, &#39;set_id_perms&#39;, &#39;set_network_ipam&#39;, &#39;set_network_ipam_list&#39;, &#39;set_network_policy&#39;, &#39;set_network_policy_list&#39;, &#39;set_route_target_list&#39;, &#39;uuid&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">vn_blue_obj</span><span class="p">)</span>
+<span class="go">Help on VirtualNetwork in module vnc_api.gen.resource_common object:</span>
+<span class="go">class VirtualNetwork(__builtin__.object)</span>
+<span class="go"> |  Represents virtual-network configuration representation.</span>
+<span class="go"> |</span>
+<span class="go"> |  Child of :class:`.Project` object</span>
+<span class="go"> |</span>
+<span class="go"> |  Properties of:</span>
+<span class="go"> |      * route-target-list (:class:`.RouteTargetList` type)</span>
+<span class="go"> |      * id-perms (:class:`.IdPermsType` type)</span>
+<span class="go"> |</span>
+<span class="go"> |  References to:</span>
+<span class="go"> |      * list of (:class:`.NetworkIpam` object, :class:`.VnSubnetsType` attribute)</span>
+<span class="go"> |      * list of (:class:`.NetworkPolicy` object, :class:`.VirtualNetworkPolicyType` attribute)</span>
+<span class="go"> |</span>
+<span class="go"> |  Referred by:</span>
+<span class="go"> |      * list of :class:`.Project` objects</span>
+<span class="go"> |      * list of :class:`.VirtualMachineInterface` objects</span>
+<span class="go"> |      * list of :class:`.InstanceIp` objects</span>
+<span class="go"> |</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Library API Details</a><ul>
+<li><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li><a class="reference internal" href="#tips">Tips</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="rest_details.html"
+                        title="previous chapter">REST API Details</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="rest_reference.html"
+                        title="next chapter">Rest API Reference</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/library_details.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rest_reference.html" title="Rest API Reference"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="rest_details.html" title="REST API Details"
+             >previous</a> |</li>
+        <li><a href="index.html">vnc_api beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Juniper Networks Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Library API Tutorial &mdash; vnc_api beta documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="vnc_api beta documentation" href="index.html" />
+    <link rel="next" title="REST API Details" href="rest_details.html" />
+    <link rel="prev" title="REST API Tutorial" href="tutorial_with_rest.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rest_details.html" title="REST API Details"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial_with_rest.html" title="REST API Tutorial"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">vnc_api beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="library-api-tutorial">
+<h1>Library API Tutorial<a class="headerlink" href="#library-api-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial will detail the steps necessary to create couple of virtual-networks
+and associate a policy on them such that only http traffic can pass. The next section
+generalizes the examples mentioned in this tutorial.</p>
+<div class="section" id="initialize-the-library">
+<h2>Initialize the library<a class="headerlink" href="#initialize-the-library" title="Permalink to this headline">¶</a></h2>
+<p>A single import of the vnc_api module from vnc_api package is sufficient to
+interact with the configuration API server.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vnc_api</span> <span class="kn">import</span> <span class="n">vnc_api</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span> <span class="o">=</span> <span class="n">vnc_api</span><span class="o">.</span><span class="n">VncApi</span><span class="p">(</span><span class="n">api_server_host</span><span class="o">=</span><span class="s">&#39;10.84.14.2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-virtual-network-and-network-policy-objects">
+<h2>Create virtual-network and network-policy objects<a class="headerlink" href="#create-virtual-network-and-network-policy-objects" title="Permalink to this headline">¶</a></h2>
+<p>To create virtual-networks <em>vn-red</em> and <em>vn-blue</em> and network-policy <em>policy-red-blue</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vn_blue_obj</span> <span class="o">=</span> <span class="n">vnc_api</span><span class="o">.</span><span class="n">VirtualNetwork</span><span class="p">(</span><span class="s">&#39;vn-blue&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vn_blue_obj</span><span class="o">.</span><span class="n">add_network_ipam</span><span class="p">(</span><span class="n">vnc_api</span><span class="o">.</span><span class="n">NetworkIpam</span><span class="p">(),</span>
+<span class="gp">... </span>                             <span class="n">vnc_api</span><span class="o">.</span><span class="n">VnSubnetsType</span><span class="p">([</span><span class="n">vnc_api</span><span class="o">.</span><span class="n">IpamSubnetType</span><span class="p">(</span><span class="n">subnet</span> <span class="o">=</span> <span class="n">vnc_api</span><span class="o">.</span><span class="n">SubnetType</span><span class="p">(</span><span class="s">&#39;10.1.1.0&#39;</span><span class="p">,</span> <span class="mi">24</span><span class="p">))]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">virtual_network_create</span><span class="p">(</span><span class="n">vn_blue_obj</span><span class="p">)</span>
+<span class="go">u&#39;57603abb-0089-4a89-b44b-8ca71d4b7826&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vn_red_obj</span> <span class="o">=</span> <span class="n">vnc_api</span><span class="o">.</span><span class="n">VirtualNetwork</span><span class="p">(</span><span class="s">&#39;vn-red&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vn_red_obj</span><span class="o">.</span><span class="n">add_network_ipam</span><span class="p">(</span><span class="n">vnc_api</span><span class="o">.</span><span class="n">NetworkIpam</span><span class="p">(),</span>
+<span class="gp">... </span>                        <span class="n">vnc_api</span><span class="o">.</span><span class="n">VnSubnetsType</span><span class="p">([</span><span class="n">vnc_api</span><span class="o">.</span><span class="n">IpamSubnetType</span><span class="p">(</span><span class="n">subnet</span> <span class="o">=</span> <span class="n">vnc_api</span><span class="o">.</span><span class="n">SubnetType</span><span class="p">(</span><span class="s">&#39;20.1.1.0&#39;</span><span class="p">,</span> <span class="mi">24</span><span class="p">))]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">virtual_network_create</span><span class="p">(</span><span class="n">vn_red_obj</span><span class="p">)</span>
+<span class="go">u&#39;5de3af3e-269f-40be-b0f6-69d6bb962a9f&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">policy_obj</span> <span class="o">=</span> <span class="n">vnc_api</span><span class="o">.</span><span class="n">NetworkPolicy</span><span class="p">(</span><span class="s">&#39;policy-red-blue&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                 <span class="n">network_policy_entries</span> <span class="o">=</span> <span class="n">vnc_api</span><span class="o">.</span><span class="n">PolicyEntriesType</span><span class="p">([</span><span class="n">vnc_api</span><span class="o">.</span><span class="n">PolicyRuleType</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s">&#39;&lt;&gt;&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                     <span class="n">simple_action</span> <span class="o">=</span> <span class="s">&#39;pass&#39;</span><span class="p">,</span> <span class="n">protocol</span> <span class="o">=</span> <span class="s">&#39;tcp&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                     <span class="n">src_addresses</span> <span class="o">=</span> <span class="p">[</span><span class="n">vnc_api</span><span class="o">.</span><span class="n">AddressType</span><span class="p">(</span><span class="n">virtual_network</span> <span class="o">=</span> <span class="n">vn_blue_obj</span><span class="o">.</span><span class="n">get_fq_name_str</span><span class="p">())],</span>
+<span class="gp">... </span>                     <span class="n">src_ports</span> <span class="o">=</span> <span class="p">[</span><span class="n">vnc_api</span><span class="o">.</span><span class="n">PortType</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>                     <span class="n">dst_addresses</span> <span class="o">=</span> <span class="p">[</span><span class="n">vnc_api</span><span class="o">.</span><span class="n">AddressType</span><span class="p">(</span><span class="n">virtual_network</span> <span class="o">=</span> <span class="n">vn_red_obj</span><span class="o">.</span><span class="n">get_fq_name_str</span><span class="p">())],</span>
+<span class="gp">... </span>                     <span class="n">dst_ports</span> <span class="o">=</span> <span class="p">[</span><span class="n">vnc_api</span><span class="o">.</span><span class="n">PortType</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">)])]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">network_policy_create</span><span class="p">(</span><span class="n">policy_obj</span><span class="p">)</span>
+<span class="go">u&#39;51388604-c59e-4169-9e0f-39bfcdc603f0&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-virtual-networks-to-use-the-policy">
+<h2>Update virtual-networks to use the policy<a class="headerlink" href="#update-virtual-networks-to-use-the-policy" title="Permalink to this headline">¶</a></h2>
+<p>To associate the <em>policy-red-blue</em> with the virtual networks:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vn_blue_obj</span><span class="o">.</span><span class="n">add_network_policy</span><span class="p">(</span><span class="n">policy_obj</span><span class="p">,</span> <span class="n">vnc_api</span><span class="o">.</span><span class="n">VirtualNetworkPolicyType</span><span class="p">(</span>
+<span class="go">                                                   sequence=vnc_api.SequenceType(0, 0)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vn_red_obj</span><span class="o">.</span><span class="n">add_network_policy</span><span class="p">(</span><span class="n">policy_obj</span><span class="p">,</span> <span class="n">vnc_api</span><span class="o">.</span><span class="n">VirtualNetworkPolicyType</span><span class="p">(</span>
+<span class="go">                                                   sequence=vnc_api.SequenceType(0, 0)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">virtual_network_update</span><span class="p">(</span><span class="n">vn_blue_obj</span><span class="p">)</span>
+<span class="go">u&#39;{&quot;virtual-network&quot;: {&quot;href&quot;: &quot;http://10.84.14.2:8082/virtual-network/57603abb-0089-4a89-b44b-8ca71d4b7826&quot;, &quot;uuid&quot;: &quot;57603abb-0089-4a89-b44b-8ca71d4b7826&quot;}}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">virtual_network_update</span><span class="p">(</span><span class="n">vn_red_obj</span><span class="p">)</span>
+<span class="go">u&#39;{&quot;virtual-network&quot;: {&quot;href&quot;: &quot;http://10.84.14.2:8082/virtual-network/5de3af3e-269f-40be-b0f6-69d6bb962a9f&quot;, &quot;uuid&quot;: &quot;5de3af3e-269f-40be-b0f6-69d6bb962a9f&quot;}}&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reading-the-objects-to-verify">
+<h2>Reading the objects to verify<a class="headerlink" href="#reading-the-objects-to-verify" title="Permalink to this headline">¶</a></h2>
+<p>An object can be read by using its uuid returned by create...</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">vnc_lib</span><span class="o">.</span><span class="n">virtual_network_read</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="n">vn_blue_obj</span><span class="o">.</span><span class="n">uuid</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>... or by its fully-qualified name.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">vnc_lib</span><span class="o">.</span><span class="n">virtual_network_read</span><span class="p">(</span><span class="n">fq_name</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;default-domain&#39;</span><span class="p">,</span> <span class="s">&#39;default-project&#39;</span><span class="p">,</span> <span class="s">&#39;vn-blue&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-the-virtual-networks">
+<h2>List the virtual-networks<a class="headerlink" href="#list-the-virtual-networks" title="Permalink to this headline">¶</a></h2>
+<p>A collection of objects can be listed by</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">vnc_lib</span><span class="o">.</span><span class="n">virtual_networks_list</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-the-objects">
+<h2>Deleting the objects<a class="headerlink" href="#deleting-the-objects" title="Permalink to this headline">¶</a></h2>
+<p>An object can be deleted using its uuid...</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">virtual_network_delete</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="s">&#39;57603abb-0089-4a89-b44b-8ca71d4b7826&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>... or by its fully-qualified name</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vnc_lib</span><span class="o">.</span><span class="n">virtual_network_delete</span><span class="p">(</span><span class="n">fq_name</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;default-domain&#39;</span><span class="p">,</span> <span class="s">&#39;default-project&#39;</span><span class="p">,</span> <span class="s">&#39;vn-blue&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Library API Tutorial</a><ul>
+<li><a class="reference internal" href="#initialize-the-library">Initialize the library</a></li>
+<li><a class="reference internal" href="#create-virtual-network-and-network-policy-objects">Create virtual-network and network-policy objects</a></li>
+<li><a class="reference internal" href="#update-virtual-networks-to-use-the-policy">Update virtual-networks to use the policy</a></li>
+<li><a class="reference internal" href="#reading-the-objects-to-verify">Reading the objects to verify</a></li>
+<li><a class="reference internal" href="#list-the-virtual-networks">List the virtual-networks</a></li>
+<li><a class="reference internal" href="#deleting-the-objects">Deleting the objects</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial_with_rest.html"
+                        title="previous chapter">REST API Tutorial</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="rest_details.html"
+                        title="next chapter">REST API Details</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tutorial_with_library.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rest_details.html" title="REST API Details"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial_with_rest.html" title="REST API Tutorial"
+             >previous</a> |</li>
+        <li><a href="index.html">vnc_api beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Juniper Networks Inc..
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
