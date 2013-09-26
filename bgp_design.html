@@ -1,0 +1,367 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<title>BGP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+<script type="text/javascript" src="analytics.js"></script>
+
+</head>
+
+<body>
+<h1>Border Gateway Protocol (BGP)</h1>
+
+<div class="container">
+<section>
+<h3>Overview</h3>
+<p>The contrail BGP implementation was designed from scratch to run on
+modern server environemnts. The main goals where to be able to take
+advantage of multicore CPUs, large (&gt;4G) memory footprints and modern
+software development techniques. Contrail's initial target application
+(network virtualization) does not in itself require an implementation
+to support an high rate of routing updates or a large number of routes
+but the engineering team felt that given the opportunity to write an
+implementation from scratch we wanted to be able to tackle the problem
+of concurrency from the beginning.</p>
+</section>
+</div>
+
+<div class="container">
+<section>
+<h3>Concurrency</h3>
+<p>The BGP protocol can scale horizontally by adding BGP speakers
+which are then federated as a Route Reflector mesh. That approach is
+very effective when scaling up in one of the parallelizable
+dimensions: number of peers; less so when it come to scaling in the
+order dimension: number of routes.
+
+While it is possible to implement a load-balancer like mechanism
+that would proxy the BGP session of a peer and distribute the route
+load accross multiple route reflection meshes the engineering team
+felt that this approach would expose too much complexity in situations
+where the scalling requirements are not particularly demanding.</p>
+
+<p>As a result we adopted the more traditional approach of designing a
+multi-threaded implementation in a single process that had the goal of
+parallelizing both peer processing as well as route processing.
+In BGP routes with different prefixes can be processed independently
+is most circustances, except when implementing functionality such as
+route aggregation or next-hop resolution.</p>
+
+<p>Having decided to use multi-threading we also knew we needed to
+find an alternative to the use of mutexes as the primary mechanism to
+express data concurrency policies. Without a design that put a
+framework around concurrency and localizes locking to specific modules of
+the code multithreading can become a very significant burden on feature
+development and code stability.
+</p>
+
+<p>The concurrency design we ended up selecting is based on two
+concepts:
+<ul>
+  <li>pipeline stage; </li>
+  <li>dataset.</li>
+</ul>
+</p>
+<p>
+In a CPU design, a pipeline stage is independent from the stages that
+preceed and follow it, except for a well defined set of registers
+for which there is a locking mechanism in place. An example of dataset parallelism
+if an NPU that processes packets in parallel; or an hadoop job.
+</p>
+
+<p>The implementation does not capture these concepts
+literally but achieves what we consider to be a reasonable approximation. The
+<a href="https://github.com/Juniper/contrail-controller/blob/master/src/base/task.h">Task class</a>
+allows the programmer to specificy that a particular callback should
+executed when determined by a given <variable>task_id</variable> and
+<variable>task_instance</variable> parameters. These correspond
+roughly to the concepts of pipeline stage and dataset.
+</p>
+
+<p>The application can then specificy scheduling policies using these
+parameters. As an example, processing configuration changes is
+mutually exclusive with any other Task; code that runs under the
+<quote>bgp::Config</quote> task can modify any data-structure without
+explicitly acquiring a mutex. The bulk of BGP processing however is
+performed by tasks with a specific <variable>task_instance</variable>
+identifier that operate on a subset of the routing table (a <a
+href="http://en.wikipedia.org/wiki/Shard_(database_architecture)">shard</a>
+conceptually).
+</p>
+
+<p>BGP can be divided in the following
+components:
+<ol>
+  <li>Input processing: decoding and validating messages received from
+  each peer;</li>
+  <li>Routing table operations: modifying the routing table and
+  determining the set of updates to generate;</li>
+  <li>Update encoding: draining the update queue and encoding messages
+  to a set of peers;</li>
+  <li>Management operations: configuration processing and diagnostics.</li>
+</ol>
+</p>
+
+<p>For input processing concurrency can be acomplished by processing
+each peer individually. Routing table processing is parallelized by
+sharding the table with as many shards as the number of CPUs;
+an hash function is applied to the route prefix selecting the shard
+(or <quote>db partition</quote>). Update encoding is performed on a
+peer group basis; a peer is assigned to a peer group if it has the
+same <quote>policy</quote> when it comes to the attributes that it
+generates. Artificially we add cpu-affinity as a policy attribute in
+order to divide peers accross groups.</p>
+</section>
+</div>
+
+<div class="container">
+<section>
+<h3>Test driven development</h3>
+<p>The goal for the BGP implementation is to have testing at:
+<ul>
+  <li>class interface;</li>
+  <li>module (group of classes working together such as the update
+  engine);</li>
+  <li>process level;</li>
+</ul>
+</p>
+<p>Unit testing drives code organization. Classes
+should be designed such that their interface provides a service which
+can be tested as a unit. The best way to acomplish this is to follow
+the TDD principle of writing the test of the interface before the implementation.
+</p>
+<p>The bgp implementation is instantiated via a single local
+<variable>BgpServer</variable> object in
+<code>main()</code>. From the server object there is a tree of all the
+other objects that componse the implementation. This allows the test
+code to run multiple BGP servers within the same process. Along with
+dependency injection, it also
+allows the test code to replace any class or set of classes when
+performing module or process level testing.</p>
+
+<p>Dependency injection is acomplished via a <a
+href="https://github.com/Juniper/contrail-controller/blob/master/src/base/factory.h">factory</a>
+mechanism. The
+<a
+href="https://github.com/Juniper/contrail-controller/blob/master/src/bgp/bgp_factory.cc">bgp
+ factory configuration</a> defines the default implementations for
+each interface. Test code can override the defaults by overriding the
+registration as with the following example:
+<code>
+<pre>
+    BgpObjectFactory::Register&lt;BgpSessionManager&gt;(boost::factory&lt;BgpSessionManagerMock *&gt;());
+</pre>
+</code>
+</p>
+
+<p>Unit tests are executed using the <a
+href="http://code.google.com/p/googletest/">
+Google C++ Testing Framework
+</a>. Mock objects are built either manually when trivial or by using
+the corresponding <a
+href="http://code.google.com/p/googletest/">Mocking Framework</a>.
+The BGP test suite can be executed via the build target
+<code>src/bgp:test</code>. Code coverage can be generated by passing
+the flag <code>--optimization=coverage</code> to the build tool (scons).
+</p>
+</section>
+</div>
+
+<div class="container">
+<section>
+<h3>Input processing</h3>
+<p>BGP protocol messages are decoded and validated before being placed
+in the routing table operations queue. We use a mini-DSL, implemented
+as C++ templates, in order to decode and encode BGP messages.</p>
+
+<p>This <a
+href="https://github.com/Juniper/contrail-controller/blob/master/src/base/proto.h">DSL</a>
+is generic and can be used to implement encoding and decoding  for
+different TLV-style protocols.</p>
+
+<p>The BGP grammar is declared in <a
+href="https://github.com/Juniper/contrail-controller/blob/master/src/bgp/bgp_proto.cc">bgp_proto.cc</a>. Each
+node in the grammar declares either a <quote>"Sequence"</quote> of
+elements to parse or a <quote>"Choice"</quote> between multiple
+elements.</p>
+
+<p>Simple elements store
+and retrieve the message data to/from an in-memory datastructure that
+is then used internally.
+For example, the following grammar node stores the autonomous-system
+parameter in an OPEN message in the "as_num" field of an object of
+type "BgpProto::OpenMessage":
+<code>
+<pre>
+class BgpOpenAsNum : public ProtoElement&lt;BgpOpenAsNum&gt; {
+public:
+    static const int kSize = 2;
+    typedef Accessor&lt;BgpProto::OpenMessage, uint32_t, &BgpProto::OpenMessage::as_num&gt; Setter;
+    
+};
+</pre>
+</code>
+</p>
+
+<p>Complex elements (Sequences and Choices) can then include simple
+elements. The example element above is used in the open message
+definition with the following:
+<code>
+<pre>
+class BgpOpenMessage : public ProtoSequence&lt;BgpOpenMessage&gt; {
+public:
+    typedef mpl::list&lt;BgpOpenVersion,
+                      BgpOpenAsNum,
+                      BgpHoldTime,
+                      BgpIdentifier,
+                      BgpOpenOptParam&gt; Sequence;
+    typedef BgpProto::OpenMessage ContextType;
+};
+</pre>
+</code>
+</p>
+
+<p>The objective behind this approach is to eliminate trivial mistakes
+such as reading beyond the message boundary. When TLV decoding is
+manually generated it is necessary to add simple
+validation checks through the parsing code for every single
+component. With an automated approach it is possible to ensure consistency.</p>
+
+<p>An important requirement for the DSL is to allow the programmer to
+define the in-memory datastructure used to then store the resulting
+data. The concern is that the DSL should not force the programmer to
+then copy the data manually between a data structure that is defined
+by a library or code generator and a data structure that is convinient
+for the code that then processes the message.
+</p>
+
+</section>
+</div>
+
+<div class="container">
+<section>
+<h3>Routing table operations</h3>
+<p>Routing tables are in-memory datastructures that organized such
+that one module of code can manage the contents by performing
+add/change/delete operations and multiple modules can be "listeners"
+to table events. This is often referred to as the "observer
+pattern". Routing protocol implementation commonly use this approach;
+it is used by GateD and its derivatives for instance. Contrail
+implements this pattern via the <a
+href="https://github.com/Juniper/contrail-controller/tree/master/src/db">db</a>
+library which is used by several different modules like, for instance,
+the configuration management code in both the control-node and
+compute-node agent.
+</p>
+<p>The contrail "db" library supports the notion of having a
+<code>DBTable</code> that has multiple partitions (or shards) that
+correspond to multiple datasets. For BGP routing tables, the partition
+is determined by hashing the NLRI prefix. The hash function is such
+that it ignores the RD component of L3VPN routes. This guarantees that
+an L3VPN route is in the same partition as the corresponding IP route
+allowing for VRF import and export processing to be done in the
+context of the same partition (dataset).
+</p>
+<p>Inbound messages are placed into a workqueue associated with a
+database partition. The workqueue deals with concurrency between Input
+processing and routing table stages. The table's <code>Input</code>
+method is called whenever there is work to be processed. It converts
+the incoming message into a table Add/Delete/Change operation.
+</p>
+<p>The "db" library will then notify any listeners of the particular
+table and present them with with a change set. The change notification
+calls all listeners of a particular table in sequence. This is where
+operations such as "Update generation" and VRF import/export are performed.
+</p>
+</section>
+</div>
+
+<div class="container">
+<section>
+<h3>Update generation</h3>
+<p>For each routing table, the implementation creates a
+<code>RibOut</code> object for each different "Export Policy", where
+the concept of export policy is the set of factors that influence how
+updates are calculated. CPU affinity can also be part of export policy
+in order to force additional parellelization of update dequeuing.
+</p>
+<p>Whenever there is a change in a routing table entry, the
+<code>BgpExport::Export</code> method is called for each RibOut. This
+call occurs under the context of the "Routing Table Operations" task
+and respective table partition. The "Export" method calculates the
+desired attributes for the route and manipulates the update queue
+associated with the RibOut.
+</p>
+<p>The update manipulation code will ensure that there is a single
+update enqueued for an NLRI at a given time removing any previously
+enqueued updates for a prefix that is changing. Changes that are
+redundant are also supressed. This is achieved by comparing the
+desired state for the route to the state last advertised to the
+peer. Being able to suppress pending updates can reduce the number of
+messages sent to a slow receiver.</p>
+</section>
+</div>
+
+<div class="container">
+<section>
+<h3>Update dequeing</h3>
+<p>BGP peers are assigned to a <code>SchedulingGroup</code>. This is a
+group of BGP peers which advertise the same RibOuts. A scheduling
+group can be processed in parallel with other scheduling groups.</p>
+<p>Concurrency is managed by the <code>RibUpdateMonitor</code>
+class. The update queue has multiple producers (one per routing table
+partition) and a single consumer: the scheduling group task that
+dequeues updates.</p>
+<p>Once an update is dequeued the corresponding message is formatted
+and written to the TCP socket of each peer. When a TCP socket is full,
+the respective peer is taken out of the current send set and a
+marker is added to the queue. Once the socket becomes available for
+writing again the send processing resumes from the last enqueued marker.</p>
+</section>
+</div>
+
+<div class="container">
+<section>
+<h3>Configuration</h3>
+<p>When used in the control node process, BGP derives its
+internal configuration from the network configuration distributed by the IFMAP
+server. This functionality is performed by the <code>BgpConfigManager</code> class.
+</p>
+<p>Unit tests often use an XML configuration parser to setup the
+desired state of the BGP server. The <code>BgpConfigParser</code>
+class translates an XML file into a set of ifmap identity and metadata
+as expected by the configuration manager; tests can also
+replace the default config manager.</p>
+</section>
+</div>
+
+<div class="container">
+<section>
+<h3>Diagnostics</h3>
+<p>The control-node process (which includes BGP) runs a web server on
+port 8083. BGP diagnostics information is available via this web interface.
+</p>
+</section>
+</div>
+
+<hr>
+<address>dev@lists.opencontrail.org</address>
+<!-- hhmts start -->Last modified: Sat Sep 21 16:49:03 PDT 2013 <!-- -->
+<!--hhmts end -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
