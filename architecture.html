@@ -31,7 +31,10 @@ following components:
     <p>The configuration node provides a <a href="api-doc/html/index.html">REST API</a> that allows an orchestration system to define virtual-networks, virtual-interfaces and network policies that control the flow of traffic between virtual-networks. The configuration node is responsible to store the persistent state of the system that defines the desired  state of the network.</p>
   </li>
   <li><p>Control node</p>
-  <p>The control node implements a distributed database that contains the effemeral state of the system. Control nodes federate with each other using the BGP routing protocol. BGP is also used to communicate with network virtualization enabled routers that support the BGP/MPLS L3VPN protocol.</p>
+  <p>The control node implements a distributed database that contains
+  the effemeral state of the system. Control nodes federate with each
+  other using the BGP routing protocol.
+  <a href="bgp_design.html">BGP</a> is also used to communicate with network virtualization enabled routers that support the BGP/MPLS L3VPN protocol.</p>
   <p>Control nodes distribute network reachability information to compute-nodes using the XMPP protocol. The same channel is used to distribute desired network configuration state such as the properties of virtual-network interfaces instantiated in a specific compute-node.</p>
   </li>
   <li><p>Analytics engine</p>
@@ -141,7 +144,7 @@ one or more
 	(Apache Cassandra)
 	for scale-out.
       </p>
-      <p>The collected objects are defined using an <a href="https://github.com/Juniper/contrail-sandesh">IDL</a> so that the schema of database records can
+      <p>The collected objects are defined using an <a href="sandesh.html">IDL</a> so that the schema of database records can
 	be easily communicated to users or applications performing queries.
 	This IDL unifies all diagnostics information on the system including data available through the HTTP interface provided by each contrail process.
       </p>

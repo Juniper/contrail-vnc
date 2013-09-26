@@ -1,0 +1,564 @@
+<html>
+
+<head>
+<title>Sandesh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="analytics.js"></script>
+</head>
+
+<body>
+
+<div style='text-align:center'>
+<h1>Sandesh</h1>
+</div>
+
+<div class="container">
+<h1>Introduction</h1>
+
+<p>Sandesh is the name of a unified infrastructure in Contrail
+Virtual Networking solution to support:</p>
+<ul>
+<li>Centralized collection of object logs, system
+logs, trace buffers, flow statistics from the software modules in the Contrail
+Controller and the Contrail vRouter. </li>
+
+<li>Collection and aggregation of operational state
+of the software modules to provide an overview of the health and status of the
+Contrail Virtual Networking system.</li>
+
+<li>Debugging of the software modules in the
+Contrail Controller and the Contrail vRouter.</li>
+</ul>
+  
+<p>Sandesh is also the name of the XML over TCP protocol used
+by the software modules in the Contrail Controller and Contrail vRouter to send
+the above information to the Analytics node.</p>
+
+<p>Software modules on the Controller like the ControlNode,
+ApiServer, Schema, ServiceMonitor, QueryEngine, OpServer and also the vRouter
+agent are generators of the information and they produce and send the
+information to a module called the Collector on the Analytics node using the
+Sandesh protocol. The Collector receives the information and populates the
+Analytics database for real-time or offline analysis and debugging using the
+REST API provided by the Analytics node.</p>
+
+<p>The Sandesh software framework is designed for scalable
+cross-language development, and it combines a software stack that includes a
+generator side library with a code generation engine to allow software
+developers working on the generators to easily produce and report information
+to the Analytics node. Languages currently supported are C++, Python and C. The
+code generation engine is based on Apache Thrift - <a
+href="http://thrift.apache.org">http://thrift.apache.org</a>.</p>
+</div>
+
+<div class="container">
+<h1>Sandesh Code Generator</h1>
+
+<h2>Overview</h2>
+
+<p>The Sandesh compiler or code generator allows the developers
+to define data types and messages to be sent to the Analytics node in a simple
+definition file. Taking that file as input, the compiler generates code to be
+used to easily send the messages to the Collector. Instead of writing a load of
+boilerplate code to serialize and transport the objects to the Collector, the
+developers working on generators can get right down to business. The data types
+supported in the IDL file are <span style='font-family:Courier'>bool, byte,
+i16, i32, i64, string, list, map, struct, const static string, sandesh, u16,
+u32</span>. Annotations are used in the IDL file to convey information to the
+Collector, for example, the annotation<span style='font-family:Courier'>(key=&lt;Table-Name&gt;)</span>is
+used to indicate that the message should be stored in a particular indexed
+table in the analytics database.</p>
+
+<p>The Sandesh compiler is used to generate the Sandesh IDL
+File (.sandesh) into source code which is used by the generators. To generate
+the source from a sandesh file, user can run:</p>
+
+<code>sandesh --gen &lt;language&gt; &lt;Sandesh filename&gt;</code>
+
+<p>For example, for a sandesh file <span
+style='font-family:Courier'>vns.sandesh</span>, running <code>sandesh
+--gen cpp vns.sandesh</code> generates the following auto-generated C++ code:</p>
+
+<code>
+<pre>
+vns_types.h
+vns_types.cpp
+vns_constants.h
+vns_constants.cpp
+vns_html.cpp
+vns_html_template.cpp
+vns_request_skeleton.cpp
+vns.html
+vns.xsl
+vns.xml
+style.css
+</pre>
+</code>
+
+<p>Similarly, running <code>sandesh --gen py vns.sandesh</code> generates the following auto-generated python code:</p>
+
+<code>
+<pre>
+gen_py/__init__.py
+gen_py/vns
+gen_py/vns/__init__.py
+gen_py/vns/ttypes.py
+gen_py/vns/constants.py
+gen_py/vns/http_request.py
+gen_py/vns/vns.xml
+gen_py/vns/vns.xsl
+gen_py/vns/vns.html
+gen_py/vns/request_skeleton.py
+gen_py/vns/style.css
+gen_py/vns/index.html
+</pre>
+</code>
+
+<h2>Sandesh Types</h2>
+
+<p>Developers can define different types of <span
+style='font-family:Courier'>sandesh</span> in the sandesh file based on the
+need to convey different type of information to the analytics node. Following
+are the currently supported types of sandesh:</p>
+
+<ol>
+<li><p>Systemlog</p>
+
+<p>Use Case:</p>
+
+<p>Structured log replacement for syslog<p>
+
+<p>Example:</p>
+<code>
+<pre>
+systemlog sandesh BgpPeerTableMessageLog {
+    1: string PeerType;
+    2: &quot;Peer&quot;
+    3: string Peer;
+    4: &quot;in table&quot;;
+    5: string Table;
+    6: &quot;:&quot;;
+    7: string Message;
+}
+</pre>
+</code>
+  
+Contrail-Logs Output:
+
+<pre>
+Apr 01 13:36:21.666916 a6s23.contrail.juniper.net [ControlNode:BGP] : BgpPeerTableMessageLog:1 Xmpp Peer default-global-system-config:a6s23 in table inet.0 : Register routing-table for RibInAdd, RibOutAdd
+</pre>
+</li>
+
+<li><p>Objectlog</p>
+
+<p>Use Case:</p>
+
+<p>
+Logging state transitions and lifetime events for objects
+(VirtualMachine, VirtualNetwork). Objectlog is useful for performing historical
+state queries on an object. Objects have an object-id, which is indicated using
+the annotation (key=&quot;Object&lt;Name&gt;&quot;).For example, RoutingInstanceInfo
+below has name
+as the key.
+</p>
+
+Example:
+<pre>
+struct RoutingInstanceInfo {
+    1: string name (key=&quot;ObjectRoutingInstance&quot;);
+    2: optional string route_distinguisher;
+    3: optional string operation;
+    4: optional string peer;
+    5: optional string family;
+    6: optional list&lt;string&gt; add_import_rt;
+    7: optional list&lt;string&gt; remove_import_rt;
+    8: optional list&lt;string&gt; add_export_rt;
+    9: optional list&lt;string&gt; remove_export_rt;
+    10: string hostname;
+}
+</pre>
+
+<pre>
+objectlog sandesh RoutingInstanceCollector {
+    1: RoutingInstanceInfo routing_instance;
+}
+</pre>
+
+<p>Contrail-Logs Output:</p>
+
+<pre>
+Apr 01 13:36:20.769677 a6s23.contrail.juniper.net [ControlNode:__default__] : RoutingInstanceCollector:11 [RoutingInstanceInfo: name = default-domain:service:default-virtual-network:default-virtual-network, operation = , [add_import_rt: target:64512:4], [add_export_rt: target:64512:4], hostname = a6s23]
+</pre>
+
+</li>
+
+<li><p>User Visible Entities (UVE)</p>
+
+<p>Use Case:</p>
+
+<p>User Visible Entities (UVEs) are used represent the
+system-wide state of externally visible objects. UVEs
+are a special case of an objectlog. They
+used to display the operational state of an object like VirtualMachine (VM) or
+VirtualNetwork (VN) in the Contrail VNS, by aggregating information
+from uve sandesh messages across generator types
+(configuration node, vRouter Agent and control node) and across nodes.
+UVE definitions like objectlog need the key annotation.</p>
+
+<p>
+Details and Example:</p>
+
+<p>
+For example, consider the VirtualNetwork (VN) uve sandesh definition below. We specify its
+state in two tiers: Configuration and vRouter Agent. For each tier, we return
+a single structure, even though a given VN might live on many modules in that
+tier. A VN might be present on many vRouter Agents. These agents are expected
+to send UVE sandesh messages when any attribute
+of the VN changes state. The vRouter Agent tier of the VN UVE looks like:</p>
+
+<pre>
+struct
+UveInterVnStats {
+    1:string	other_vn(aggtype=&quot;listkey&quot;)
+    2:i64	out_tpkts
+    3:i64	in_tpkts
+}
+
+struct
+UveVirtualNetworkAgent {<
+    1: string	name(key=&quot;ObjectVNTable&quot;)
+    2: optional bool deleted
+    3: optional i32  total_acl_rules
+    4: optional i32  total_analyzers(aggtype="sum")
+    5: optional i64  in_tpkts
+    7: optional i64  out_tpkts
+    9: optional list&lt;UveInterVnStats&gt;stat(aggtype=&quot;append&quot;)
+    11: optional list&lt;string&gt; vm_list(aggtype=&quot;union&quot;)
+}
+
+uve
+sandesh UveVirtualNetworkAgentTrace {
+    1: UveVirtualNetworkAgent
+}
+</pre>
+
+<p>
+Following are the guidelines that need to be followed when
+defining a sandesh UVE:
+
+<ol>
+<li>
+A Sandesh UVE must have a single attribute (with
+the UVE Struct), which must be named "data"<li>
+
+<li>
+The UVE struct
+must have a mandatory field called "name".
+This must have a "key" annotation
+which has the name of the analytics database index table corresponding with
+this UVE type (each UVE Type has exactly one analytics database index table,
+which is the same across all tiers of this UVE Type).</li>
+
+<li>
+The UVE struct may have an optional field named 
+"deleted". A backend module implicitly
+announces the existing of an object by filling out any attribute(s) of the UVEstruct and sending out the sandesh UVE. But it must explicitly announce its
+deletion by filling out the "deleted" field and sending the sandesh UVE.</li>
+
+<li>
+The UVE struct
+can have any number of other optional or mandatory fields. These field can be
+struct themselves as well. The "aggtype"
+annotation allows the sender to choose how that attribute should be aggregated
+across multiple modules.</li>
+
+<li>
+When sending any list
+attributes of a UVE, the developer must send the entire list or not send the
+attribute at all (do not send only the changed/added elements) . Each time you
+re-send a list attribute, the previous value of the list attribute is totally
+overwritten.</li>
+</ol>
+</p>
+
+<p>
+Aggregation Rules:
+
+<ol>
+<li><p>No "aggtype"</p>
+
+<p>In this case, it is expected this this attribute
+should have the same value in all modules. For example, each vRouter Agent
+should have the same value for "total_acl_rules"
+for a given VN. The aggregated value of "total_acl_rules"
+will be a list of lists. This top level list will have one list per unique
+reported value of "total_acl_rules"
+Each of these sublists will have its first element as the value itself, and the
+remaining elements will be the modules that reported that value. </p>
+</li>
+
+<li><p>aggtype=sum</p>
+
+<p>This is only valid for integer types. In this case,
+the aggregate value reported should be a sum of the values reported by all
+module. For example, each vRouter Agent tracks the number of analyzer instances
+attached to VN using the attribute "total_analyzers".
+The aggregate value should be a sum of the values of this attribute across
+all agents on which the given VN lives.</p>
+</li>
+
+<li><p>aggtype=counter</p>
+
+<p>This is also valid only for integer types. Just like "
+aggtype=sum", the aggregate value will be a
+sum of values across modules. But , we will also store this value when the
+object is deleted. For example, the "in_tpkts"
+attribute will report the total number of input packets seen for this VN, even
+if some vRouter Agents have restarted several times. (and have lost track of
+the packets statistics from their previous runs).</p>
+</li>
+
+<li><p>aggtype=union</p>
+
+<p>This is valid for list of struct, or for list of elementary types. The aggregate
+value is a list which is created by doing a set union of the lists across all
+modules reporting on the object. For example, "vm_list"
+is a list of all VMs that are attached to this VN across all agents.</p>
+</li>
+
+<li><p>aggtype=append</p>
+
+<p>This is valid for list
+of struct. The struct type can have multiple integer type attributes, and
+exactly one attribute with the annotation "aggtype=key",
+which is treated as the key. During aggregation, we combine the lists for all
+modules and create a set of struct with unique keys. If two struct
+elements have the same key, they are combined by adding together all the
+integer attributes. We maintain the struct elements of deleted objects as well.
+For example, VN1 exists on both agent A1 and agent A2. It exchanges
+packets with VN2 on both agents as well. The "stat"
+lists on A1 as well as on A2 have "UveInterVnStats"
+entries for VN2. We have got 200 packets from VN2 on A1 and 100 packets from VN2
+on A2. The aggregated "stat" list will
+have a single entry for VN2 with 300 packets.</p>
+</li>
+
+<li><p>aggtype=stats</p>
+
+<p>This allows developer to store and give historical data of
+this field. For example, it gives the last 10 values reported for cpu util %.
+It also gives the highest 5 values reported in the *prev* hour. The
+optional hbin gives a histogram for the same field
+over the course of it's existence.</p>
+</li>
+</ol>
+</p>
+</li>
+
+<li><p>Trace</p>
+
+<p>Use Case:</p>
+
+<p>Light-weight in memory buffer logs for frequently occurring
+events</p>
+<p>Example:</p>
+
+<pre>
+trace
+sandesh XmppRxStream {
+    1: "Received xmpp message from: ";
+    2: string IPaddress;
+    3: "Port";
+    4: i32 port;
+    5: "Size: ";
+    6: i32 size;
+    7: "Packet: ";
+    8: string packet;
+    9: "$";
+}
+</pre>
+
+<p>Log file output when local logging is enabled:</p>
+<pre>
+2013-03-29 01:56:21 [139959143454464]: XmppRxStream: Received xmpp message from: 10.84.13.23 Port 5269 Size: 196 Packet: &lt;?xml version="1.0"?&gt;
+&lt;stream:stream from="" to="default-global-system-config:a6s23" id="++123" version="1.0" xml:lang="en" xmlns="jabber:client" xmlns:stream="http://etherx.jabber.org/streams" &gt; $ src/xmpp/xmpp_connection.cc 248 0
+</pre>
+
+</li>
+<li><p>Traceobject</p>
+
+<p>Use Case:</p>
+
+<p>Light-weight in memory buffer logs for frequently occurring
+object state transitions</p>
+
+<p>Example:
+<pre>
+traceobject
+sandesh RoutingInstanceCreate {
+    1: string name;
+    2: list&lt;string&gt; import_rt;
+    3: list&lt;string&gt; export_rt;
+    4: string virtual_network;
+    5: i32 index;
+}
+</pre></p>
+
+<p>Log file output when
+local logging is enabled:
+<pre>
+013-03-29 01:46:29 [140461185882112]: RoutingInstanceTableCreate: name = default-domain:default-project:ip-fabric:__default__ table = bgp.l3vpn.0 family = inet-vpn file = src/bgp/routing-instance/routing_instance.cc line = 233 more = 0
+</pre>
+</p>
+
+<p>
+Note about trace and traceobject:</p>
+
+<p>
+Developer needs to create a Sandesh Trace Buffer with a
+given size wherein the trace and traceobject sandesh are stored. HTTP
+introspect (explained in the request
+and response sandesh) can be used to
+request viewing of the trace buffer. Tracing to the buffer can be enabled or
+disabled, and multiple types of trace
+and traceobject sandesh can be traced
+into a single trace buffer.</p>
+
+</li>
+<li><p>Buffer</p>
+
+<p>Use Case:</p>
+
+<p>Exchanging data between kernel and userspace, not sent to
+collector. Provides only marshaling and un-marshaling.</p>
+
+<p>Example:
+
+<pre>
+buffer
+sandesh vr_nexthop_req {
+    1: sandesh_op h_op;
+    2: byte	nhr_type;
+    3: byte     nhr_family;
+    4:  i32     nhr_id;
+    5:  i32     nhr_rid;
+    6:  i32     nhr_encap_oif_id;
+    7:  i32     nhr_encap_len;
+    8:  i32     nhr_encap_family;
+    9:  i32     nhr_vrf;
+    10: i32     nhr_tun_sip;
+    11: i32     nhr_tun_dip;
+    12: i16     nhr_tun_sport;
+    13: i16     nhr_tun_dport;
+    14: i32     nhr_ref_cnt;
+    15: i32     nhr_marker;
+    16: i16	nhr_flags;
+    17: list&lt;byte&gt;  nhr_encap;
+    18: list&lt;i32&gt;   nhr_nh_list;
+    19: i32     nhr_label;
+}
+</pre></p>
+</li>
+
+<li><p>Flowlog</p>
+
+<p>Use Case:</p>
+
+<p>Reporting flow statistics for historical analysis</p>
+
+<p>Example:
+
+<pre>
+struct FlowDataIpv4 {
+    1: string flowuuid;
+    2: byte direction_ing;
+    3: optional string sourcevn;
+    4: optional i32 sourceip;
+    5: optional string destvn;
+    6: optional i32 destip;
+    7: optional byte protocol;
+    8: optional i16 sport;
+    9: optional i16 dport;
+    10: optional byte tos;
+    11: optional byte tcp_flags;
+    12: optional string vm;
+    13: optional string input_interface;
+    14: optional string output_interface;
+    15: optional i32 mpls_label;
+    16: optional string reverse_uuid;
+    17: optional i64 setup_time;
+    18: optional i64 teardown_time;
+    19: optional i32 min_interarrival;
+    20: optional i32 max_interarrival;
+    21: optional i32 mean_interarrival;
+    22: optional i32 stddev_interarrival;
+    23: optional i64 bytes;
+    24: optional i64 packets;
+    25: optional binary data_sample;
+}
+
+sandesh FlowDataIpv4Object {
+    1: FlowDataIpv4 flowdata;
+}
+</pre></p>
+</li>
+
+<li><p>Request and Response</p>
+
+<p>Use Case:</p>
+
+<p>
+Request is used to send commands from requestor to generator.
+Response is used for response from generator to requestor. The requestor can be
+the analytics node Collector or a HTTP web server running in the generator used
+for debugging the software modules in the Contrail Controller and Contrail
+vRouter. Request and response sandesh provide debugging facility via HTTP
+introspect. Developer can use a Web browser to send sandesh request and get
+back sandesh response providing a RESTful API to the software modules.</p>
+
+<p>Example:</p>
+
+<pre>
+request sandesh
+SandeshLoggingParamsSet {
+    1: bool enable;
+    2: string category;
+    3: string level;
+}
+
+response sandesh
+SandeshLoggingParams {
+    1: bool enable;
+    2: string category;
+    3: string level;
+}
+</pre>
+
+<p>Notes:</p>
+
+<p>
+The developer is expected to provide the implementation of
+the request handling function. For the above example, in C++ it will be
+implementation of <code>SandeshLoggingParamsSet::HandleRequest</code>
+function and for python a bound method named handle_request
+is expected to be present in <code>SandeshLoggingParamsSet</code>.</p>
+
+</li>
+</ol>
+
+</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>
