@@ -1,0 +1,921 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opserver Package &mdash; Contrail Opserver v1.02 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.02',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Contrail Opserver v1.02 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to Contrail Opserver’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Contrail Opserver’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Contrail Opserver v1.02 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="opserver-package">
+<h1>opserver Package<a class="headerlink" href="#opserver-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="opserver-module">
+<h2><tt class="xref py py-mod docutils literal"><span class="pre">opserver</span></tt> Module<a class="headerlink" href="#opserver-module" title="Permalink to this headline">¶</a></h2>
+<p>Opserver provides REST API interface to extract the operational state of
+Juniper&#8217;s Contrail Virtual Network System. These APIs are used by Contrail
+Web UI to present operation state to the users. Other applications may use
+the Opserver&#8217;s REST API for analytics and others uses.</p>
+<p>The available APIs are provided through the REST interface itself and one
+can navigate the URL tree starting at the root (<tt class="docutils literal"><span class="pre">http://&lt;ip&gt;:&lt;opserver-port&gt;</span></tt>)
+to see all of the available APIs.</p>
+<div class="section" id="user-visible-entities">
+<h3>User Visible Entities<a class="headerlink" href="#user-visible-entities" title="Permalink to this headline">¶</a></h3>
+<p>Opserver provides API to get the
+current state of the User Visible Entities in the Contrail VNS. <strong>User Visible
+Entity(UVE)</strong> is defined as an Object that may span multiple components and may
+require aggregation before the UVE information is presented. Examples include
+<tt class="docutils literal"><span class="pre">Virtual</span> <span class="pre">Network</span></tt>, <tt class="docutils literal"><span class="pre">Virtual</span> <span class="pre">Machine</span></tt> etc. Operational information of a <tt class="docutils literal"><span class="pre">Virtual</span> <span class="pre">Network</span></tt>
+may span multiple vRouters, Config Nodes, Control Nodes. Opserver provides aggregation of
+all this information and provides the aggregated information through REST API.
+The URL <tt class="docutils literal"><span class="pre">/analytics/uves</span></tt> shows the list of all UVE types available in the system.</p>
+<p>The description of some of the UVEs in the Contrail VNS is given below:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">Virtual</span> <span class="pre">Network</span></tt>: This UVE provides information associated with a virtual network such as:</dt>
+<dd><ul class="first last simple">
+<li>list of networks connected to this network</li>
+<li>list of virtual machines spawned in this VN</li>
+<li>list of ACLs associated with this VN</li>
+<li>global input/output statistics</li>
+<li>per VN pair input/output statistics</li>
+<li>The REST api to get all Virtual Network UVEs is through <strong>HTTP GET</strong> using the URL <tt class="docutils literal"><span class="pre">/analytics/uves/virtual-networks</span></tt></li>
+<li>The REST api to get a particular Virtual Network UVE is through <strong>HTTP GET</strong> using the URL <tt class="docutils literal"><span class="pre">/analytics/uves/virtual-network/&lt;name&gt;</span></tt></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">Virtual</span> <span class="pre">Machine</span></tt>: This UVE provides information associated with a virtual machine such as:</dt>
+<dd><ul class="first last simple">
+<li>list of interfaces in this virtual machine</li>
+<li>list of floating IPs associated with each of it&#8217;s interfaces</li>
+<li>input/output statistics</li>
+<li>The REST api to get all Virtual Machine UVEs is through <strong>HTTP GET</strong> using the URL <tt class="docutils literal"><span class="pre">/analytics/uves/virtual-machines</span></tt></li>
+<li>The REST api to get a particular Virtual Machine UVE is through <strong>HTTP GET</strong> using the URL <tt class="docutils literal"><span class="pre">/analytics/uves/virtual-machine/&lt;name&gt;</span></tt></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">VRouter</span></tt>: This UVE provides information associated with a VRouter such as:</dt>
+<dd><ul class="first last simple">
+<li>list of virtual networks present on this VRouter</li>
+<li>list of virtual machines spawned on the server of this VRouter</li>
+<li>statistics of the traffic flowing through this VRouter</li>
+<li>The REST api to get all vRouter UVEs is through <strong>HTTP GET</strong> using the URL <tt class="docutils literal"><span class="pre">/analytics/uves/vrouters</span></tt></li>
+<li>The REST api to get a particular vRouter UVE is through <strong>HTTP GET</strong> using the URL <tt class="docutils literal"><span class="pre">/analytics/uves/vrouter/&lt;name&gt;</span></tt></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Contrail Nodes</strong>: There are multiple types of Nodes in Contrail VNS, for e.g Control Node, Config Node, Analytics Node, Compute Node etc.</dt>
+<dd><p class="first">There is a UVE for each Node type. The common information associated with each Node UVE is</p>
+<ul class="simple">
+<li>ip address of the Node</li>
+<li>list of processes, their cpu/memory utilization</li>
+</ul>
+<p>There will also be Node type specific information for e.g</p>
+<ul class="last simple">
+<li>Control Node will have information wrt it&#8217;s connectivity to the vRouter and other Control Nodes</li>
+<li>Analytics node will have information regarding how many generators are connected to it etc.</li>
+<li>The REST api to get all Config Node UVEs is through <strong>HTTP GET</strong> using the URL <tt class="docutils literal"><span class="pre">/analytics/uves/config-nodes</span></tt></li>
+<li>The REST api to get a particular Config Node UVE is through <strong>HTTP GET</strong> using the URL <tt class="docutils literal"><span class="pre">/analytics/uves/config-node/&lt;name&gt;</span></tt></li>
+<li>The APIs are similar for other Node types.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Service Chaining</strong>: There are UVEs related Service Chaining as well viz. Service Chain, Service Instance</dt>
+<dd><p class="first">The URLs for these are</p>
+<ul class="last simple">
+<li><tt class="docutils literal"><span class="pre">/analytics/uves/service-chains</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/analytics/uves/service-instances</span></tt></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>Wild card query of UVEs</strong>: If there is a need to get information for multiple UVEs of the same time, then wildcard query can be issued.
+For e.g</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">/analytics/uves/virtual-network/*</span></tt> gives all Virtual Network UVEs</li>
+<li><tt class="docutils literal"><span class="pre">/analytics/uves/virtual-network/project1*</span></tt> gives all Virtual Network UVEs that have their name starting with project1.</li>
+</ul>
+<p><strong>Filtered information of UVEs</strong>: As explained earlier UVE information is an aggregated information across all generators. If there is
+a need to get partial information of the UVE, then relevant flags can be passed to get only the filtered information.
+Supported filtering flags are</p>
+<ul class="simple">
+<li>sfilt : for Source (usually hostname of the generator) filtering,</li>
+<li>mfilt : for Module (module name of the generator) filtering,</li>
+<li>cfilt : for UVE struct type filtering - useful when UVE is a composition of multiple structs</li>
+</ul>
+<p>For e.g</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">/analytics/uves/virtual-network/vn1?sfilt=src1</span></tt> gives Virtual Network vn1&#8217;s information provided by all components on Source src1</li>
+<li><tt class="docutils literal"><span class="pre">/analytics/uves/virtual-network/vn1?mfilt=ApiServer</span></tt> gives Virtual Network vn1&#8217;s information provided by all ApiServer modules</li>
+</ul>
+<p>Example outputs of the UVEs are given in the below Examples section</p>
+</div>
+<div class="section" id="log-and-flow-information">
+<h3>Log and Flow Information<a class="headerlink" href="#log-and-flow-information" title="Permalink to this headline">¶</a></h3>
+<p>In Contrail VNS, the Log and Flow information is collected and stored centrally
+using horizontally scalable Contrail VNS Collector and horizontally scalable
+NoSQL database. Opserver provides REST API to extract this information via
+queries. The queries provide well known SQL syntax and hide the underlying
+complexity of NoSQL tables.</p>
+<dl class="docutils">
+<dt>The following are the <strong>HTTP GET</strong> APIs related to supported queries:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">/analytics/tables</span></tt></dt>
+<dd><p class="first last">this API gives <strong>the list of SQL-type tables</strong> available for querying and the hrefs to get information for each of these tables</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">/analytics/table/&lt;table&gt;</span></tt></dt>
+<dd><p class="first last">this API gives for a given table, list of APIs available to get information for this table</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">/analytics/table/&lt;table&gt;/schema</span></tt></dt>
+<dd><p class="first last">this API gives schema for a given table</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>The following is the <strong>HTTP POST</strong> API related to these queries:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">/analytics/query</span></tt></dt>
+<dd><ul class="first">
+<li><p class="first">This API is to extract information from one of the tables. The format of the query follows the SQL syntax of the following form</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">SELECT field1, field2...</div>
+<div class="line">FROM table1</div>
+<div class="line">WHERE field1 = value1 AND field3 = value3...</div>
+<div class="line">FILTER BY...</div>
+<div class="line">SORT BY...</div>
+<div class="line">LIMIT</div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>In addition to the above, the start time and the end time are mandatory - they define the time period of the query data.</p>
+<dl class="docutils">
+<dt>The parameters of the query are passed through POST data. The information passed has the following fields:</dt>
+<dd><ul class="first last simple">
+<li>start_time: start of the time period</li>
+<li>end_time: end of the time period</li>
+<li>table: table from which the data to be extracted</li>
+<li>select_fields: columns in the final result table</li>
+<li>where: list of match conditions</li>
+<li>...</li>
+</ul>
+</dd>
+</dl>
+<p>POST data is in JSON format and is based on the following idl file.</p>
+<div class="highlight-python"><pre>/*
+ * Copyright (c) 2013 Juniper Networks, Inc. All rights reserved.
+ */
+
+/*
+ *  query_rest.idl
+ *
+ *  IDL definitions for query engine REST API 
+ *
+ *  PLEASE NOTE: After updating this file, do update json_parse.h
+ *
+ */
+
+enum match_op {
+    EQUAL = 1,
+    NOT_EQUAL = 2,
+    IN_RANGE = 3,
+    NOT_IN_RANGE = 4,   // not supported currently
+    // following are only for numerical column fields
+    LEQ = 5, // column value is less than or equal to filter value
+    GEQ = 6, // column value is greater than or equal to filter value
+    PREFIX = 7, // column value has the "value" field as prefix
+    REGEX_MATCH = 8 // for filters only
+}
+
+enum sort_op {
+    ASCENDING = 1,
+    DESCENDING = 2,
+}     
+     
+struct match {
+    1: string name;
+    2: string value;
+    3: match_op op;
+    4: optional string value2;   // this is for only RANGE match
+}
+
+typedef list&lt;match&gt; term; (AND of match)
+
+enum flow_dir_t {
+    EGRESS = 0,
+    INGRESS = 1
+}
+
+struct query {
+    1: string table; // Table to query (FlowSeriesTable, MessageTable, ObjectVNTable, ObjectVMTable, FlowRecordTable)
+    2: i64 start_time; // Microseconds in UTC since Epoch
+    3: i64 end_time; // Microseconds in UTC since Epoch
+    4: list&lt;string&gt; select_fields; // List of SELECT fields
+    5: list&lt;term&gt; where; // WHERE (OR of terms)
+    6: optional sort_op sort; 
+    7: optional list&lt;string&gt; sort_fields;
+    8: optional i32 limit;
+    9: optional flow_dir_t dir; // direction of flows being queried 
+    10: optional list&lt;match&gt; filter; // filter the processed result by value
+} 
+
+struct flow_series_result_entry {
+    1: optional i64 T;  // Timestamp of the flow record
+    2: optional string sourcevn;
+    3: optional string sourceip;
+    4: optional string destvn;
+    5: optional string destip;
+    6: optional i32 protocol;
+    7: optional i32 sport;
+    8: optional i32 dport;
+    9: optional flow_dir_t direction_ing;
+    10: optional i64 packets;  // mutually exclusive to 12,13
+    11: optional i64 bytes; // mutually exclusive to 12,13
+    12: optional i64 sum_packets; // represented as "sum(packets)" in JSON
+    13: optional i64 sum_bytes; // represented as "sum(bytes)" in JSON 
+};
+typedef list&lt;flow_series_result_entry&gt; flow_seriest_result;
+</pre>
+</div>
+<p class="last">The result of the query API is also in JSON format.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Query Types</strong>:
+Opserver supports two types of queries - Sync and Async.
+POST data parameters as given above are same for both types for queries.
+The Client must request an Async query by attaching this header to the POST request: <tt class="docutils literal"><span class="pre">Expect:</span> <span class="pre">202-accepted</span></tt>.
+If this header is not present, Opserver will execute the query synchronously.</p>
+<p><strong>Sync Query</strong>: Opserver sends the result inline with the query processing</p>
+<p><strong>Async Query</strong>:</p>
+<p><tt class="docutils literal"><span class="pre">Initiating</span> <span class="pre">a</span> <span class="pre">Query</span></tt>: The Client must request an Async query by attaching this header to the POST request: <tt class="docutils literal"><span class="pre">Expect:</span> <span class="pre">202-accepted</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">Examining</span> <span class="pre">the</span> <span class="pre">status</span></tt>: In case of an Asynchronous query, the Opserver will respond with code <tt class="docutils literal"><span class="pre">202</span> <span class="pre">Accepted</span></tt>
+The response contents will be an href/URI that represents the status entity for this async query.
+(The href will be of the form <tt class="docutils literal"><span class="pre">/analytics/query/&lt;QueryID&gt;</span></tt>. The QueryID will have been assigned by the OpServer.
+The client is expected to poll this status entity (by doing a GET method on it)
+The response contents will have a variable named &#8220;progress&#8221;, which will be a number between 0 and 100.
+This variable represents &#8220;approx. % complete&#8221;. When &#8220;progress&#8221; is 100, query processing is complete.</p>
+<p><tt class="docutils literal"><span class="pre">The</span> <span class="pre">&quot;chunk&quot;</span> <span class="pre">field</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">Status</span> <span class="pre">Entity</span></tt>:
+The status entity will also have an element called &#8220;chunks&#8221;, which will contain a list of query result chunks.
+Each element of this list will have 3 fields: &#8220;start_time&#8221;, &#8220;end_time&#8221; and &#8220;href&#8221;.
+The opserver will decide how many chunks to break up the query into.
+If the result of a chunk is not available yet, the chunk&#8217;s &#8220;href&#8221; will be an empty string (&#8220;&#8221;).
+When the partial result of a chunk is available, the chunk href will be of the form <tt class="docutils literal"><span class="pre">/analytics/query/&lt;QueryID&gt;/chunk-partial/&lt;chunk</span> <span class="pre">number&gt;</span></tt>.
+When the final result of a chunk is available, the chunk href will be of the form <tt class="docutils literal"><span class="pre">/analytics/query/&lt;QueryID&gt;/chunk-final/&lt;chunk</span> <span class="pre">number&gt;</span></tt>.</p>
+</div>
+<div class="section" id="example-outputs">
+<h3>Example Outputs<a class="headerlink" href="#example-outputs" title="Permalink to this headline">¶</a></h3>
+<p>Example output for a virtual network UVE:</p>
+<div class="highlight-python"><pre>[root@a3s14 ~]# curl 127.0.0.1:8081/analytics/virtual-network/default-domain:demo:front-end | python -mjson.tool
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2576  100  2576    0     0   152k      0 --:--:-- --:--:-- --:--:--  157k
+{
+    "UveVirtualNetworkAgent": {
+        "acl": [
+            [
+                {
+                    "@type": "string"
+                },
+                "a3s18:VRouterAgent"
+            ]
+        ],
+        "in_bytes": {
+            "#text": "2232972057",
+            "@aggtype": "counter",
+            "@type": "i64"
+        },
+        "in_stats": {
+            "@aggtype": "append",
+            "@type": "list",
+            "list": {
+                "@size": "3",
+                "@type": "struct",
+                "UveInterVnStats": [
+                    {
+                        "bytes": {
+                            "#text": "2114516371",
+                            "@type": "i64"
+                        },
+                        "other_vn": {
+                            "#text": "default-domain:demo:back-end",
+                            "@aggtype": "listkey",
+                            "@type": "string"
+                        },
+                        "tpkts": {
+                            "#text": "5122001",
+                            "@type": "i64"
+                        }
+                    },
+                    {
+                        "bytes": {
+                            "#text": "1152123",
+                            "@type": "i64"
+                        },
+                        "other_vn": {
+                            "#text": "__FABRIC__",
+                            "@aggtype": "listkey",
+                            "@type": "string"
+                        },
+                        "tpkts": {
+                            "#text": "11323",
+                            "@type": "i64"
+                        }
+                    },
+                    {
+                        "bytes": {
+                            "#text": "8192",
+                            "@type": "i64"
+                        },
+                        "other_vn": {
+                            "#text": "default-domain:demo:front-end",
+                            "@aggtype": "listkey",
+                            "@type": "string"
+                        },
+                        "tpkts": {
+                            "#text": "50",
+                            "@type": "i64"
+                        }
+                    }
+                ]
+            }
+        },
+        "in_tpkts": {
+            "#text": "5156342",
+            "@aggtype": "counter",
+            "@type": "i64"
+        },
+        "interface_list": {
+            "@aggtype": "union",
+            "@type": "list",
+            "list": {
+                "@size": "1",
+                "@type": "string",
+                "element": [
+                    "tap2158f77c-ec"
+                ]
+            }
+        },
+        "out_bytes": {
+            "#text": "2187615961",
+            "@aggtype": "counter",
+            "@type": "i64"
+        },
+        "out_stats": {
+            "@aggtype": "append",
+            "@type": "list",
+            "list": {
+                "@size": "4",
+                "@type": "struct",
+                "UveInterVnStats": [
+                    {
+                        "bytes": {
+                            "#text": "2159083215",
+                            "@type": "i64"
+                        },
+                        "other_vn": {
+                            "#text": "default-domain:demo:back-end",
+                            "@aggtype": "listkey",
+                            "@type": "string"
+                        },
+                        "tpkts": {
+                            "#text": "5143693",
+                            "@type": "i64"
+                        }
+                    },
+                    {
+                        "bytes": {
+                            "#text": "1603041",
+                            "@type": "i64"
+                        },
+                        "other_vn": {
+                            "#text": "__FABRIC__",
+                            "@aggtype": "listkey",
+                            "@type": "string"
+                        },
+                        "tpkts": {
+                            "#text": "9595",
+                            "@type": "i64"
+                        }
+                    },
+                    {
+                        "bytes": {
+                            "#text": "24608",
+                            "@type": "i64"
+                        },
+                        "other_vn": {
+                            "#text": "__UNKNOWN__",
+                            "@aggtype": "listkey",
+                            "@type": "string"
+                        },
+                        "tpkts": {
+                            "#text": "408",
+                            "@type": "i64"
+                        }
+                    },
+                    {
+                        "bytes": {
+                            "#text": "8192",
+                            "@type": "i64"
+                        },
+                        "other_vn": {
+                            "#text": "default-domain:demo:front-end",
+                            "@aggtype": "listkey",
+                            "@type": "string"
+                        },
+                        "tpkts": {
+                            "#text": "50",
+                            "@type": "i64"
+                        }
+                    }
+                ]
+            }
+        },
+        "out_tpkts": {
+            "#text": "5134830",
+            "@aggtype": "counter",
+            "@type": "i64"
+        },
+        "virtualmachine_list": {
+            "@aggtype": "union",
+            "@type": "list",
+            "list": {
+                "@size": "1",
+                "@type": "string",
+                "element": [
+                    "dd09f8c3-32a8-456f-b8cc-fab15189f50f"
+                ]
+            }
+        }
+    },
+    "UveVirtualNetworkConfig": {
+        "connected_networks": {
+            "@aggtype": "union",
+            "@type": "list",
+            "list": {
+                "@size": "1",
+                "@type": "string",
+                "element": [
+                    "default-domain:demo:back-end"
+                ]
+            }
+        },
+        "routing_instance_list": {
+            "@aggtype": "union",
+            "@type": "list",
+            "list": {
+                "@size": "1",
+                "@type": "string",
+                "element": [
+                    "front-end"
+                ]
+            }
+        },
+        "total_acl_rules": [
+            [
+                {
+                    "#text": "3",
+                    "@type": "i32"
+                },
+                ":",
+                "a3s14:Schema"
+            ]
+        ]
+    }
+}</pre>
+</div>
+<p>Example output for a virtual machine UVE:</p>
+<div class="highlight-python"><pre>[root@a3s14 ~]# curl 127.0.0.1:8081/analytics/virtual-machine/f38eb47e-63d2-4b39-80de-8fe68e6af1e4 | python -mjson.tool
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   736  100   736    0     0   160k      0 --:--:-- --:--:-- --:--:--  179k
+{
+    "UveVirtualMachineAgent": {
+        "interface_list": [
+            [
+                {
+                    "@type": "list",
+                    "list": {
+                        "@size": "1",
+                        "@type": "struct",
+                        "VmInterfaceAgent": [
+                            {
+                                "in_bytes": {
+                                    "#text": "2188895907",
+                                    "@aggtype": "counter",
+                                    "@type": "i64"
+                                },
+                                "in_pkts": {
+                                    "#text": "5130901",
+                                    "@aggtype": "counter",
+                                    "@type": "i64"
+                                },
+                                "ip_address": {
+                                    "#text": "192.168.2.253",
+                                    "@type": "string"
+                                },
+                                "name": {
+                                    "#text": "f38eb47e-63d2-4b39-80de-8fe68e6af1e4:ccb085a0-c994-4034-be0f-6fd5ad08ce83",
+                                    "@type": "string"
+                                },
+                                "out_bytes": {
+                                    "#text": "2201821626",
+                                    "@aggtype": "counter",
+                                    "@type": "i64"
+                                },
+                                "out_pkts": {
+                                    "#text": "5153526",
+                                    "@aggtype": "counter",
+                                    "@type": "i64"
+                                },
+                                "virtual_network": {
+                                    "#text": "default-domain:demo:back-end",
+                                    "@aggtype": "listkey",
+                                    "@type": "string"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "a3s19:VRouterAgent"
+            ]
+        ]
+    }
+}</pre>
+</div>
+<p>Example output for a vrouter UVE:</p>
+<div class="highlight-python"><pre>[root@a3s14 ~]# curl 127.0.0.1:8081/analytics/vrouter/a3s18 | python -mjson.tool
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   706  100   706    0     0   142k      0 --:--:-- --:--:-- --:--:--  172k
+{
+    "VrouterAgent": {
+        "collector": [
+            [
+                {
+                    "#text": "10.84.17.1",
+                    "@type": "string"
+                },
+                "a3s18:VRouterAgent"
+            ]
+        ],
+        "connected_networks": [
+            [
+                {
+                    "@type": "list",
+                    "list": {
+                        "@size": "1",
+                        "@type": "string",
+                        "element": [
+                            "default-domain:demo:front-end"
+                        ]
+                    }
+                },
+                "a3s18:VRouterAgent"
+            ]
+        ],
+        "interface_list": [
+            [
+                {
+                    "@type": "list",
+                    "list": {
+                        "@size": "1",
+                        "@type": "string",
+                        "element": [
+                            "tap2158f77c-ec"
+                        ]
+                    }
+                },
+                "a3s18:VRouterAgent"
+            ]
+        ],
+        "virtual_machine_list": [
+            [
+                {
+                    "@type": "list",
+                    "list": {
+                        "@size": "1",
+                        "@type": "string",
+                        "element": [
+                            "dd09f8c3-32a8-456f-b8cc-fab15189f50f"
+                        ]
+                    }
+                },
+                "a3s18:VRouterAgent"
+            ]
+        ],
+        "xmpp_peer_list": [
+            [
+                {
+                    "@type": "list",
+                    "list": {
+                        "@size": "2",
+                        "@type": "string",
+                        "element": [
+                            "10.84.17.2",
+                            "10.84.17.3"
+                        ]
+                    }
+                },
+                "a3s18:VRouterAgent"
+            ]
+        ]
+    }
+}</pre>
+</div>
+<p>Examples of queries related to the VNS log and flow data:</p>
+<div class="highlight-python"><pre>[root@a3s14 ~]# curl 127.0.0.1:8081/analytics/tables | python -mjson.tool
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   846  100   846    0     0   509k      0 --:--:-- --:--:-- --:--:--  826k
+[
+    {
+        "href": "http://127.0.0.1:8081/analytics/table/MessageTable",
+        "name": "MessageTable"
+    },
+    {
+        "href": "http://127.0.0.1:8081/analytics/table/ObjectVNTable",
+        "name": "ObjectVNTable"
+    },
+    {
+        "href": "http://127.0.0.1:8081/analytics/table/ObjectVMTable",
+        "name": "ObjectVMTable"
+    },
+    {
+        "href": "http://127.0.0.1:8081/analytics/table/ObjectVRouter",
+        "name": "ObjectVRouter"
+    },
+    {
+        "href": "http://127.0.0.1:8081/analytics/table/ObjectBgpPeer",
+        "name": "ObjectBgpPeer"
+    },
+    {
+        "href": "http://127.0.0.1:8081/analytics/table/ObjectRoutingInstance",
+        "name": "ObjectRoutingInstance"
+    },
+    {
+        "href": "http://127.0.0.1:8081/analytics/table/ObjectXmppConnection",
+        "name": "ObjectXmppConnection"
+    },
+    {
+        "href": "http://127.0.0.1:8081/analytics/table/FlowRecordTable",
+        "name": "FlowRecordTable"
+    },
+    {
+        "href": "http://127.0.0.1:8081/analytics/table/FlowSeriesTable",
+        "name": "FlowSeriesTable"
+    }
+]
+[root@a3s14 ~]# curl 127.0.0.1:8081/analytics/table/MessageTable | python -mjson.tool
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   192  100   192    0     0   102k      0 --:--:-- --:--:-- --:--:--  187k
+[
+    {
+        "href": "http://127.0.0.1:8081/analytics/table/MessageTable/schema",
+        "name": "schema"
+    },
+    {
+        "href": "http://127.0.0.1:8081/analytics/table/MessageTable/column-values",
+        "name": "column-values"
+    }
+]
+[root@a3s14 ~]# curl 127.0.0.1:8081/analytics/table/MessageTable/schema | python -mjson.tool
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   630  100   630    0     0   275k      0 --:--:-- --:--:-- --:--:--  307k
+{
+    "columns": [
+        {
+            "datatype": "int",
+            "index": "False",
+            "name": "MessageTS"
+        },
+        {
+            "datatype": "string",
+            "index": "True",
+            "name": "Source"
+        },
+        {
+            "datatype": "string",
+            "index": "True",
+            "name": "ModuleId"
+        },
+        {
+            "datatype": "string",
+            "index": "True",
+            "name": "Category"
+        },
+        {
+            "datatype": "int",
+            "index": "True",
+            "name": "Level"
+        },
+        {
+            "datatype": "int",
+            "index": "False",
+            "name": "Type"
+        },
+        {
+            "datatype": "string",
+            "index": "True",
+            "name": "Messagetype"
+        },
+        {
+            "datatype": "int",
+            "index": "False",
+            "name": "SequenceNum"
+        },
+        {
+            "datatype": "string",
+            "index": "False",
+            "name": "Context"
+        },
+        {
+            "datatype": "string",
+            "index": "False",
+            "name": "Xmlmessage"
+        }
+    ],
+    "type": "LOG"
+}</pre>
+</div>
+<p>Example of a query into message table:</p>
+<div class="highlight-python"><pre>[root@a3s14 ~]# cat filename
+{"sort": 1, "start_time": 1366841256508546, "sort_fields": ["MessageTS"], "filter": [{"name": "Type", "value": "1", "op": 1}], "end_time": 1366841856508560, "select_fields": ["MessageTS", "Source", "ModuleId", "Category", "Messagetype", "SequenceNum", "Xmlmessage", "Type"], "table": "MessageTable", "where": [[{"name": "ModuleId", "value": "ControlNode", "op": 1}, {"name": "Messagetype", "value": "BgpPeerMessageLog", "op": 1}]]}
+[root@a3s14 ~]#
+[root@a3s14 ~]#
+[root@a3s14 ~]# curl -X POST --data @filename 127.0.0.1:8081/analytics/query --header "Content-Type:application/json" | python -mjson.tool
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  183k  100  183k  100   431  1282k   3021 --:--:-- --:--:-- --:--:-- 1288k
+{
+    "value": [
+        {
+            "Category": "BGP",
+            "MessageTS": 1366841263859397,
+            "Messagetype": "BgpPeerMessageLog",
+            "ModuleId": "ControlNode",
+            "SequenceNum": 130991,
+            "Source": "a3s16",
+            "Type": 1,
+            "Xmlmessage": "&lt;BgpPeerMessageLog type=\"sandesh\"&gt;&lt;PeerType type=\"string\" identifier=\"1\"&gt;Bgp&lt;/PeerType&gt;&lt;str2 type=\"string\" identifier=\"2\"&gt;Peer&lt;/str2&gt;&lt;Peer type=\"string\" identifier=\"3\"&gt;10.84.11.252&lt;/Peer&gt;&lt;Direction type=\"string\" identifier=\"4\"&gt;&amp;gt;&lt;/Direction&gt;&lt;Message type=\"string\" identifier=\"5\"&gt;Send Keepalive 19 bytes&lt;/Message&gt;&lt;file type=\"string\" identifier=\"-32768\"&gt;src/bgp/bgp_peer.cc&lt;/file&gt;&lt;line type=\"i32\" identifier=\"-32767\"&gt;494&lt;/line&gt;&lt;/BgpPeerMessageLog&gt;"
+        },
+        {
+            "Category": "BGP",
+            "MessageTS": 1366841263859499,
+            "Messagetype": "BgpPeerMessageLog",
+            "ModuleId": "ControlNode",
+            "SequenceNum": 130992,
+            "Source": "a3s16",
+            "Type": 1,
+            "Xmlmessage": "&lt;BgpPeerMessageLog type=\"sandesh\"&gt;&lt;PeerType type=\"string\" identifier=\"1\"&gt;Bgp&lt;/PeerType&gt;&lt;str2 type=\"string\" identifier=\"2\"&gt;Peer&lt;/str2&gt;&lt;Peer type=\"string\" identifier=\"3\"&gt;10.84.11.252&lt;/Peer&gt;&lt;Direction type=\"string\" identifier=\"4\"&gt;:&lt;/Direction&gt;&lt;Message type=\"string\" identifier=\"5\"&gt;Initiating close process&lt;/Message&gt;&lt;file type=\"string\" identifier=\"-32768\"&gt;src/bgp/bgp_peer_close.cc&lt;/file&gt;&lt;line type=\"i32\" identifier=\"-32767\"&gt;260&lt;/line&gt;&lt;/BgpPeerMessageLog&gt;"
+        },
+        {
+            "Category": "BGP",
+            "MessageTS": 1366841263859742,
+            "Messagetype": "BgpPeerMessageLog",
+            "ModuleId": "ControlNode",
+            "SequenceNum": 130993,
+            "Source": "a3s16",
+            "Type": 1,
+            "Xmlmessage": "&lt;BgpPeerMessageLog type=\"sandesh\"&gt;&lt;PeerType type=\"string\" identifier=\"1\"&gt;Bgp&lt;/PeerType&gt;&lt;str2 type=\"string\" identifier=\"2\"&gt;Peer&lt;/str2&gt;&lt;Peer type=\"string\" identifier=\"3\"&gt;10.84.11.252&lt;/Peer&gt;&lt;Direction type=\"string\" identifier=\"4\"&gt;:&lt;/Direction&gt;&lt;Message type=\"string\" identifier=\"5\"&gt;Unregister peer from all tables&lt;/Message&gt;&lt;file type=\"string\" identifier=\"-32768\"&gt;src/bgp/bgp_peer_membership.cc&lt;/file&gt;&lt;line type=\"i32\" identifier=\"-32767\"&gt;647&lt;/line&gt;&lt;/BgpPeerMessageLog&gt;"
+        },
+        {
+            "Category": "BGP",
+            "MessageTS": 1366841263859821,
+            "Messagetype": "BgpPeerMessageLog",
+            "ModuleId": "ControlNode",
+            "SequenceNum": 130994,
+            "Source": "a3s16",
+            "Type": 1,
+            "Xmlmessage": "&lt;BgpPeerMessageLog type=\"sandesh\"&gt;&lt;PeerType type=\"string\" identifier=\"1\"&gt;Bgp&lt;/PeerType&gt;&lt;str2 type=\"string\" identifier=\"2\"&gt;Peer&lt;/str2&gt;&lt;Peer type=\"string\" identifier=\"3\"&gt;10.84.11.252&lt;/Peer&gt;&lt;Direction type=\"string\" identifier=\"4\"&gt;:&lt;/Direction&gt;&lt;Message type=\"string\" identifier=\"5\"&gt;Close process is complete&lt;/Message&gt;&lt;file type=\"string\" identifier=\"-32768\"&gt;src/bgp/bgp_peer_close.cc&lt;/file&gt;&lt;line type=\"i32\" identifier=\"-32767\"&gt;162&lt;/line&gt;&lt;/BgpPeerMessageLog&gt;"
+        },
+        ...</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">opserver Package</a><ul>
+<li><a class="reference internal" href="#opserver-module"><tt class="docutils literal"><span class="pre">opserver</span></tt> Module</a><ul>
+<li><a class="reference internal" href="#user-visible-entities">User Visible Entities</a></li>
+<li><a class="reference internal" href="#log-and-flow-information">Log and Flow Information</a></li>
+<li><a class="reference internal" href="#example-outputs">Example Outputs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Contrail Opserver&#8217;s documentation!</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/opserver.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Contrail Opserver’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">Contrail Opserver v1.02 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Contrail Team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.8.
+    </div>
+  </body>
+</html>
