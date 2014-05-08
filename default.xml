@@ -1,7 +1,7 @@
 <manifest>
-<remote name="github" fetch=".."/>
+<remote name="github" fetch="."/>
 
-<default revision="refs/heads/master" remote="github"/>
+<default revision="R1.05" remote="github"/>
 
 <project name="contrail-build" remote="github" path="tools/build">
   <copyfile src="SConstruct" dest="SConstruct"/>
@@ -15,6 +15,6 @@
   <copyfile src="packages.make" dest="packages.make"/>
 </project>
 <project name="contrail-nova-vif-driver" remote="github" path="openstack/nova_contrail_vif"/>
-<project name="contrail-neutron-plugin" remote="github" path="openstack/neutron_plugin"/>
+<project name="contrail-neutron-plugin" remote="github" revision="refs/heads/master" path="openstack/neutron_plugin"/>
 
 </manifest>
