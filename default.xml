@@ -15,6 +15,6 @@
   <copyfile src="packages.make" dest="packages.make"/>
 </project>
 <project name="contrail-nova-vif-driver" remote="github" path="openstack/nova_contrail_vif"/>
-<project name="neutron" remote="github" revision="contrail/havana-R1.06" path="juniper/neutron"/>
+<project name="contrail-neutron-plugin" remote="github" path="openstack/neutron_plugin"/>
 
 </manifest>
