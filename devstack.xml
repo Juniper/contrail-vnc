@@ -11,7 +11,7 @@
 <project name="contrail-third-party" remote="github" revision="e353bb8b3fef7c065a956da7ae5654f25cbc2aa6" path="third_party"/>
 <project name="contrail-generateDS" remote="github" revision="806df0e82cbd60c262404f1820f8c7273dfdbbce" path="tools/generateds"/>
 <project name="contrail-sandesh" remote="github" revision="76eba1719e76bd619905898f96f1eab6dc4aeda0" path="tools/sandesh"/>
-<project name="contrail-packages" remote="github" revision="6f0b500368e89f83e334e6ca75e31da073dc4eaf" path="tools/packages">
+<project name="contrail-packages" remote="github" revision="568d16ae9d98ee2384a87656bf21aae5235a0d1c" path="tools/packages">
   <copyfile src="packages.make" dest="packages.make"/>
 </project>
 <project name="contrail-nova-vif-driver" remote="github" revision="776f400de92909b589f6893a08edfdd89a74187d" path="openstack/nova_contrail_vif"/>
