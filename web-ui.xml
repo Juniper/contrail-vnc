@@ -1,0 +1,13 @@
+<manifest>
+<remote name="github" fetch="."/>
+
+<default revision="R1.06" remote="github"/>
+
+<project name="contrail-third-party" remote="github" path="third_party"/>
+<project name="contrail-packages" remote="github" path="tools/packages">
+  <copyfile src="packages.make" dest="packages.make"/>
+</project>
+<project name="contrail-web-controller" remote="github"/>
+<project name="contrail-web-core" remote="github"/>
+
+</manifest>
