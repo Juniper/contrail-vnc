@@ -1,0 +1,24 @@
+<manifest>
+<remote name="github" fetch=".."/>
+
+<default revision="refs/heads/master" remote="github"/>
+
+<project name="contrail-build" remote="github" path="tools/build">
+  <copyfile src="SConstruct" dest="SConstruct"/>
+</project>
+<project name="contrail-controller" remote="github" revision="R1.06" path="controller"/>
+<project name="contrail-vrouter" remote="github" revision="R1.06" path="vrouter"/>
+<project name="contrail-third-party" remote="github" revision="R1.06" path="third_party"/>
+<project name="contrail-generateDS" remote="github" revision="R1.06" path="tools/generateds"/>
+<project name="contrail-sandesh" remote="github" revision="R1.06" path="tools/sandesh"/>
+<project name="contrail-packages" remote="github" revision="R1.06" path="tools/packages">
+  <copyfile src="packages.make" dest="packages.make"/>
+</project>
+<project name="contrail-nova-vif-driver" remote="github" revision="R1.06" path="openstack/nova_contrail_vif"/>
+<project name="contrail-neutron-plugin" remote="github" revision="R1.06" path="openstack/neutron_plugin"/>
+<project name="contrail-web-controller" revision="R1.06" remote="github"/>
+<project name="contrail-web-core" revision="R1.06" remote="github"/>
+<project name="contrail-webui-third-party" remote="github" revision="R1.06" path="contrail-webui-third-party"/>
+
+</manifest>
+
