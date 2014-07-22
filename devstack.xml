@@ -3,21 +3,21 @@
 
 <default revision="refs/heads/master" remote="github"/>
 
-<project name="contrail-build" remote="github" revision="e7e7f7c3e4202665b4225c5dada7e57ce1548334" path="tools/build">
+<project name="contrail-build" remote="github" revision="3ae969da94b4894d102b5549dc3f0936abe4458e" path="tools/build">
   <copyfile src="SConstruct" dest="SConstruct"/>
 </project>
-<project name="contrail-controller" remote="github" revision="f1a6a637b6ad301a95561568993ca2ccdaf05d04" path="controller"/>
-<project name="contrail-vrouter" remote="github" revision="dc1416931186671c77599dd75ffb6763add23d31" path="vrouter"/>
-<project name="contrail-third-party" remote="github" revision="e353bb8b3fef7c065a956da7ae5654f25cbc2aa6" path="third_party"/>
-<project name="contrail-generateDS" remote="github" revision="806df0e82cbd60c262404f1820f8c7273dfdbbce" path="tools/generateds"/>
-<project name="contrail-sandesh" remote="github" revision="6f0b500368e89f83e334e6ca75e31da073dc4eaf" path="tools/sandesh"/>
-<project name="contrail-packages" remote="github" revision="568d16ae9d98ee2384a87656bf21aae5235a0d1c" path="tools/packages">
+<project name="contrail-controller" remote="github" revision="b540c7d4bd17e97e585384fe19c8a0a086fef675" path="controller"/>
+<project name="contrail-vrouter" remote="github" revision="8cef27e392ffb2c405f9c4e86411ead1d4450a7d" path="vrouter"/>
+<project name="contrail-third-party" remote="github" revision="293cb3d7d29c8a7a2ad936bd8e47fcc755e53fbe" path="third_party"/>
+<project name="contrail-generateDS" remote="github" revision="16ba5639e660e71562d8e5b294ab0bc8f879f3cf" path="tools/generateds"/>
+<project name="contrail-sandesh" remote="github" revision="8a0e8e0503806f7a53cb528991fe5e00e9288f28" path="tools/sandesh"/>
+<project name="contrail-packages" remote="github" revision="f386af0294cb2a0f3ce605ee6be6584521d3db39" path="tools/packages">
   <copyfile src="packages.make" dest="packages.make"/>
 </project>
-<project name="contrail-nova-vif-driver" remote="github" revision="776f400de92909b589f6893a08edfdd89a74187d" path="openstack/nova_contrail_vif"/>
-<project name="contrail-neutron-plugin" remote="github" revision="d0943992275beb1a383fbc0a4a0710a47eccd14c" path="openstack/neutron_plugin"/>
-<project name="contrail-web-controller" remote="github" revision="1f74f79b87bc61642db284ea4c6b9acacd2d01d4"/>
-<project name="contrail-web-core" remote="github" revision="fd736408cb742d7a2fc014a5274760a4d309fd37"/>
+<project name="contrail-nova-vif-driver" remote="github" revision="b3e35997066501f5986317a08237c3e467bf79ce" path="openstack/nova_contrail_vif"/>
+<project name="contrail-neutron-plugin" remote="github" revision="5fd5a56cedf4db6b99cc7cfcb6694f12fd875c4c" path="openstack/neutron_plugin"/>
+<project name="contrail-web-controller" remote="github" revision="d419101d0de53d16acbd8fb395cbb0a43885b5ce"/>
+<project name="contrail-web-core" remote="github" revision="cf10212006d7178504006c24245c38e4cc78853f"/>
 
 </manifest>
 
