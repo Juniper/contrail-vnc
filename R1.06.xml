@@ -18,7 +18,6 @@
 <project name="contrail-neutron-plugin" remote="github" revision="R1.06" path="openstack/neutron_plugin"/>
 <project name="contrail-web-controller" revision="R1.06" remote="github"/>
 <project name="contrail-web-core" revision="R1.06" remote="github"/>
-<project name="contrail-webui-third-party" remote="github" revision="R1.06" path="contrail-webui-third-party"/>
 
 </manifest>
 
