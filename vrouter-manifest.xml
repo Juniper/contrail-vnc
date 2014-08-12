@@ -1,0 +1,12 @@
+<manifest>
+<remote name="github" fetch=".."/>
+
+<default revision="refs/heads/master" remote="github"/>
+
+<project name="contrail-build" remote="github" path="tools/build">
+  <copyfile src="SConstruct" dest="SConstruct"/>
+</project>
+<project name="contrail-vrouter" remote="github" path="vrouter"/>
+<project name="contrail-sandesh" remote="github" path="tools/sandesh"/>
+
+</manifest>
