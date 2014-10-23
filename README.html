@@ -26,17 +26,46 @@
 
     <div class="container">
       <p>
-      In order to create a sandbox that can be used to build the
-      complete system we use the <a
-      href="http://code.google.com/p/git-repo">google multiple
-      repository tool</a>. This requires <code>git &gt;= 1.7.2</code> to be installed in
-      the build system.
-      </p>
+	In order to create a sandbox that can be used to build the
+	complete system there are several steps. Overview:
+	<ol>
+	  <li>Obtain a suitable machine to use, likely a VM running a
+	    supported Linux distribution like Ubuntu or Redhat.
+	  <li>Make sure basic repository tools (i.e., git and android
+	    repo) are installed.
+	  <li>Create a sandbox.
+	  <li>Satisfy build tool requirements (distro-specific).
+	  <li>Download source for additional 3rd party software used in
+	    the build.
+	  <li>Build it.
+	</ol>
+	Details for this list are in the following sections.</p>
 
-      <p>
-      Before you can create a sandbox with repo you will need a github account, and you will need to set up ssh access to github.</p>
-      </p>
-      
+      <h3>1. Linux Build Machine</h3>
+      <div class="container">
+	<p>Several distributions are supported:
+	  <ul>
+	    <li>CentOS
+	    <li>RHEL
+	    <li>Scientific 6.4
+	    <li>Ubuntu 12.04
+	    <li>Ubuntu 14.04
+	  </ul>
+	  You will also need to have a ssh keypair, and should be
+	  familiar with using ssh (<b>hint:</b> ssh-agent).
+	</p>
+      </div>
+      <h3>2. Repository Tools</h3>
+      <div class="container">
+	<p>We use the google multiple repository tool, andoid
+	  repo. Here's
+	  the <a href="http://code.google.com/p/git-repo">download/install link</a>.
+	  This requires <code>git &gt;=
+	    1.7.2</code> to be installed on the build system.</p>
+	<p>Before you can create a sandbox with repo you will need a github
+	  account, and you will need to set up ssh access to github.</p>
+      </div>
+      <h3>3. Create Sandbox</h3>
       <div class="well">
 	<p>
 	  To create a development sandbox you can use the following steps:
@@ -47,56 +76,87 @@
 	  </ul>
 	</p>
       </div>
-    </div>
-
-    <div class="container">
-      <p>
-	Before building the software you will need to download other open source software libraries used by the controller repository. The script third_party/fetch_packages.py automates this process and automatically applies patches to some of these libraries.</p>
-
-      <p>
-	Contrail uses <a href="http://scons.org">SCons</a> as its build tool. Please ensure that you have scons >= 2.1.0 installed in your system and execute the command "scons" at the top-level sandbox directory.</p>
-    </div>
-
-    <div class="container">
-      <p>
-	The build process requires several tools including:
-	<ul>
-	  <li> gcc c++ >= 4.4.7 </li>
-	  <li> flex </li>
-	  <li> bison </li>
-	  <li> xxd (included as part of the vim-common package in redhat based distributions). </li>
-	  <li> libstdc++ </li>
-	  <li> python development support </li>
-	  <li> python lxml, setuptools, sphinx packages </li>
-	  <li> openssl development support </li>
-	  <li> autoconf</li>
-	</ul>
-      </p>
-	    <p>Please report build issues in the <a
+      <h3>4. Build Tool Requirements</h3>
+      <div class="container">
+	<p>
+	  The build depends on several tools including:
+	  <ul>
+	    <li> scons >= 2.1.0 </li>
+	    <li> gcc c++ >= 4.4.7 </li>
+	    <li> flex </li>
+	    <li> bison </li>
+	    <li> xxd (included as part of the vim-common package in redhat based distributions). </li>
+	    <li> libstdc++ </li>
+	    <li> libboost </li>
+	    <li> python development support </li>
+	    <li> python lxml, setuptools, sphinx packages </li>
+	    <li> openssl development support </li>
+	    <li> autoconf</li>
+	  </ul>
+	  Distro-specific package-install commands follow. Note that
+	  you should first make sure your system is up-to-date.
+	</p>
+	    <p>On RHEL/CentOS/Scientific 6.4 the build dependencies can be
+	      installed by the
+	      following command:</p>
+	    <div class="well">
+	      yum install -y scons git python-lxml wget gcc patch make unzip
+	      flex bison gcc-c++ openssl-devel autoconf automake vim
+	      python-devel python-setuptools protobuf protobuf-devel protobuf-compiler
+	    </div>
+	    The up-to-date list can be found in your sandbox. See the sandbox
+	    file <code>tools/packages/rpm/contrail/contrail.spec</code>
+	    for <code>BuildRequires</code> entries.
+	    </p>
+	    <p>
+              On Ubuntu both 12.04 and 14.04 the basic build
+              dependencies can be installed by the following command:
+	    <div class="well">
+              apt-get install -y scons git python-lxml wget gcc patch make unzip
+              flex bison g++ libssl-dev autoconf automake libtool pkg-config vim
+              python-dev python-setuptools libprotobuf-dev protobuf-compiler
+	    </div>
+	    Up-to-date list is in the sandbox
+	    file <code>tools/packages/debian/contrail/debian/control</code>,
+	    look for the <code>Build-Depends:</code> list.
+	    </p>
+	    <p>
+              On Ubuntu 14.04 these additional build dependencies are required:
+	    <div class="well">
+	      apt-get install -y libboost-dev libboost-chrono-dev
+              libboost-date-time-dev libboost-filesystem-dev
+              libboost-program-options-dev libboost-python-dev
+              libboost-regex-dev libboost-system-dev
+              libcurl4-openssl-dev google-mock libgoogle-perftools-dev
+              liblog4cplus-dev libtbb-dev libhttp-parser-dev
+              libxml2-dev libicu-dev
+	    </div>
+	    See the sandbox
+	    file <code>tools/packages/debian/contrail/debian/builddep.trusty</code>
+	    for up-to-date list.
+	    </p>
+	  <h3>5. Third-Party Source</h3>
+	  <div class="container">
+	    <p>
+	      Before building the software you will need to download other
+	      open source software libraries used by the controller
+	      repository. The python
+	      script <code>third_party/fetch_packages.py</code> automates
+	      this process and automatically applies patches to some of
+	      these libraries.</p>
+	  </div>
+	  <h3>6. Build with scons</h3>
+	  <div class="container">
+	    <p>
+	      Contrail uses <a href="http://scons.org">SCons</a> as
+	      its build tool. You should have installed it on your
+	      system in step (4). To build, execute the
+	      command <code>scons</code> at the top-level sandbox
+	      directory.</p>
+	  </div>
+      <p>Please report build issues in the <a
     href=http://lists.opencontrail.org/mailman/listinfo/dev_lists.opencontrail.org">
     developers mailing list</a>.</p>
-
-    </div>
-
-    
-    <div class="container">
-    <p>On RHEL/CentOS/Scientific 6.4 the build dependencies can be
-    installed by the
-    following command:</p>
-      <div class="well">
-      yum install -y scons git python-lxml wget gcc patch make unzip
-    flex bison gcc-c++ openssl-devel autoconf automake vim
-    python-devel python-setuptools
-  </div>
-      <p>
-        On Ubuntu 12.04 the build dependencies can be installed by 
-        the following command:
-      </p>
-      <div class="well">
-        apt-get install -y scons git python-lxml wget gcc patch make unzip
-        flex bison g++ libssl-dev autoconf automake libtool pkg-config vim
-        python-dev python-setuptools
-	    </div>
     </div>
 
     <div class="container">
