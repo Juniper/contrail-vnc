@@ -96,7 +96,8 @@
 	  Distro-specific package-install commands follow. Note that
 	  you should first make sure your system is up-to-date.
 	</p>
-	    <p>On RHEL/CentOS/Scientific 6.4 the build dependencies can be
+	<h4>4.1 CentOS, RedHat Enterprise Linux based distros</h4>
+	<p>On RHEL/CentOS/Scientific 6.4 the build dependencies can be
 	      installed by the
 	      following command:</p>
 	    <div class="well">
@@ -104,10 +105,26 @@
 	      flex bison gcc-c++ openssl-devel autoconf automake vim
 	      python-devel python-setuptools protobuf protobuf-devel protobuf-compiler
 	    </div>
-	    The up-to-date list can be found in your sandbox. See the sandbox
-	    file <code>tools/packages/rpm/contrail/contrail.spec</code>
+	    <p>On CentOS 6.6, there are a few additional build dependencies:</p>
+	      <ul>
+		<li>libtool
+		<li>kernel-devel
+		<li>automake >= 2.65
+	      </ul>
+	    <p>The first two are handled by the following command:</p>
+	    <div class="well">
+	      yum install -y libtool kernel-devel
+	    </div>
+	    <p>The newer automake requires more fiddling, as most yum
+	    repositories for Centos 6.x will have v2.63 automake.
+	    Here is a
+	    <a href="http://rpm.pbone.net/index.php3/stat/4/idpl/23605747/dir/centos_6/com/autoconf-2.69-12.2.noarch.rpm.html">
+	    link to automake-2.69 for CentOS 6.x.</a>
+	    The up-to-date build dependency list can be found in your sandbox.
+	    See the sandbox file <code>tools/packages/rpm/contrail/contrail.spec</code>
 	    for <code>BuildRequires</code> entries.
 	    </p>
+	    <h4>4.2 Debian-based distros</h4>
 	    <p>
               On Ubuntu both 12.04 and 14.04 the basic build
               dependencies can be installed by the following command:
