@@ -96,7 +96,8 @@
 	  Distro-specific package-install commands follow. Note that
 	  you should first make sure your system is up-to-date.
 	</p>
-	    <p>On RHEL/CentOS/Scientific 6.4 the build dependencies can be
+	<h4>4.1 CentOS, RedHat Enterprise Linux based distros</h4>
+	<p>On RHEL/CentOS/Scientific 6.4 the basic build dependencies can be
 	      installed by the
 	      following command:</p>
 	    <div class="well">
@@ -104,10 +105,84 @@
 	      flex bison gcc-c++ openssl-devel autoconf automake vim
 	      python-devel python-setuptools protobuf protobuf-devel protobuf-compiler
 	    </div>
-	    The up-to-date list can be found in your sandbox. See the sandbox
-	    file <code>tools/packages/rpm/contrail/contrail.spec</code>
+	    <p>The following sections provide additional info for
+	    specific CentOS releases</p>
+	    <h5>4.1.1 CentOS 6.6</h5>
+	    <p>On CentOS 6.6, there are a few additional build dependencies:</p>
+	      <ul>
+		<li>libtool
+		<li>kernel-devel
+		<li>automake >= 2.65
+	      </ul>
+	    <p>The first two are handled by the following command:</p>
+	    <div class="well">
+	      yum install -y libtool kernel-devel
+	    </div>
+	    <p>The newer automake requires more fiddling, as most yum
+	    repositories for Centos 6.x will have v2.63 automake.
+	    Here is a
+	    <a href="http://rpm.pbone.net/index.php3/stat/4/idpl/23605747/dir/centos_6/com/autoconf-2.69-12.2.noarch.rpm.html">
+	    link to automake-2.69 for CentOS 6.x.</a></p>
+	    <p>
+	    The up-to-date build dependency list can be found in your sandbox.
+	    See the sandbox file <code>tools/packages/rpm/contrail/contrail.spec</code>
 	    for <code>BuildRequires</code> entries.
 	    </p>
+	    <h5>4.1.2 CentOS 7</h5>
+	    <p>The ability to build on CentOS 7 is a work in progress,
+	    so all caveats apply.</p>
+	    <p>
+	      Like CentOS 6.6, these packages are also required by
+	      CentOS 7, and can be installed using the
+	      same <code>yum</code> command as for CentOS 6.6 (see above).
+	      <ul>
+		<li>libtool
+		<li>kernel-devel
+	      </ul>
+	    </p>
+	    <p>Centos 7 has some additional complexity due to build
+	    dependencies on the following:</p>
+	      <ol>
+		<li>bzip2
+		<li>boost-devel
+		<li>tbb-devel
+		<li>libcurl-devel
+		<li>libxml2-devel
+		<li>scons
+		<li>protobuf
+		<li>protobuf-devel
+		<li>protobuf-compiler
+	      </ol>
+	    <p>Packages (1) through (5) can be installed with
+	    this <code>yum</code> command:</p>
+	    <div class="well">
+	      yum install -y bzip2 boost-devel tbb-devel libcurl-devel libxml2-devel
+	    </div>
+	    <p>The packages (6) through (9) are not in the default
+	    CentOS 7 repository, but they can be installed from the
+	    epel repository.
+	    To install access to the epel repository, run these two commands:</p>
+	    <div class="well">
+	      yum install -y https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm<br>
+	      sed -i -e 's/enabled=1/enabled=0/' /etc/yum.repos.d/epel.repo
+	    </div>
+	    <p>After installing and enabling epel access, packages (6)
+	    through (9) can be installed:
+	    <div class="well">
+	      yum install -y --disablerepo="*" --enablerepo="epel" scons protobuf protobuf-devel protobuf-compiler
+	    </div>
+	    </p>
+	    <p>
+	      As stated, configuring CentOS 7 to build Contrail is currently a work in progress.
+	      To make it a bit less tedious, Flavio Fernandes has
+	      provided a provisioning script that adds epel repository
+	      access and also installs all needed packages (i.e., a
+	      one-step configure script).
+	      Here is a
+	      <a href="https://github.com/flavio-fernandes/opencontrail-dev-centos7/blob/master/provision.sh">
+		link to the github-hosted provisioning script.</a>
+	    </p>
+	    <h4>4.2 Debian-based distros</h4>
 	    <p>
               On Ubuntu both 12.04 and 14.04 the basic build
               dependencies can be installed by the following command:
