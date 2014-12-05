@@ -97,7 +97,7 @@
 	  you should first make sure your system is up-to-date.
 	</p>
 	<h4>4.1 CentOS, RedHat Enterprise Linux based distros</h4>
-	<p>On RHEL/CentOS/Scientific 6.4 the build dependencies can be
+	<p>On RHEL/CentOS/Scientific 6.4 the basic build dependencies can be
 	      installed by the
 	      following command:</p>
 	    <div class="well">
@@ -105,6 +105,9 @@
 	      flex bison gcc-c++ openssl-devel autoconf automake vim
 	      python-devel python-setuptools protobuf protobuf-devel protobuf-compiler
 	    </div>
+	    <p>The following sections provide additional info for
+	    specific CentOS releases</p>
+	    <h5>4.1.1 CentOS 6.6</h5>
 	    <p>On CentOS 6.6, there are a few additional build dependencies:</p>
 	      <ul>
 		<li>libtool
@@ -125,7 +128,7 @@
 	    See the sandbox file <code>tools/packages/rpm/contrail/contrail.spec</code>
 	    for <code>BuildRequires</code> entries.
 	    </p>
-	    <h5>4.1.1 CentOS 7</h5>
+	    <h5>4.1.2 CentOS 7</h5>
 	    <p>The ability to build on CentOS 7 is a work in progress,
 	    so all caveats apply.</p>
 	    <p>
