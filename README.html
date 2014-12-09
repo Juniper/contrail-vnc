@@ -92,9 +92,14 @@
 	    <li> python lxml, setuptools, sphinx packages </li>
 	    <li> openssl development support </li>
 	    <li> autoconf</li>
+	    <li> libipfix </li>
+	    <li> netsnmp python library</li>
 	  </ul>
 	  Distro-specific package-install commands follow. Note that
 	  you should first make sure your system is up-to-date.
+          For libipfix, a manual installation is needed for now, download from the below link and
+          follow the install instructions.
+          http://sourceforge.net/projects/libipfix/files/libipfix/libipfix_110209.tgz
 	</p>
 	<h4>4.1 CentOS, RedHat Enterprise Linux based distros</h4>
 	<p>On RHEL/CentOS/Scientific 6.4 the basic build dependencies can be
@@ -104,6 +109,7 @@
 	      yum install -y scons git python-lxml wget gcc patch make unzip
 	      flex bison gcc-c++ openssl-devel autoconf automake vim
 	      python-devel python-setuptools protobuf protobuf-devel protobuf-compiler
+              net-snmp-python
 	    </div>
 	    <p>The following sections provide additional info for
 	    specific CentOS releases</p>
@@ -190,6 +196,7 @@
               apt-get install -y scons git python-lxml wget gcc patch make unzip
               flex bison g++ libssl-dev autoconf automake libtool pkg-config vim
               python-dev python-setuptools libprotobuf-dev protobuf-compiler
+              libsnmp-python
 	    </div>
 	    Up-to-date list is in the sandbox
 	    file <code>tools/packages/debian/contrail/debian/control</code>,
