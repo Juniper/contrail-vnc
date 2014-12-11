@@ -10,6 +10,7 @@
 <project name="contrail-vrouter-java-api" remote="github" path="vrouter-java-api"/>
 <project name="contrail-vcenter-plugin" remote="github" path="vcenter-plugin">
   <copyfile src="Makefile" dest="Makefile"/>
+  <copyfile src="packages" dest="packages"/>
 </project>
 
 </manifest>
