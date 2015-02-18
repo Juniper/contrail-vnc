@@ -1,0 +1,15 @@
+<manifest>
+<remote name="github" fetch=".."/>
+
+<default revision="refs/heads/master" remote="github"/>
+
+<project name="contrail-controller" remote="github" revision="R2.1" path="controller"/>
+<project name="contrail-generateDS" remote="github" revision="R2.1" path="generateds"/>
+<project name="vijava" remote="github" path="vijava"/>
+<project name="contrail-java-api" remote="github" path="java-api"/>
+<project name="contrail-vrouter-java-api" remote="github" path="vrouter-java-api"/>
+<project name="contrail-vcenter-plugin" remote="github" revision="R2.1" path="vcenter-plugin">
+  <copyfile src="Makefile.install-package" dest="Makefile"/>
+</project>
+
+</manifest>
