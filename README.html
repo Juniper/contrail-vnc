@@ -172,13 +172,13 @@
 	    epel repository.
 	    To install access to the epel repository, run these two commands:</p>
 	    <div class="well">
-	      yum install -y https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm<br>
+	      yum install -y epel-release<br>
 	      sed -i -e 's/enabled=1/enabled=0/' /etc/yum.repos.d/epel.repo
 	    </div>
 	    <p>After installing and enabling epel access, packages (6)
 	    through (9) can be installed:
 	    <div class="well">
-	      yum install -y --disablerepo="*" --enablerepo="epel" scons protobuf protobuf-devel protobuf-compiler
+	      yum install -y --enablerepo="epel" scons protobuf protobuf-devel protobuf-compiler
 	    </div>
 	    </p>
 	    <p>
