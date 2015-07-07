@@ -1,7 +1,7 @@
 <manifest>
 <remote name="github" fetch=".."/>
 
-<default revision="R2.20" remote="github"/>
+<default revision="R2.22-dev" remote="github"/>
 
 <project name="contrail-build" remote="github" path="tools/build">
   <copyfile src="SConstruct" dest="SConstruct"/>
