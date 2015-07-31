@@ -16,5 +16,8 @@
 </project>
 <project name="contrail-nova-vif-driver" remote="github" path="openstack/nova_contrail_vif"/>
 <project name="contrail-neutron-plugin" remote="github" path="openstack/neutron_plugin"/>
+<project name="contrail-web-controller" remote="github"/>
+<project name="contrail-web-core" remote="github"/>
+<project name="contrail-webui-third-party" remote="github" path="contrail-webui-third-party"/>
 
 </manifest>
