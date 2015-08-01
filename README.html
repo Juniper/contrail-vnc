@@ -58,12 +58,12 @@
       </div>
       <h3>2. Repository Tools</h3>
       <div class="container">
-	<p>We use the google multiple repository tool, andoid
+        <p> The tools <code>repo</code> and <code>git</code> should be installed to pull a development sandbox.</p>
+	<p>We use the google multiple repository tool, the andoid
 	  repo. Here's
-	  the <a href="http://code.google.com/p/git-repo">download/install link</a>.
-	  This requires <code>git &gt;=
-	    1.7.2</code> to be installed on the build system.</p>
-	<p>Before you can create a sandbox with repo you will need a github
+	  the <a href="http://code.google.com/p/git-repo">download/install link</a>.</p>
+        <p> <code> apt-get install git </code> should install git.</p>
+	<p>Before you can create a sandbox you will need a github
 	  account, and you will need to set up ssh access to github.</p>
       </div>
       <h3>3. Create Sandbox</h3>
@@ -80,29 +80,7 @@
       <h3>4. Build Tool Requirements</h3>
       <div class="container">
 	<p>
-	  The build depends on several tools including:
-	  <ul>
-	    <li> scons >= 2.1.0 </li>
-	    <li> gcc c++ >= 4.4.7 </li>
-	    <li> flex </li>
-	    <li> bison </li>
-	    <li> xxd (included as part of the vim-common package in redhat based distributions). </li>
-	    <li> libstdc++ </li>
-	    <li> libboost </li>
-	    <li> python development support </li>
-	    <li> python lxml, setuptools, sphinx packages </li>
-	    <li> openssl development support </li>
-	    <li> autoconf</li>
-	    <li> libipfix </li>
-	    <li> netsnmp python library</li>
-	  </ul>
-	  Distro-specific package-install commands follow. Note that
-	  you should first make sure your system is up-to-date.
-          For libipfix, on ubuntu systems, libipfix debian can be downloaded (or installed) from opencontrail
-          ppa at https://launchpad.net/~opencontrail/+archive/ubuntu/ppa
-          For libipfix, on rpm based systems (centos, redhat), a manual installation is needed for now,
-          download from the below link and follow the install instructions.
-          http://sourceforge.net/projects/libipfix/files/libipfix/libipfix_110209.tgz
+	  The build depends on several tools which are listed in the following distribution specific sections.
 	</p>
 	<h4>4.1 CentOS, RedHat Enterprise Linux based distros</h4>
 	<p>On RHEL/CentOS/Scientific 6.4 the basic build dependencies can be
@@ -114,6 +92,12 @@
 	      python-devel python-setuptools protobuf protobuf-devel protobuf-compiler
               net-snmp-python
 	    </div>
+	    <p>In addition to the above, contrail build requires the following:</p>
+            <p><code>libipfix:</code> this needs to be installed manually by downloading from
+          http://sourceforge.net/projects/libipfix/files/libipfix/libipfix_110209.tgz </p>
+            <p><code>librdkafka:</code> this needs to be installed manually by downloading from
+           https://github.com/edenhill/librdkafka/librdkafka-0.8.5.tar.gz</p>
+
 	    <p>The following sections provide additional info for
 	    specific CentOS releases</p>
 	    <h5>4.1.1 CentOS 6.6</h5>
@@ -195,19 +179,29 @@
 	    <h4>4.2 Debian-based distros</h4>
 	    <p>
               On Ubuntu both 12.04 and 14.04 the basic build
-              dependencies can be installed by the following command:
-	    <div class="well">
-              apt-get install -y scons git python-lxml wget gcc patch make unzip
-              flex bison g++ libssl-dev autoconf automake libtool pkg-config vim
-              python-dev python-setuptools libprotobuf-dev protobuf-compiler
-              libsnmp-python
-	    </div>
-	    Up-to-date list is in the sandbox
-	    file <code>tools/packages/debian/contrail/debian/control</code>,
+              dependencies are specified in the sandbox file <code>tools/packages/debian/contrail/debian/control</code>,
 	    look for the <code>Build-Depends:</code> list.
+            There are some packages in the Build-Depends list that come from opencontrail PPA. Hence the following need to be
+            done.
+	    <div class="well">
+                <p>apt-add-repository ppa:opencontrail/ppa</p>
+                <p>apt-get update</p>
+	    </div>
+
+	    The current common list is as below, but it's recommended to pick
+            the latest list from the file <code>tools/packages/debian/contrail/debian/control</code>.
+	    <div class="well">
+              apt-get install -y autoconf automake bison debhelper flex libcurl4-openssl-dev libexpat-dev libgettextpo0 libprotobuf-dev
+               libtool libxml2-utils make protobuf-compiler python-all python-dev python-lxml python-setuptools python-sphinx ruby-ronn
+               scons unzip vim-common libsnmp-python libipfix librdkafka-dev librdkafka1
+	    </div>
 	    </p>
 	    <p>
               On Ubuntu 14.04 these additional build dependencies are required:
+	    See the sandbox
+	    file <code>tools/packages/debian/contrail/debian/builddep.trusty</code>
+	    for up-to-date list.
+            The current list is as below, but it's recommended to pick the latest from the builddep.trusty file.
 	    <div class="well">
 	      apt-get install -y libboost-dev libboost-chrono-dev
               libboost-date-time-dev libboost-filesystem-dev
@@ -217,9 +211,6 @@
               liblog4cplus-dev libtbb-dev libhttp-parser-dev
               libxml2-dev libicu-dev
 	    </div>
-	    See the sandbox
-	    file <code>tools/packages/debian/contrail/debian/builddep.trusty</code>
-	    for up-to-date list.
 	    </p>
 	  <h3>5. Third-Party Source</h3>
 	  <div class="container">
@@ -240,21 +231,26 @@
 	      command <code>scons</code> at the top-level sandbox
 	      directory.</p>
 	  </div>
+	  <h3>7. Run unit tests with scons</h3>
+	    <p>A few more packages are required to run unit tests and they need to be installed
+            as below.</p>
+	    <div class="well">
+              apt-get install python-virtualenv python-libxml2 libxslt1-dev
+            </div>
+	    <p>Additionally make sure <code>ping `hostname`</code> works.</p>
+	  <div class="container">
+	    <p>
+	      To run unit tests, execute the
+	      command <code>scons test</code> at the top-level sandbox
+	      directory.</p>
+	  </div>
+	  <h3>8. Contact list</h3>
+    <div>
       <p>Please report build issues in the <a
     href=http://lists.opencontrail.org/mailman/listinfo/dev_lists.opencontrail.org">
     developers mailing list</a>.</p>
     </div>
 
-    <div class="container">
-      <p>Common problems:
-      <ul>
-	<li><p>build/lib/libthriftasio.a is not generated.<p>
-	<p>This library is added to thrift via a patch. It requires
-      autoconf to be installed in the system in order for
-      <code>configure</code> to regenerate itself.</p></li>
-      </ul>
-      </p>
-    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://code.jquery.com/jquery.js"></script>
 
