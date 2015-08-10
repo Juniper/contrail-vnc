@@ -16,6 +16,7 @@
 </project>
 <project name="contrail-nova-vif-driver" remote="github" revision="776f400de92909b589f6893a08edfdd89a74187d" path="openstack/nova_contrail_vif"/>
 <project name="contrail-neutron-plugin" remote="github" revision="d0943992275beb1a383fbc0a4a0710a47eccd14c" path="openstack/neutron_plugin"/>
+<project name="contrail-nova-extensions" remote="github" revision="ebc6cbc08338ded08056b08745c8b94932d1ef8a" path="openstack/nova_extensions"/>
 <project name="contrail-web-controller" remote="github" revision="1f74f79b87bc61642db284ea4c6b9acacd2d01d4"/>
 <project name="contrail-web-core" remote="github" revision="fd736408cb742d7a2fc014a5274760a4d309fd37"/>
 
