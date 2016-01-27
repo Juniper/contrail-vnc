@@ -184,8 +184,8 @@
             There are some packages in the Build-Depends list that come from opencontrail PPA. Hence the following need to be
             done.
 	    <div class="well">
-                <p>apt-add-repository ppa:opencontrail/ppa</p>
-                <p>apt-get update</p>
+                apt-add-repository ppa:opencontrail/ppa<br>
+                apt-get update
 	    </div>
 
 	    The current common list is as below, but it's recommended to pick
@@ -210,6 +210,14 @@
               libcurl4-openssl-dev google-mock libgoogle-perftools-dev
               liblog4cplus-dev libtbb-dev libhttp-parser-dev
               libxml2-dev libicu-dev
+	    </div>
+	    </p>
+	    Following are also required that need to be downloaded and installed
+	    <div class="well">
+            wget http://downloads.datastax.com/cpp-driver/ubuntu/14.04/cassandra-cpp-driver_2.2.0-1_amd64.deb<br>
+            wget http://downloads.datastax.com/cpp-driver/ubuntu/14.04/cassandra-cpp-driver-dev_2.2.0-1_amd64.deb<br>
+            wget http://downloads.datastax.com/cpp-driver/ubuntu/14.04/libuv_1.7.5-1_amd64.deb<br><br>
+            dpkg -i libuv_1.7.5-1_amd64.deb cassandra-cpp-driver_2.2.0-1_amd64.deb cassandra-cpp-driver-dev_2.2.0-1_amd64.deb
 	    </div>
 	    </p>
 	  <h3>5. Third-Party Source</h3>
