@@ -1,12 +1,12 @@
 <manifest>
 <remote name="github" fetch=".."/>
 
-<default revision="refs/heads/master" remote="github"/>
+<default revision="cql_dev" remote="github"/>
 
 <project name="contrail-build" remote="github" path="tools/build">
   <copyfile src="SConstruct" dest="SConstruct"/>
 </project>
-<project name="contrail-controller" remote="github" path="controller"/>
+<project name="contrail-controller" remote="github" revision="cql_dev" path="controller"/>
 <project name="contrail-vrouter" remote="github" path="vrouter"/>
 <project name="contrail-third-party" remote="github" path="third_party"/>
 <project name="contrail-generateDS" remote="github" path="tools/generateds"/>
