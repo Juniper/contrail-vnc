@@ -12,7 +12,7 @@
 <project name="contrail-generateDS" remote="github" path="tools/generateds"/>
 <project name="contrail-sandesh" remote="github" path="tools/sandesh"/>
 <project name="contrail-common" remote="github" path="src/contrail-common"/>
-<project name="contrail-api" remote="github" path="src/contrail-api"/>
+<project name="contrail-api-client" remote="github" path="src/contrail-api-client"/>
 <project name="contrail-packages" remote="github" path="tools/packages">
   <copyfile src="packages.make" dest="packages.make"/>
 </project>
