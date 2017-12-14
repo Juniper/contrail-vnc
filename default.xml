@@ -13,6 +13,9 @@
 <project name="contrail-sandesh" remote="github" path="tools/sandesh"/>
 <project name="contrail-common" remote="github" path="src/contrail-common"/>
 <project name="contrail-api-client" remote="github" path="src/contrail-api-client"/>
+<project name="contrail-fabric-utils" remote="github" path="third_party/fabric-utils" />
+<project name="contrail-test" remote="github" path="third_party/contrail-test" />
+<project name="contrail-test-ci" remote="github" path="tools/contrail-test-ci"/>
 <project name="contrail-packages" remote="github" path="tools/packages">
   <copyfile src="packages.make" dest="packages.make"/>
 </project>
