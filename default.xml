@@ -1,5 +1,5 @@
 <manifest>
-<remote name="github" fetch=".."/>
+<remote name="github" fetch="https://github.com/Juniper"/>
 
 <default revision="refs/heads/master" remote="github"/>
 
@@ -32,6 +32,7 @@
 <!-- Used by OpenContrail CI jobs -->
 <project name="contrail-fabric-utils" remote="github" path="third_party/fabric-utils" />
 <project name="contrail-test" remote="github" path="third_party/contrail-test" />
+<project name="contrail-test-ci" remote="github" path="tools/contrail-test-ci"/>
 
 </manifest>
 
