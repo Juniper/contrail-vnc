@@ -31,6 +31,7 @@
 <project name="contrail-webui-third-party" remote="github" path="contrail-webui-third-party"/>
 <!-- Used by OpenContrail CI jobs -->
 <project name="contrail-fabric-utils" remote="github" path="third_party/fabric-utils" />
+<project name="contrail-specs" remote="github" path="contrail-specs" />
 <project name="contrail-test" remote="github" path="third_party/contrail-test" />
 <project name="contrail-test-ci" remote="github" path="tools/contrail-test-ci"/>
 
