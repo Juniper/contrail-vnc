@@ -36,5 +36,4 @@
 <project name="contrail-test" remote="github" path="third_party/contrail-test" />
 <project name="contrail-test-ci" remote="github" path="tools/contrail-test-ci"/>
 
-</manifest>
-
+</man
