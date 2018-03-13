@@ -18,7 +18,6 @@
 <project name="contrail-packages" remote="github" path="tools/packages">
   <copyfile src="packages.make" dest="packages.make"/>
 </project>
-<project name="contrail-packaging" remote="github" path="tools/packaging"/>
 <project name="contrail-provisioning" remote="github" path="tools/provisioning"/>
 <project name="contrail-nova-vif-driver" remote="github" path="openstack/nova_contrail_vif"/>
 <project name="contrail-neutron-plugin" remote="github" path="openstack/neutron_plugin"/>
