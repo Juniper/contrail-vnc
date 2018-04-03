@@ -32,6 +32,7 @@
 <project name="vijava" remote="github" path="vijava"/>
 <project name="contrail-vcenter-plugin" remote="github" path="vcenter-plugin"/>
 <project name="contrail-vrouter-java-api" remote="github" path="vrouter-java-api"/>
+<project name="contrail-vro-plugin" remote="github" path="vro-plugin"/>
 <!-- Used by OpenContrail CI jobs -->
 <project name="contrail-fabric-utils" remote="github" path="third_party/fabric-utils" />
 <project name="contrail-dpdk" remote="github" revision="contrail_dpdk_17_11" path="third_party/dpdk" />
