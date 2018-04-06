@@ -38,7 +38,6 @@
 <project name="contrail-dpdk" remote="github" revision="contrail_dpdk_17_11" path="third_party/dpdk" />
 <project name="contrail-specs" remote="github" revision="R5.0" path="contrail-specs" />
 <project name="contrail-test" remote="github" revision="R5.0" path="third_party/contrail-test" />
-<project name="contrail-test-ci" remote="github" revision="R5.0" path="tools/contrail-test-ci"/>
 
 </manifest>
 
