@@ -1,4 +1,5 @@
 <manifest>
+<remote name="tungstenfabric" fetch="https://github.com/tungstenfabric"/>
 <remote name="github" fetch="https://github.com/Juniper"/>
 
 <default revision="refs/heads/master" remote="github"/>
@@ -41,6 +42,7 @@
 <project name="contrail-specs" remote="github" revision="master" path="contrail-specs" />
 <project name="contrail-test" remote="github" path="third_party/contrail-test" />
 <project name="contrail-test-ci" remote="github" path="tools/contrail-test-ci"/>
+<project name="contrail-ci-test" remote="tungstenfabric" path="tools/contrail-ci-test"/>
 
 </manifest>
 
