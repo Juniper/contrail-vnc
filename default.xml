@@ -1,7 +1,9 @@
 <manifest>
+<remote name="tungstenfabric" fetch="https://github.com/tungstenfabric"/>
 <remote name="github" fetch="https://github.com/Juniper"/>
 
 <default revision="refs/heads/master" remote="github"/>
+
 
 <project name="contrail-build" remote="github" path="tools/build">
   <copyfile src="SConstruct" dest="SConstruct"/>
@@ -40,7 +42,7 @@
 <!-- contrail-specs repository contains per-branch directories, use master revision explicitly -->
 <project name="contrail-specs" remote="github" revision="master" path="contrail-specs" />
 <project name="contrail-test" remote="github" path="third_party/contrail-test" />
-<project name="contrail-test-ci" remote="github" path="tools/contrail-test-ci"/>
+<project name="contrail-ci-test" remote="tungstenfabric" revision="master" path="tools/contrail-ci-test"/>
 
 </manifest>
 
