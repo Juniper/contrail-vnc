@@ -31,6 +31,7 @@
 <project name="contrail-java-api" remote="github" revision="R5.0" path="java-api"/>
 <project name="vijava" remote="github" revision="R5.0" path="vijava"/>
 <project name="contrail-vcenter-plugin" remote="github" revision="R5.0" path="vcenter-plugin"/>
+<project name="contrail-vcenter-manager" remote="github" revision="R5.0" path="vcenter-manager"/>
 <project name="contrail-vrouter-java-api" remote="github" revision="R5.0" path="vrouter-java-api"/>
 <project name="contrail-vro-plugin" remote="github" revision="R5.0" path="vro-plugin"/>
 <!-- Used by OpenContrail CI jobs -->
