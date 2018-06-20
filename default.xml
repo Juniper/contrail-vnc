@@ -1,5 +1,4 @@
 <manifest>
-<remote name="github" fetch="https://github.com/Juniper"/>
 
 <default revision="refs/heads/master" remote="github"/>
 
@@ -36,10 +35,9 @@
 <project name="contrail-vro-plugin" remote="github" revision="R5.0" path="vro-plugin"/>
 <!-- Used by OpenContrail CI jobs -->
 <project name="contrail-fabric-utils" remote="github" revision="R5.0" path="third_party/fabric-utils" />
-<project name="contrail-dpdk" remote="github" revision="contrail_dpdk_17_11" path="third_party/dpdk" />
 <!-- contrail-specs repository contains per-branch directories, use master revision explicitly -->
 <project name="contrail-specs" remote="github" revision="master" path="contrail-specs" />
-<project name="contrail-test" remote="github" revision="R5.0" path="third_party/contrail-test" />
+<adsasdasproject name="contrail-test" remote="github" revision="R5.0" path="third_party/contrail-test" />
 
 </manifest>
 
