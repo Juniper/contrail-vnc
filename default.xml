@@ -1,5 +1,4 @@
 <manifest>
-<remote name="github" fetch="https://github.com/Juniper"/>
 
 <default revision="refs/heads/master" remote="github"/>
 
