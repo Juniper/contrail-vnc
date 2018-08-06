@@ -37,7 +37,7 @@
 <project name="contrail-vro-plugin" remote="github" path="vro-plugin"/>
 <!-- Used by OpenContrail CI jobs -->
 <project name="contrail-fabric-utils" remote="github" path="third_party/fabric-utils" />
-<project name="contrail-dpdk" remote="github" revision="contrail_dpdk_17_11" path="third_party/dpdk" />
+<project name="contrail-dpdk" remote="github" revision="contrail_dpdk_17_11_3" path="third_party/dpdk" />
 <!-- contrail-specs repository contains per-branch directories, use master revision explicitly -->
 <project name="contrail-specs" remote="github" revision="master" path="contrail-specs" />
 <project name="contrail-test" remote="github" path="third_party/contrail-test" />
