@@ -41,6 +41,5 @@
 <!-- contrail-specs repository contains per-branch directories, use master revision explicitly -->
 <project name="contrail-specs" remote="github" revision="master" path="contrail-specs" />
 <project name="contrail-test" remote="github" path="third_party/contrail-test" />
-
 </manifest>
 
