@@ -23,6 +23,6 @@
 <project name="contrail-web-controller" remote="github"/>
 <project name="contrail-web-core" remote="github"/>
 <project name="contrail-webui-third-party" remote="github" path="contrail-webui-third-party"/>
-
+<project name="contrail-dpdk" remote="github" revision="contrail_dpdk_17_11_3" path="third_party/dpdk" />
+  
 </manifest>
-
