@@ -20,7 +20,6 @@
 <project name="contrail-provisioning" remote="github" path="tools/provisioning"/>
 <project name="contrail-nova-vif-driver" remote="github" path="openstack/nova_contrail_vif"/>
 <project name="contrail-neutron-plugin" remote="github" path="openstack/neutron_plugin"/>
-<project name="contrail-nova-extensions" remote="github" path="openstack/nova_extensions"/>
 <project name="contrail-heat" remote="github" path="openstack/contrail-heat"/>
 <project name="contrail-web-storage" remote="github"/>
 <project name="contrail-web-server-manager" remote="github"/>
