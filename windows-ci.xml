@@ -1,0 +1,15 @@
+<manifest>
+  <remote name="github" fetch="https://github.com/Juniper"/>
+  <default revision="refs/heads/master" remote="github"/>
+
+  <project name="contrail-build" remote="github" path="tools/build">
+    <copyfile src="SConstruct" dest="SConstruct"/>
+  </project>
+  <project name="contrail-controller" remote="github" path="controller"/>
+  <project name="contrail-vrouter" remote="github" path="vrouter"/>
+  <project name="contrail-third-party" remote="github" path="third_party"/>
+  <project name="contrail-common" remote="github" path="src/contrail-common"/>
+  <project name="contrail-api-client" remote="github" path="src/contrail-api-client"/>
+  <project name="contrail-windows" remote="github" path="windows"/>
+  <project name="contrail-windows-docker-driver" remote="github" path="src/github.com/Juniper/contrail-windows-docker-driver"/>
+</manifest>
