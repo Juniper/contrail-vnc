@@ -13,5 +13,5 @@
 <project name="contrail-api-client" remote="github" path="src/contrail-api-client"/>
 <project name="contrail-windows" remote="github" path="windows"/>
 <project name="contrail-windows-docker-driver" remote="github" path="src/github.com/Juniper/contrail-windows-docker-driver"/>
-<project name="contrail-windows-test" remote="github" path="contrail-windows-test"/>
+<project name="contrail-windows-test" remote="github" path="Test"/>
 </manifest>
