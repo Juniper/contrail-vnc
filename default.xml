@@ -40,6 +40,17 @@
 <!-- contrail-specs repository contains per-branch directories, use master revision explicitly -->
 <project name="contrail-specs" remote="github" revision="master" path="contrail-specs" />
 <project name="contrail-test" remote="github" revision="R5.0" path="third_party/contrail-test" />
+<!-- Contrail containers -->
+<project name="contrail-container-builder" remote="github" revision="R5.0" path="contrail-container-builder" />
+<!-- Contrail deployers containers -->
+<project name="contrail-deployers-containers" remote="github" revision="R5.0" path="contrail-deployers-containers" />
+<project name="contrail-helm-deployer" remote="github" revision="R5.0" path="contrail-deployers-containers/containers/helm-deployer/src/contrail-helm-deployer" />
+<project name="openstack-helm" remote="github" revision="R5.0" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm" />
+<project name="openstack-helm-infra" remote="github" revision="R5.0" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm-infra" />
+<project name="contrail-ansible-deployer" remote="github" revision="R5.0" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer" />
+<!-- kolla-ansible and openshift-ansible repositories has different branch structure that is chosen at runtime, use master revision explicitly -->
+<project name="contrail-kolla-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible" />
+<project name="openshift-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible" />
 
 </manifest>
 
