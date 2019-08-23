@@ -1,5 +1,6 @@
 <manifest>
 <remote name="github" fetch="https://github.com/Juniper"/>
+<remote name="githubtf" fetch="https://github.com/tungstenfabric"/>
 
 <default revision="refs/heads/master" remote="github"/>
 
