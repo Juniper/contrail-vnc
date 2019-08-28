@@ -3,41 +3,40 @@
 
 <default revision="refs/heads/master" remote="github"/>
 
-<project name="contrail-build" remote="github" path="tools/build">
+<project name="contrail-build" remote="github" revision="R1909" path="tools/build">
   <copyfile src="SConstruct" dest="SConstruct"/>
 </project>
-<project name="contrail-controller" remote="github" path="controller"/>
-<project name="contrail-vrouter" remote="github" path="vrouter"/>
-<project name="contrail-third-party" remote="github" path="third_party"/>
-<project name="contrail-sandesh" remote="github" path="tools/sandesh"/>
-<project name="contrail-common" remote="github" path="src/contrail-common"/>
-<project name="contrail-analytics" remote="github" path="src/contrail-analytics"/>
-<project name="contrail-api-client" remote="github" path="src/contrail-api-client"/>
+<project name="contrail-controller" remote="github" revision="R1909" path="controller"/>
+<project name="contrail-vrouter" remote="github" revision="R1909" path="vrouter"/>
+<project name="contrail-third-party" remote="github" revision="R1909" path="third_party"/>
+<project name="contrail-sandesh" remote="github" revision="R1909" path="tools/sandesh"/>
+<project name="contrail-common" remote="github" revision="R1909" path="src/contrail-common"/>
+<project name="contrail-analytics" remote="github" revision="R1909" path="src/contrail-analytics"/>
+<project name="contrail-api-client" remote="github" revision="R1909" path="src/contrail-api-client"/>
 <!-- Packages are split between contrail-packages and contrail-packaging -->
-<project name="contrail-packages" remote="github" path="tools/packages">
+<project name="contrail-packages" remote="github" revision="R1909" path="tools/packages">
   <copyfile src="packages.make" dest="packages.make"/>
 </project>
-<project name="contrail-nova-vif-driver" remote="github" path="openstack/nova_contrail_vif"/>
-<project name="contrail-neutron-plugin" remote="github" path="openstack/neutron_plugin"/>
-<project name="contrail-heat" remote="github" path="openstack/contrail-heat"/>
-<project name="contrail-web-storage" remote="github"/>
-<project name="contrail-web-controller" remote="github"/>
-<project name="contrail-web-core" remote="github"/>
-<project name="contrail-webui-third-party" remote="github" path="contrail-webui-third-party"/>
-<project name="contrail-tripleo-puppet" remote="github" path="openstack/contrail-tripleo-puppet"/>
+<project name="contrail-nova-vif-driver" remote="github" revision="R1909" path="openstack/nova_contrail_vif"/>
+<project name="contrail-neutron-plugin" remote="github" revision="R1909" path="openstack/neutron_plugin"/>
+<project name="contrail-heat" remote="github" revision="R1909" path="openstack/contrail-heat"/>
+<project name="contrail-web-storage" remote="github" revision="R1909"/>
+<project name="contrail-web-controller" remote="github" revision="R1909"/>
+<project name="contrail-web-core" remote="github" revision="R1909"/>
+<project name="contrail-webui-third-party" remote="github" revision="R1909" path="contrail-webui-third-party"/>
+<project name="contrail-tripleo-puppet" remote="github" revision="R1909" path="openstack/contrail-tripleo-puppet"/>
 <!-- vCenter projects -->
-<project name="contrail-java-api" remote="github" path="java-api"/>
-<project name="vijava" remote="github" path="vijava"/>
-<project name="contrail-vcenter-plugin" remote="github" path="vcenter-plugin"/>
-<project name="contrail-vcenter-manager" remote="github" path="vcenter-manager"/>
-<project name="contrail-vcenter-fabric-manager" remote="github" path="vcenter-fabric-manager"/>
-<project name="contrail-vrouter-java-api" remote="github" path="vrouter-java-api"/>
-<project name="contrail-vro-plugin" remote="github" path="vro-plugin"/>
+<project name="contrail-java-api" remote="github" revision="R1909" path="java-api"/>
+<project name="vijava" remote="github" revision="R1909" path="vijava"/>
+<project name="contrail-vcenter-plugin" remote="github" revision="R1909" path="vcenter-plugin"/>
+<project name="contrail-vcenter-manager" remote="github" revision="R1909" path="vcenter-manager"/>
+<project name="contrail-vcenter-fabric-manager" remote="github" revision="R1909" path="vcenter-fabric-manager"/>
+<project name="contrail-vrouter-java-api" remote="github" revision="R1909" path="vrouter-java-api"/>
+<project name="contrail-vro-plugin" remote="github" revision="R1909" path="vro-plugin"/>
 <!-- Used by OpenContrail CI jobs -->
-<project name="contrail-dpdk" remote="github" revision="contrail_dpdk_18_05_1" path="third_party/dpdk" />
+<project name="contrail-dpdk" remote="github" revision="R1909" revision="contrail_dpdk_18_05_1" path="third_party/dpdk" />
 <!-- contrail-specs repository contains per-branch directories, use master revision explicitly -->
-<project name="contrail-specs" remote="github" revision="master" path="contrail-specs" />
-<project name="contrail-test" remote="github" path="third_party/contrail-test" />
+<project name="contrail-specs" remote="github" revision="R1909" revision="master" path="contrail-specs" />
+<project name="contrail-test" remote="github" revision="R1909" path="third_party/contrail-test" />
 
 </manifest>
-
