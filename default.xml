@@ -12,7 +12,7 @@
 <project name="contrail-third-party" remote="github" path="third_party"/>
 <project name="contrail-sandesh" remote="github" path="tools/sandesh"/>
 <project name="contrail-common" remote="github" path="src/contrail-common"/>
-<project name="contrail-analytics" remote="github" path="src/contrail-analytics"/>
+<project name="analytics" remote="githubtf" path="src/contrail-analytics"/>
 <project name="contrail-api-client" remote="github" path="src/contrail-api-client"/>
 <!-- Packages are split between contrail-packages and contrail-packaging -->
 <project name="contrail-packages" remote="github" path="tools/packages">
