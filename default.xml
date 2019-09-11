@@ -13,7 +13,7 @@
 <project name="contrail-sandesh" remote="github" revision="R1909" path="tools/sandesh"/>
 <project name="contrail-common" remote="github" revision="R1909" path="src/contrail-common"/>
 <project name="contrail-analytics" remote="github" revision="R1909" path="src/contrail-analytics"/>
-<project name="contrail-api-client" remote="github" revision="R1909" path="src/contrail-api-client"/>
+<project name="api-client" remote="githubtf" revision="R1909" path="src/contrail-api-client"/>
 <!-- Packages are split between contrail-packages and contrail-packaging -->
 <project name="contrail-packages" remote="github" revision="R1909" path="tools/packages">
   <copyfile src="packages.make" dest="packages.make"/>
