@@ -46,8 +46,8 @@
 <project name="openstack-helm" remote="github" revision="R1910" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm" />
 <project name="openstack-helm-infra" remote="github" revision="R1910" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm-infra" />
 <project name="contrail-ansible-deployer" remote="github" revision="R1910" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer" />
-<project name="contrail-kolla-ansible" remote="github" revision="R1910" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible" />
-<project name="openshift-ansible" remote="github" revision="R1910" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible" />
+<project name="contrail-kolla-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible" />
+<project name="openshift-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible" />
 
 </manifest>
 
