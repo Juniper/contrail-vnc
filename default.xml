@@ -26,7 +26,7 @@
 <project name="contrail-web-controller" remote="github" revision="R1908"/>
 <project name="contrail-web-core" remote="github" revision="R1908"/>
 <project name="contrail-webui-third-party" remote="github" revision="R1908" path="contrail-webui-third-party"/>
-<project name="contrail-tripleo-puppet" remote="github" revision="R1908" path="openstack/contrail-tripleo-puppet"/>
+<project name="contrail-tripleo-puppet" remote="github" revision="stable/queens" path="openstack/contrail-tripleo-puppet"/>
 <!-- vCenter projects -->
 <project name="contrail-java-api" remote="github" revision="R1908" path="java-api"/>
 <project name="vijava" remote="github" revision="R1908" path="vijava"/>
