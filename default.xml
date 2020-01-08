@@ -48,6 +48,8 @@
 <project name="openshift-ansible" remote="github" revision="release-3.7-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.7" />
 <project name="openshift-ansible" remote="github" revision="release-3.9-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.9" />
 <project name="openshift-ansible" remote="github" revision="release-3.11-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.11" />
+<!-- Contrail thirda party packages -->
+<project name="contrail-third-party-packages" remote="github" revision="master" path="https://github.com/Juniper/contrail-third-party-packages" />
 
 </manifest>
 
