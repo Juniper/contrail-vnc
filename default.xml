@@ -17,8 +17,8 @@
 <project name="contrail-nova-vif-driver" remote="github" path="openstack/nova_contrail_vif"/>
 <project name="contrail-neutron-plugin" remote="github" path="openstack/neutron_plugin"/>
 <project name="contrail-heat" remote="github" path="openstack/contrail-heat"/>
-<project name="contrail-web-controller" remote="github"/>
-<project name="contrail-web-core" remote="github"/>
+<project name="tf-web-controller" remote="githubtf" path="contrail-web-controller"/>
+<project name="tf-web-core" remote="githubtf" path="contrail-web-core"/>
 <project name="contrail-webui-third-party" remote="github" path="contrail-webui-third-party"/>
 <project name="contrail-tripleo-puppet" remote="github" path="openstack/contrail-tripleo-puppet"/>
 <!-- vCenter projects -->
