@@ -28,7 +28,7 @@
 <project name="tf-vcenter-manager" remote="githubtf" path="vcenter-manager"/>
 <project name="tf-vcenter-fabric-manager" remote="githubtf" path="vcenter-fabric-manager"/>
 <project name="contrail-vrouter-java-api" remote="github" path="vrouter-java-api"/>
-<project name="contrail-vro-plugin" remote="github" path="vro-plugin"/>
+<project name="tf-vro-plugin" remote="githubtf" path="vro-plugin"/>
 <!-- Used by OpenContrail CI jobs -->
 <project name="contrail-dpdk" remote="github" revision="contrail_dpdk_18_05_1" path="third_party/dpdk" />
 <!-- contrail-specs repository contains per-branch directories, use master revision explicitly -->
