@@ -49,8 +49,11 @@
 <project name="openshift-ansible" remote="github" revision="release-3.11-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.11" />
 <!-- Contrail third party packages -->
 <project name="contrail-third-party-packages" remote="github" revision="master" path="third_party/contrail-third-party-packages" />
-<!-- Tf-charm deployer -->>
+<!-- Deployers -->
 <project name="tf-charms" remote="githubtf" path="tf-charms"/>
-
+<project name="tf-ansible-deployer" remote="github" path="contrail-ansible-deployer"/>
+<project name="tf-kolla-ansible" remote="github" path="contrail-kolla-ansible"/>
+<project name="tf-container-builder" remote="github" path="contrail-container-builder"/>
+<project name="tf-tripleo-heat-templates" remote="github" path="contrail-tripleo-heat-templates"/>
 </manifest>
 
