@@ -32,7 +32,6 @@
     <project name="contrail-helm-deployer" remote="github" revision="dgautam-test2" path="contrail-deployers-containers/containers/helm-deployer/src/contrail-helm-deployer"></project>
     <project name="openstack-helm" remote="github" revision="dgautam-test2" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm"></project>
     <project name="openstack-helm-infra" remote="github" revision="dgautam-test2" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm-infra"></project>
-    <project name="contrail-ansible-deployer" remote="github" revision="dgautam-test2" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer"></project>
     <project name="contrail-kolla-ansible" remote="github" revision="dgautam-test2" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible"></project>
     <project name="openshift-ansible" remote="github" revision="dgautam-test2" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible"></project>
     <project name="openshift-ansible" remote="github" revision="release-3.7-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.7"></project>
