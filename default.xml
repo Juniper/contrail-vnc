@@ -43,8 +43,8 @@
 <project name="openstack-helm" remote="github" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm" />
 <project name="openstack-helm-infra" remote="github" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm-infra" />
 <project name="contrail-ansible-deployer" remote="github" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer" />
-<project name="contrail-kolla-ansible" remote="github" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible" />
-<project name="openshift-ansible" remote="github" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible" />
+<project name="contrail-kolla-ansible" remote="github" revision="contrail/queens" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible" />
+<project name="openshift-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible" />
 <project name="openshift-ansible" remote="github" revision="release-3.7-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.7" />
 <project name="openshift-ansible" remote="github" revision="release-3.9-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.9" />
 <project name="openshift-ansible" remote="github" revision="release-3.11-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.11" />
