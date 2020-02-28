@@ -42,5 +42,5 @@
     <project name="openshift-ansible" remote="github" revision="release-3.9-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.9"></project>
     <project name="openshift-ansible" remote="github" revision="release-3.11-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.11"></project>
     <project name="contrail-third-party-packages" remote="github" revision="master" path="third_party/contrail-third-party-packages"></project>
-    <project name="tf-charms" remote="githubtf" revision="R2003" path="tf-charms"></project>
+    <project name="tf-charms" remote="githubtf" revision="master" path="tf-charms"></project>
 </manifest>
