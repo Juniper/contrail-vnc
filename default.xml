@@ -2,7 +2,9 @@
     <remote name="github" fetch="https://github.com/Juniper"></remote>
     <remote name="githubtf" fetch="https://github.com/tungstenfabric"></remote>
     <default revision="refs/heads/master" remote="github"></default>
-    <project name="contrail-build" remote="github" revision="R2003" path="tools/build"></project>
+	<project name="contrail-build" remote="github" revision="R2003" path="tools/build">
+			<copyfile src="SConstruct" dest="SConstruct"/>
+	</project>
     <project name="contrail-controller" remote="github" revision="R2003" path="controller"></project>
     <project name="contrail-vrouter" remote="github" revision="R2003" path="vrouter"></project>
     <project name="tf-third-party" remote="githubtf" revision="R2003" path="third_party"></project>
