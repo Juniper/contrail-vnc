@@ -15,9 +15,7 @@
 <project name="contrail-analytics" remote="github" revision="R1912" path="src/contrail-analytics"/>
 <project name="contrail-api-client" remote="github" revision="R1912" path="src/contrail-api-client"/>
 <!-- Packages are split between contrail-packages and contrail-packaging -->
-<project name="contrail-packages" remote="github" revision="R1912" path="tools/packages">
-  <copyfile src="packages.make" dest="packages.make"/>
-</project>
+<project name="contrail-packages" remote="github" revision="R1912" path="tools/packages"/>
 <project name="contrail-nova-vif-driver" remote="github" revision="R1912" path="openstack/nova_contrail_vif"/>
 <project name="contrail-neutron-plugin" remote="github" revision="R1912" path="openstack/neutron_plugin"/>
 <project name="contrail-heat" remote="github" revision="R1912" path="openstack/contrail-heat"/>
@@ -48,5 +46,12 @@
 <project name="contrail-ansible-deployer" remote="github" revision="R1912" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer" />
 <project name="contrail-kolla-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible" />
 <project name="openshift-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible" />
+
+<!-- TF Deployers -->
+<project name="tf-charms" remote="githubtf" path="tf-charms"/>
+<project name="contrail-ansible-deployer" remote="github" path="tf-ansible-deployer"/>
+<project name="contrail-kolla-ansible" remote="github" path="tf-kolla-ansible"/>
+<project name="contrail-container-builder" remote="github" path="tf-container-builder"/>
+<project name="contrail-tripleo-heat-templates" revision="stable/queens" remote="github" path="tf-tripleo-heat-templates"/>
 
 </manifest>
