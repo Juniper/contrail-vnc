@@ -49,4 +49,11 @@
 <project name="contrail-kolla-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible" />
 <project name="openshift-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible" />
 
+<!-- TF Deployers -->
+<project name="tf-charms" remote="githubtf" path="tf-charms"/>
+<project name="contrail-ansible-deployer" remote="github" path="tf-ansible-deployer"/>
+<project name="contrail-kolla-ansible" remote="github" path="tf-kolla-ansible"/>
+<project name="contrail-container-builder" remote="github" path="tf-container-builder"/>
+<project name="contrail-tripleo-heat-templates" revision="stable/queens" remote="github" path="tf-tripleo-heat-templates"/>
+
 </manifest>
