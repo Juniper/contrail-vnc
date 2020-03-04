@@ -22,7 +22,7 @@
 <project name="tf-webui-third-party" remote="githubtf" path="contrail-webui-third-party"/>
 <project name="tf-tripleo-puppet" remote="githubtf" revision="stable/queens" path="openstack/contrail-tripleo-puppet"/>
 <!-- vCenter projects -->
-<project name="contrail-java-api" remote="github" path="java-api"/>
+<project name="tf-java-api" remote="githubtf" path="java-api"/>
 <project name="vijava" remote="github" path="vijava"/>
 <project name="tf-vcenter-plugin" remote="githubtf" path="vcenter-plugin"/>
 <project name="tf-vcenter-manager" remote="githubtf" path="vcenter-manager"/>
