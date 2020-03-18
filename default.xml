@@ -38,7 +38,7 @@
 <project name="contrail-container-builder" remote="github" path="contrail-container-builder" />
 <!-- Contrail fat-deployers containers -->
 <project name="contrail-deployers-containers" remote="github" path="contrail-deployers-containers" />
-<project name="contrail-ansible-deployer" remote="github" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer" />
+<project name="tf-ansible-deployer" remote="githubtf" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer" />
 <project name="contrail-kolla-ansible" remote="github" revision="contrail/queens" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible" />
 <project name="openshift-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible" />
 <project name="openshift-ansible" remote="github" revision="release-3.7-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.7" />
@@ -49,7 +49,7 @@
 <!-- Deployers based on scratch -->
 <project name="tf-charms" remote="githubtf" revision="master" path="tf-charms"/>
 <project name="tf-helm-deployer" remote="githubtf" revision="master" path="tf-helm-deployer"/>
-<project name="contrail-ansible-deployer" remote="github" revision="master" path="tf-ansible-deployer"/>
+<project name="tf-ansible-deployer" remote="githubtf" revision="master" path="tf-ansible-deployer"/>
 <project name="contrail-kolla-ansible" remote="github" path="tf-kolla-ansible"/>
 <project name="contrail-container-builder" remote="github" revision="master" path="tf-container-builder"/>
 <project name="contrail-tripleo-heat-templates" revision="stable/queens" remote="github" path="tf-tripleo-heat-templates"/>
