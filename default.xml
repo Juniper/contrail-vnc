@@ -32,9 +32,6 @@
     <project name="contrail-test" remote="github" revision="R2003" path="third_party/contrail-test"></project>
     <project name="contrail-container-builder" remote="github" revision="R2003" path="contrail-container-builder"></project>
     <project name="contrail-deployers-containers" remote="github" revision="R2003" path="contrail-deployers-containers"></project>
-    <project name="contrail-helm-deployer" remote="github" revision="R2003" path="contrail-deployers-containers/containers/helm-deployer/src/contrail-helm-deployer"></project>
-    <project name="openstack-helm" remote="github" revision="R2003" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm"></project>
-    <project name="openstack-helm-infra" remote="github" revision="R2003" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm-infra"></project>
     <project name="contrail-ansible-deployer" remote="github" revision="R2003" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer"></project>
     <project name="contrail-kolla-ansible" remote="github" revision="contrail/queens" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible"></project>
     <project name="openshift-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible"></project>
@@ -42,5 +39,4 @@
     <project name="openshift-ansible" remote="github" revision="release-3.9-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.9"></project>
     <project name="openshift-ansible" remote="github" revision="release-3.11-contrail" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible3.11"></project>
     <project name="contrail-third-party-packages" remote="github" revision="master" path="third_party/contrail-third-party-packages"></project>
-    <project name="tf-charms" remote="githubtf" revision="master" path="tf-charms"></project>
 </manifest>
