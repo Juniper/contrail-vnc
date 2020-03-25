@@ -1,6 +1,6 @@
 <manifest>
-<remote name="gitlab" fetch="https://ssd-git.juniper.net/contrail/Juniper"/>
-<remote name="gitlabtf" fetch="https://ssd-git.juniper.net/contrail/tungstenfabric"/>
+<remote name="gitlab" fetch="git@ssd-git.juniper.net/contrail/Juniper"/>
+<remote name="gitlabtf" fetch="git@ssd-git.juniper.net/contrail/tungstenfabric"/>
 
 <default revision="refs/heads/master" remote="gitlab"/>
 
