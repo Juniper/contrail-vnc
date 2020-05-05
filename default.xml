@@ -37,7 +37,7 @@
 <!-- Contrail containers -->
 <project name="contrail-container-builder" remote="github" path="contrail-container-builder" />
 <!-- Contrail fat-deployers containers -->
-<project name="contrail-deployers-containers" remote="github" path="contrail-deployers-containers" />
+<project name="tf-deployers-containers" remote="githubtf" path="contrail-deployers-containers" />
 <project name="contrail-ansible-deployer" remote="github" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer" />
 <project name="contrail-kolla-ansible" remote="github" revision="contrail/queens" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible" />
 <!-- Contrail third party packages -->
