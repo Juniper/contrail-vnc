@@ -1,6 +1,7 @@
 <manifest>
 <remote name="github" fetch="https://github.com/Juniper"/>
 <remote name="githubtf" fetch="https://github.com/tungstenfabric"/>
+<remote name="githubos" fetch="https://opendev.org/x"/>
 
 <default revision="refs/heads/master" remote="github"/>
 
@@ -16,6 +17,7 @@
 <project name="tf-packages" remote="githubtf" path="tools/packages"/>
 <project name="tf-nova-vif-driver" remote="githubtf" path="openstack/nova_contrail_vif"/>
 <project name="tf-neutron-plugin" remote="githubtf" path="openstack/neutron_plugin"/>
+<project name="networking-opencontrail" remote="githubos" revision="stable/queens" path="openstack/networking-opencontrail"/>
 <project name="tf-heat-plugin" remote="githubtf" path="openstack/contrail-heat"/>
 <project name="tf-web-controller" remote="githubtf" path="contrail-web-controller"/>
 <project name="tf-web-core" remote="githubtf" path="contrail-web-core"/>
