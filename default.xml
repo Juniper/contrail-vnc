@@ -35,7 +35,7 @@
 <project name="tf-specs" remote="githubtf" revision="master" path="contrail-specs" />
 <project name="contrail-test" remote="github" path="third_party/contrail-test" />
 <!-- Contrail containers -->
-<project name="contrail-container-builder" remote="github" path="contrail-container-builder" />
+<project name="tf-container-builder" remote="githubtf" path="contrail-container-builder" />
 <!-- Contrail fat-deployers containers -->
 <project name="tf-deployers-containers" remote="githubtf" path="contrail-deployers-containers" />
 <project name="tf-ansible-deployer" remote="githubtf" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer" />
@@ -47,7 +47,7 @@
 <project name="tf-helm-deployer" remote="githubtf" revision="master" path="tf-helm-deployer"/>
 <project name="tf-ansible-deployer" remote="githubtf" path="tf-ansible-deployer"/>
 <project name="tf-kolla-ansible" remote="githubtf" revision="master" path="tf-kolla-ansible"/>
-<project name="contrail-container-builder" remote="github"  path="tf-container-builder"/>
+<project name="tf-container-builder" remote="githubtf"  path="tf-container-builder"/>
 <project name="contrail-tripleo-heat-templates" remote="github" revision="stable/queens" path="tf-tripleo-heat-templates"/>
 <project name="tf-openshift-ansible" remote="githubtf" revision="release-3.11-contrail" path="tf-openshift-ansible" />
 
