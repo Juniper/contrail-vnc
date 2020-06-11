@@ -41,7 +41,7 @@
 <project name="tf-ansible-deployer" remote="githubtf" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer" />
 <project name="contrail-kolla-ansible" remote="github" revision="contrail/queens" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible" />
 <!-- Contrail third party packages -->
-<project name="contrail-third-party-packages" remote="github" revision="master" path="third_party/contrail-third-party-packages" />
+<project name="tf-third-party-packages" remote="githubtf" revision="master" path="third_party/contrail-third-party-packages" />
 <!-- Deployers based on scratch -->
 <project name="tf-charms" remote="githubtf" revision="master" path="tf-charms"/>
 <project name="tf-helm-deployer" remote="githubtf" revision="master" path="tf-helm-deployer"/>
