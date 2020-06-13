@@ -6,7 +6,7 @@
     <copyfile src="SConstruct" dest="SConstruct"/>
   </project>
   <project name="contrail-controller" remote="github" path="controller"/>
-  <project name="contrail-vrouter" remote="github" path="vrouter"/>
+  <project name="tf-vrouter" remote="githubtf" path="vrouter"/>
   <project name="tf-third-party" remote="githubtf" path="third_party"/>
   <project name="tf-common" remote="githubtf" path="src/contrail-common"/>
   <project name="contrail-api-client" remote="github" path="src/contrail-api-client"/>
