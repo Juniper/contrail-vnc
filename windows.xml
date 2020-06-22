@@ -1,0 +1,17 @@
+<manifest>
+<remote name="github" fetch="https://github.com/Juniper"/>
+
+<default revision="refs/heads/master" remote="github"/>
+
+<project name="tf-build" remote="githubtf" path="tools/build">
+  <copyfile src="SConstruct" dest="SConstruct"/>
+</project>
+<project name="contrail-controller" remote="github" path="controller"/>
+<project name="tf-vrouter" remote="githubtf" path="vrouter"/>
+<project name="tf-third-party" remote="githubtf" path="third_party"/>
+<project name="tf-common" remote="githubtf" path="src/contrail-common"/>
+<project name="tf-api-client" remote="githubtf" path="src/contrail-api-client"/>
+<project name="contrail-windows" remote="github" path="windows"/>
+<project name="contrail-windows-docker-driver" remote="github" path="src/github.com/Juniper/contrail-windows-docker-driver"/>
+<project name="contrail-windows-test" remote="github" path="Test"/>
+</manifest>
