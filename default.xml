@@ -4,54 +4,54 @@
 
 <default revision="refs/heads/master" remote="github"/>
 
-<project name="contrail-build" remote="github" revision="R1912" path="tools/build">
+<project name="contrail-build" remote="github" revision="R1912.L3-1" path="tools/build">
   <copyfile src="SConstruct" dest="SConstruct"/>
 </project>
-<project name="contrail-controller" remote="github" revision="R1912" path="controller"/>
-<project name="contrail-vrouter" remote="github" revision="R1912" path="vrouter"/>
-<project name="contrail-third-party" remote="github" revision="R1912" path="third_party"/>
-<project name="contrail-sandesh" remote="github" revision="R1912" path="tools/sandesh"/>
-<project name="contrail-common" remote="github" revision="R1912" path="src/contrail-common"/>
-<project name="contrail-analytics" remote="github" revision="R1912" path="src/contrail-analytics"/>
-<project name="contrail-api-client" remote="github" revision="R1912" path="src/contrail-api-client"/>
+<project name="contrail-controller" remote="github" revision="R1912.L3-1" path="controller"/>
+<project name="contrail-vrouter" remote="github" revision="R1912.L3-1" path="vrouter"/>
+<project name="contrail-third-party" remote="github" revision="R1912.L3-1" path="third_party"/>
+<project name="contrail-sandesh" remote="github" revision="R1912.L3-1" path="tools/sandesh"/>
+<project name="contrail-common" remote="github" revision="R1912.L3-1" path="src/contrail-common"/>
+<project name="contrail-analytics" remote="github" revision="R1912.L3-1" path="src/contrail-analytics"/>
+<project name="contrail-api-client" remote="github" revision="R1912.L3-1" path="src/contrail-api-client"/>
 <!-- Packages are split between contrail-packages and contrail-packaging -->
-<project name="contrail-packages" remote="github" revision="R1912" path="tools/packages"/>
-<project name="contrail-nova-vif-driver" remote="github" revision="R1912" path="openstack/nova_contrail_vif"/>
-<project name="contrail-neutron-plugin" remote="github" revision="R1912" path="openstack/neutron_plugin"/>
-<project name="contrail-heat" remote="github" revision="R1912" path="openstack/contrail-heat"/>
-<project name="contrail-web-controller" remote="github" revision="R1912"/>
-<project name="contrail-web-core" remote="github" revision="R1912"/>
-<project name="contrail-webui-third-party" remote="github" revision="R1912" path="contrail-webui-third-party"/>
-<project name="contrail-tripleo-puppet" remote="github" revision="R1912" path="openstack/contrail-tripleo-puppet"/>
+<project name="contrail-packages" remote="github" revision="R1912.L3-1" path="tools/packages"/>
+<project name="contrail-nova-vif-driver" remote="github" revision="R1912.L3-1" path="openstack/nova_contrail_vif"/>
+<project name="contrail-neutron-plugin" remote="github" revision="R1912.L3-1" path="openstack/neutron_plugin"/>
+<project name="contrail-heat" remote="github" revision="R1912.L3-1" path="openstack/contrail-heat"/>
+<project name="contrail-web-controller" remote="github" revision="R1912.L3-1"/>
+<project name="contrail-web-core" remote="github" revision="R1912.L3-1"/>
+<project name="contrail-webui-third-party" remote="github" revision="R1912.L3-1" path="contrail-webui-third-party"/>
+<project name="contrail-tripleo-puppet" remote="github" revision="R1912.L3-1" path="openstack/contrail-tripleo-puppet"/>
 <!-- vCenter projects -->
-<project name="contrail-java-api" remote="github" revision="R1912" path="java-api"/>
-<project name="vijava" remote="github" revision="R1912" path="vijava"/>
-<project name="contrail-vcenter-plugin" remote="github" revision="R1912" path="vcenter-plugin"/>
-<project name="contrail-vcenter-manager" remote="github" revision="R1912" path="vcenter-manager"/>
-<project name="contrail-vcenter-fabric-manager" remote="github" revision="R1912" path="vcenter-fabric-manager"/>
-<project name="contrail-vrouter-java-api" remote="github" revision="R1912" path="vrouter-java-api"/>
-<project name="contrail-vro-plugin" remote="github" revision="R1912" path="vro-plugin"/>
+<project name="contrail-java-api" remote="github" revision="R1912.L3-1" path="java-api"/>
+<project name="vijava" remote="github" revision="R1912.L3-1" path="vijava"/>
+<project name="contrail-vcenter-plugin" remote="github" revision="R1912.L3-1" path="vcenter-plugin"/>
+<project name="contrail-vcenter-manager" remote="github" revision="R1912.L3-1" path="vcenter-manager"/>
+<project name="contrail-vcenter-fabric-manager" remote="github" revision="R1912.L3-1" path="vcenter-fabric-manager"/>
+<project name="contrail-vrouter-java-api" remote="github" revision="R1912.L3-1" path="vrouter-java-api"/>
+<project name="contrail-vro-plugin" remote="github" revision="R1912.L3-1" path="vro-plugin"/>
 <!-- Used by OpenContrail CI jobs -->
 <project name="contrail-dpdk" remote="github" revision="contrail_dpdk_18_05_1" path="third_party/dpdk" />
 <!-- contrail-specs repository contains per-branch directories, use master revision explicitly -->
 <project name="contrail-specs" remote="github" revision="master" path="contrail-specs" />
-<project name="contrail-test" remote="github" revision="R1912" path="third_party/contrail-test" />
+<project name="contrail-test" remote="github" revision="R1912.L3-1" path="third_party/contrail-test" />
 <!-- Contrail containers -->
-<project name="contrail-container-builder" remote="github" revision="R1912" path="contrail-container-builder" />
+<project name="contrail-container-builder" remote="github" revision="R1912.L3-1" path="contrail-container-builder" />
 <!-- Contrail deployers containers -->
-<project name="contrail-deployers-containers" remote="github" revision="R1912" path="contrail-deployers-containers" />
-<project name="contrail-helm-deployer" remote="github" revision="R1912" path="contrail-deployers-containers/containers/helm-deployer/src/contrail-helm-deployer" />
-<project name="openstack-helm" remote="github" revision="R1912" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm" />
-<project name="openstack-helm-infra" remote="github" revision="R1912" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm-infra" />
-<project name="contrail-ansible-deployer" remote="github" revision="R1912" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer" />
+<project name="contrail-deployers-containers" remote="github" revision="R1912.L3-1" path="contrail-deployers-containers" />
+<project name="contrail-helm-deployer" remote="github" revision="R1912.L3-1" path="contrail-deployers-containers/containers/helm-deployer/src/contrail-helm-deployer" />
+<project name="openstack-helm" remote="github" revision="R1912.L3-1" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm" />
+<project name="openstack-helm-infra" remote="github" revision="R1912.L3-1" path="contrail-deployers-containers/containers/helm-deployer/src/openstack-helm-infra" />
+<project name="contrail-ansible-deployer" remote="github" revision="R1912.L3-1" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-ansible-deployer" />
 <project name="contrail-kolla-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/kolla-ansible-deployer/src/contrail-kolla-ansible" />
 <project name="openshift-ansible" remote="github" revision="master" path="contrail-deployers-containers/containers/openshift-ansible-deployer/src/openshift-ansible" />
 
 <!-- TF Deployers -->
 <project name="tf-charms" remote="githubtf" revision="master" path="tf-charms"/>
-<project name="contrail-ansible-deployer" revision="R1912" remote="github" path="tf-ansible-deployer"/>
+<project name="contrail-ansible-deployer" revision="R1912.L3-1" remote="github" path="tf-ansible-deployer"/>
 <project name="contrail-kolla-ansible" revision="master" remote="github" path="tf-kolla-ansible"/>
-<project name="contrail-container-builder" revision="R1912" remote="github" path="tf-container-builder"/>
+<project name="contrail-container-builder" revision="R1912.L3-1" remote="github" path="tf-container-builder"/>
 <project name="contrail-tripleo-heat-templates" revision="stable/queens" remote="github" path="tf-tripleo-heat-templates"/>
 
 </manifest>
