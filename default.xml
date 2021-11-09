@@ -4,10 +4,10 @@
 
 <default revision="refs/heads/master" remote="github"/>
 
-<project name="contrail-build" remote="github" revision="R1912" path="tools/build">
+<project name="contrail-build" remote="github" revision="R1912-SFA" path="tools/build">
   <copyfile src="SConstruct" dest="SConstruct"/>
 </project>
-<project name="contrail-controller" remote="github" revision="R1912" path="controller"/>
+<project name="contrail-controller" remote="github" revision="R1912-SFA" path="controller"/>
 <project name="contrail-vrouter" remote="github" revision="R1912" path="vrouter"/>
 <project name="contrail-third-party" remote="github" revision="R1912" path="third_party"/>
 <project name="contrail-sandesh" remote="github" revision="R1912" path="tools/sandesh"/>
